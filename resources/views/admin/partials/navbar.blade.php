@@ -16,15 +16,18 @@
                     <li class="dropdown dropdown-user nav-item">
                         <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                             <div class="user-nav d-sm-flex d-none"><span class="user-name text-bold-600">
-                                    {{-- {{ auth()->user()->name }} --}}
-                                    John Doe
+                                    {{ auth()->user()->username }}
                                 </span><span class="user-status">Available</span></div><span><img class="round"
                                     src="{{ url('admin_files/app-assets/images/portrait/small/avatar-s-11.jpg') }}"
                                     alt="avatar" height="40" width="40"></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="page-user-profile.html">
-                                <i class="feather icon-user"></i> Edit Profile</a>
+                        <a class="dropdown-item" href="\admin\profile">
+                                <i class="feather icon-user"></i> Profile
+                            </a>
+                        <a class="dropdown-item" href="\admin\settings">
+                                <i class="feather icon-settings"></i> Settings
+                            </a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
@@ -47,8 +50,7 @@
     <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">
             <li class="nav-item mr-auto"><a class="navbar-brand" href="{{ route('admin.index') }}">
-                    {{-- <div class="brand-logo"></div> --}}
-                    <i class="feather icon-home brand-text"></i>
+                    <div class="brand-logo"></div>
                     <h2 class="brand-text mb-0">BMS</h2>
                 </a>
             </li>
@@ -58,40 +60,19 @@
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
             <li class="nav-item"><a href="{{ route('admin.index') }}"><i class="feather icon-home"></i><span
-                        class="menu-title" data-i18n="Dashboard">@lang('site.dashboard')</span><span
-                        class="badge badge badge-warning badge-pill float-right mr-2">2</span></a>
-                <ul class="menu-content">
-                    <li><a href="{{ route('admin.index') }}"><i class="feather icon-circle"></i><span class="menu-item"
-                                data-i18n="eCommerce">eCommerce</span></a>
-                    </li>
-                </ul>
+                        class="menu-title">@lang('site.dashboard')</span></a>
             </li>
-            <li class=" navigation-header"><span>Apps</span>
             </li>
-            <li class=" nav-item"><a href="app-email.html"><i class="feather icon-mail"></i><span class="menu-title"
+            <li class="navigation-header"><span>Apps</span>
+            </li>
+            <li class="nav-item"><a href="app-email.html"><i class="feather icon-mail"></i><span class="menu-title"
                         data-i18n="Email">Email</span></a>
             </li>
-            <li class=" nav-item"><a href="app-chat.html"><i class="feather icon-message-square"></i><span
+            <li class="nav-item"><a href="app-chat.html"><i class="feather icon-message-square"></i><span
                         class="menu-title" data-i18n="Chat">Chat</span></a>
             </li>
-            <li class=" nav-item"><a href="#"><i class="feather icon-shopping-cart"></i><span class="menu-title"
-                        data-i18n="Ecommerce">Ecommerce</span></a>
-                <ul class="menu-content">
-                    <li><a href="app-ecommerce-shop.html"><i class="feather icon-circle"></i><span class="menu-item"
-                                data-i18n="Shop">Shop</span></a>
-                    </li>
-                    <li><a href="app-ecommerce-details.html"><i class="feather icon-circle"></i><span class="menu-item"
-                                data-i18n="Details">Details</span></a>
-                    </li>
-                    <li><a href="app-ecommerce-wishlist.html"><i class="feather icon-circle"></i><span class="menu-item"
-                                data-i18n="Wish List">Wish List</span></a>
-                    </li>
-                    <li><a href="app-ecommerce-checkout.html"><i class="feather icon-circle"></i><span class="menu-item"
-                                data-i18n="Checkout">Checkout</span></a>
-                    </li>
-                </ul>
-            </li>
-            <li class=" nav-item"><a href="#"><i class="feather icon-user"></i><span class="menu-title"
+
+            <li class="nav-item"><a href="#"><i class="feather icon-user"></i><span class="menu-title"
                         data-i18n="User">User</span></a>
                 <ul class="menu-content">
                     <li><a href="app-user-list.html"><i class="feather icon-circle"></i><span class="menu-item"

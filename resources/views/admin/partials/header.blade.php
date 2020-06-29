@@ -42,6 +42,14 @@
 
     @else
 
+    {{-- <link href="https://fonts.googleapis.com/css?family=Cairo:400,700" rel="stylesheet">
+
+    <style>
+        body, h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cairo', sans-serif !important;
+        }
+    </style> --}}
+
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="{{ url('admin_files/app-assets/vendors/css/vendors-rtl.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url('admin_files/app-assets/vendors/css/tables/datatable/datatables.min.css') }}">
