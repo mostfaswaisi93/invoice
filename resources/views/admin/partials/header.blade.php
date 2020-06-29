@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-{{-- <html class="loading" lang="en" data-textdirection="ltr"> --}}
 <html class="loading" dir="{{ LaravelLocalization::getCurrentLocaleDirection() }}">
 
 <!-- BEGIN: Head-->
@@ -7,13 +6,13 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta name="description" content="BMS Laravel Project">
-    <meta name="keywords" content="BMS Laravel Project">
+    <meta name="description" content="Invoices Laravel Project">
+    <meta name="keywords" content="Invoices Laravel Project">
     <meta name="author" content="PIXINVENT">
-    <title>BMS</title>
+    <title>Invoices</title>
 
     <link rel="apple-touch-icon" href="{{ url('admin_files/app-assets/images/ico/apple-icon-120.png') }}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ url('admin_files/app-assets/images/ico/favicon.ico') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url('admin_files/favicon.ico') }}">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
 
     @if (app()->getLocale() == 'en')
@@ -41,14 +40,6 @@
     <!-- END: Custom CSS-->
 
     @else
-
-    {{-- <link href="https://fonts.googleapis.com/css?family=Cairo:400,700" rel="stylesheet">
-
-    <style>
-        body, h1, h2, h3, h4, h5, h6 {
-            font-family: 'Cairo', sans-serif !important;
-        }
-    </style> --}}
 
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="{{ url('admin_files/app-assets/vendors/css/vendors-rtl.min.css') }}">

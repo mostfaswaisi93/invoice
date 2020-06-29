@@ -13,22 +13,30 @@
                     </ul>
                 </div>
                 <ul class="nav navbar-nav float-right">
+                    <li class="dropdown dropdown-language nav-item">
+                        <a class="dropdown-toggle nav-link" id="dropdown-flag" href="#" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            <i class="flag-icon flag-icon-us"></i><span class="selected-language">English</span></a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown-flag">
+                            <a class="dropdown-item" href="#" data-language="en"><i class="flag-icon flag-icon-us"></i>
+                                English</a>
+                            <a class="dropdown-item" href="#" data-language="ar"><i class="flag-icon flag-icon-sa"></i>
+                                Arabic</a>
+                        </div>
+                    </li>
                     <li class="dropdown dropdown-user nav-item">
                         <a class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-                            <div class="user-nav d-sm-flex d-none"><span class="user-name text-bold-600">
-                                    {{ auth()->user()->username }}
-                                </span><span class="user-status">Available</span></div><span><img class="round"
+                            <div class="user-nav d-sm-flex d-none">
+                                <span class="user-name text-bold-600" style="margin: auto">
+                                    {{ auth()->user()->name }}
+                                </span>
+                            </div>
+                            <span>
+                                <img class="round"
                                     src="{{ url('admin_files/app-assets/images/portrait/small/avatar-s-11.jpg') }}"
                                     alt="avatar" height="40" width="40"></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                        <a class="dropdown-item" href="\admin\profile">
-                                <i class="feather icon-user"></i> Profile
-                            </a>
-                        <a class="dropdown-item" href="\admin\settings">
-                                <i class="feather icon-settings"></i> Settings
-                            </a>
-                            <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
                                 <i class="feather icon-power"></i> @lang('site.logout')
@@ -50,8 +58,8 @@
     <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">
             <li class="nav-item mr-auto"><a class="navbar-brand" href="{{ route('admin.index') }}">
-                    <div class="brand-logo"></div>
-                    <h2 class="brand-text mb-0">BMS</h2>
+                    <img class="round" src="{{ url('admin_files/invoice.png') }}" alt="avatar" height="35" width="35">
+                    <h2 class="brand-text mb-0">Invoices</h2>
                 </a>
             </li>
         </ul>

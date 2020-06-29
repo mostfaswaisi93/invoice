@@ -15,6 +15,12 @@ class CreateInvoiceDetailsTable extends Migration
     {
         Schema::create('invoice_details', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('invoice_id')->constrained('invoices')->onDelete('cascade');
+            $table->string('product_name');
+            $table->string('unit');
+            $table->decimal('quantity', 8, 2)->default(0.00);
+            $table->decimal('unit_price', 8, 2)->default(0.00);
+            $table->decimal('row_sub_total', 8, 2)->default(0.00);
             $table->timestamps();
         });
     }
