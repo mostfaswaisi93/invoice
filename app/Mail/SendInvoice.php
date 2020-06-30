@@ -11,14 +11,16 @@ class SendInvoice extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $invoice;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($invoice)
     {
-        //
+        $this->invoice = $invoice;
     }
 
     /**
@@ -28,6 +30,8 @@ class SendInvoice extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->subject(__('Emails/emails.new_invoice'))->view('emails.send_invoice')
+            ->attach(public_path('assets/invoices/') . $this->invoice->invoice_number . '.pdf')
+            ->with(['invoice' => $this->invoice]);
     }
 }
