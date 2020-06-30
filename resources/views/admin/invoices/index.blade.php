@@ -1,57 +1,74 @@
 @extends('layouts.admin')
 @section('content')
-    <div class="row justify-content-center">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-header d-flex">
-                    <h2>{{ __('Frontend/frontend.invoices') }}</h2>
-                    <a href="{{ route('invoice.create') }}" class="btn btn-primary ml-auto"><i class="fa fa-plus"></i> {{ __('Frontend/frontend.create_invoice') }}</a>
+
+<div class="content-header row">
+    <div class="content-header-left col-md-9 col-12 mb-2">
+        <div class="row breadcrumbs-top">
+            <div class="col-12">
+                <h2 class="content-header-title float-left mb-0">DataTables</h2>
+                <div class="breadcrumb-wrapper col-12">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a>
+                        </li>
+                        <li class="breadcrumb-item active">Datatable
+                        </li>
+                    </ol>
                 </div>
-
-
-                    <div class="table-responsive">
-                        <table class="table card-table">
-                            <thead>
-                            <tr>
-                                <th>{{ __('Frontend/frontend.customer_name') }}</th>
-                                <th>{{ __('Frontend/frontend.invoice_date') }}</th>
-                                <th>{{ __('Frontend/frontend.total_due') }}</th>
-                                <th>{{ __('Frontend/frontend.actions') }}</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($invoices as $invoice)
-                            <tr>
-                                <td><a href="{{ route('invoice.show', $invoice->id) }}">{{ $invoice->customer_name }}</a></td>
-                                <td>{{ $invoice->invoice_date }}</td>
-                                <td>{{ $invoice->total_due }}</td>
-                                <td>
-                                    <a href="{{ route('invoice.edit', $invoice->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></a>
-                                    <a href="javascript:void(0)" onclick="if (confirm('{{ __('Frontend/frontend.r_u_sure') }}')) { document.getElementById('delete-{{ $invoice->id }}').submit(); } else { return false; }" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></a>
-                                    <form action="{{ route('invoice.destroy', $invoice->id) }}" method="post" id="delete-{{ $invoice->id }}" style="display: none;">
-                                        @csrf
-                                        @method('DELETE')
-                                    </form>
-                                </td>
-                            </tr>
-                            @endforeach
-                            </tbody>
-                            <tfoot>
-                            <tr>
-                                <td colspan="4">
-                                    <div class="float-right">
-                                        {!! $invoices->links() !!}
-                                    </div>
-                                </td>
-                            </tr>
-                            </tfoot>
-                        </table>
-                    </div>
-
-
             </div>
         </div>
     </div>
-
+</div>
+<div class="content-body">
+    <section id="add-row">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Add rows</h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <p class="card-text"> New Data
+                            </p>
+                            <button id="addRow" class="btn btn-primary mb-2"><i class="feather icon-plus"></i>&nbsp; Add
+                                new row</button>
+                            <div class="table-responsive">
+                                <table class="table add-rows">
+                                    <thead>
+                                        <tr>
+                                            <th>Column 1</th>
+                                            <th>Column 2</th>
+                                            <th>Column 3</th>
+                                            <th>Column 4</th>
+                                            <th>Column 5</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th>1.1</th>
+                                            <th>1.2</th>
+                                            <th>1.3</th>
+                                            <th>1.4</th>
+                                            <th>1.5</th>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Column 1</th>
+                                            <th>Column 2</th>
+                                            <th>Column 3</th>
+                                            <th>Column 4</th>
+                                            <th>Column 5</th>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
 
 @endsection

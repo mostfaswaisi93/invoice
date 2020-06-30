@@ -100,27 +100,25 @@
             <li class="nav-item"><a href="{{ route('admin.index') }}"><i class="feather icon-home"></i><span
                         class="menu-title">@lang('site.dashboard')</span></a>
             </li>
+            <li class="navigation-header"><span>Apps</span></li>
+            <li class="nav-item active">
+                <a href="{{ url('/admin/invoices') }}"><i class="feather icon-slack"></i>
+                    <span class="menu-title">@lang('site.invoices') AJAX</span></a>
             </li>
-            <li class="navigation-header"><span>Apps</span>
-            </li>
-            <li class="nav-item"><a href="app-email.html"><i class="feather icon-mail"></i><span class="menu-title"
-                        data-i18n="Email">Email</span></a>
-            </li>
-            <li class="nav-item"><a href="app-chat.html"><i class="feather icon-message-square"></i><span
-                        class="menu-title" data-i18n="Chat">Chat</span></a>
-            </li>
-
-            <li class="nav-item"><a href="#"><i class="feather icon-user"></i><span class="menu-title"
-                        data-i18n="User">User</span></a>
+            <li class="nav-item"><a href="#"><i class="feather icon-slack"></i><span class="menu-title"
+                        data-i18n="User">@lang('site.invoices')</span></a>
                 <ul class="menu-content">
                     <li><a href="app-user-list.html"><i class="feather icon-circle"></i><span class="menu-item"
-                                data-i18n="List">List</span></a>
+                                data-i18n="List">@lang('site.index')</span></a>
+                    </li>
+                    <li><a href="app-user-list.html"><i class="feather icon-circle"></i><span class="menu-item"
+                                data-i18n="List">@lang('site.create')</span></a>
                     </li>
                     <li><a href="app-user-view.html"><i class="feather icon-circle"></i><span class="menu-item"
-                                data-i18n="View">View</span></a>
+                                data-i18n="View">@lang('site.show')</span></a>
                     </li>
                     <li><a href="app-user-edit.html"><i class="feather icon-circle"></i><span class="menu-item"
-                                data-i18n="Edit">Edit</span></a>
+                                data-i18n="Edit">@lang('site.edit')</span></a>
                     </li>
                 </ul>
             </li>
