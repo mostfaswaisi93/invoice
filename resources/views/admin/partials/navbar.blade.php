@@ -102,23 +102,33 @@
             </li>
             <li class="navigation-header"><span>Apps</span></li>
             <li class="nav-item active">
-                <a href="{{ url('/admin/invoices') }}"><i class="feather icon-slack"></i>
+                <a href="{{ url('/admin/invoices-ajax') }}"><i class="feather icon-slack"></i>
                     <span class="menu-title">@lang('site.invoices') AJAX</span></a>
             </li>
-            <li class="nav-item"><a href="#"><i class="feather icon-slack"></i><span class="menu-title"
-                        data-i18n="User">@lang('site.invoices')</span></a>
+            <li class="nav-item">
+                <a href="#"><i class="feather icon-slack"></i>
+                    <span class="menu-title">@lang('site.invoices')</span>
+                </a>
                 <ul class="menu-content">
-                    <li><a href="app-user-list.html"><i class="feather icon-circle"></i><span class="menu-item"
-                                data-i18n="List">@lang('site.index')</span></a>
+                    <li>
+                        <a href="{{ url('/admin/invoices') }}"><i class="feather icon-circle"></i>
+                            <span class="menu-item">@lang('site.invoices')</span>
+                        </a>
                     </li>
-                    <li><a href="app-user-list.html"><i class="feather icon-circle"></i><span class="menu-item"
-                                data-i18n="List">@lang('site.create')</span></a>
+                    <li>
+                        <a href="{{ url('/admin/invoices') }}"><i class="feather icon-circle"></i>
+                            <span class="menu-item">@lang('site.create')</span>
+                        </a>
                     </li>
-                    <li><a href="app-user-view.html"><i class="feather icon-circle"></i><span class="menu-item"
-                                data-i18n="View">@lang('site.show')</span></a>
+                    <li>
+                        <a href="{{ url('/admin/invoices') }}"><i class="feather icon-circle"></i>
+                            <span class="menu-item">@lang('site.show')</span>
+                        </a>
                     </li>
-                    <li><a href="app-user-edit.html"><i class="feather icon-circle"></i><span class="menu-item"
-                                data-i18n="Edit">@lang('site.edit')</span></a>
+                    <li>
+                        <a href="{{ url('/admin/invoices') }}"><i class="feather icon-circle"></i>
+                            <span class="menu-item">@lang('site.edit')</span>
+                        </a>
                     </li>
                 </ul>
             </li>

@@ -9,14 +9,36 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use PDF;
+use Validator;
 
 class InvoiceController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    // public function index()
+    // {
+    //     $invoices = Invoice::orderBy('id', 'desc')->paginate(10);
+
+    //     if (request()->ajax()) {
+    //         return datatables()->of($invoices)
+    //             ->addColumn('action', function ($data) {
+    //                 $button = '<button type="button" name="edit" id="' . $data->id . '" class="edit btn btn-primary btn-sm"><i class="far fa-edit"></i></button>';
+    //                 $button .= '&nbsp;&nbsp;';
+    //                 $button .= '<button type="button" name="delete" id="' . $data->id . '" class="delete btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>';
+    //                 return $button;
+    //             })
+    //             ->rawColumns(['action'])
+    //             ->make(true);
+    //     }
+    //     return view('admin.invoices.index');
+    // }
     public function index()
     {
         $invoices = Invoice::orderBy('id', 'desc')->paginate(10);
 
-        // return view('admin.invoices.index', compact('invoices'));
         return view('admin.invoices.index')->with('invoices', $invoices);
     }
 
