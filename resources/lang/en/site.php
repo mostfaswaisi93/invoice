@@ -2,6 +2,7 @@
 
 return [
     'dashboard'                 => 'Dashboard',
+    'home'                      => 'Home',
     'logout'                    => 'Logout',
 
     'add'                       => 'Add',
@@ -17,6 +18,7 @@ return [
     'print'                     => 'Print',
     'close'                     => 'Close',
     'change'                    => 'Change',
+    'action'                    => 'Action',
 
     'confirm_delete'            => 'Confirm Delete',
     'yes'                       => 'Yes',
@@ -51,7 +53,7 @@ return [
     'invoice_system'            => 'Invoice System',
 
     'invoices'                  => 'Invoices',
-    'invoice'                   => 'Invoice #:invoice_number',
+    'invoice'                   => 'Invoice',
     'back_to_invoice'           => 'Back to invoices',
     'create_invoice'            => 'Create Invoice',
     'customer_name'             => 'Customer name',

@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use PDF;
-use Validator;
 
 class InvoiceController extends Controller
 {
@@ -18,34 +17,62 @@ class InvoiceController extends Controller
         $this->middleware('auth');
     }
 
-    // public function index()
-    // {
-    //     $invoices = Invoice::orderBy('id', 'desc')->paginate(10);
-
-    //     if (request()->ajax()) {
-    //         return datatables()->of($invoices)
-    //             ->addColumn('action', function ($data) {
-    //                 $button = '<button type="button" name="edit" id="' . $data->id . '" class="edit btn btn-primary btn-sm"><i class="far fa-edit"></i></button>';
-    //                 $button .= '&nbsp;&nbsp;';
-    //                 $button .= '<button type="button" name="delete" id="' . $data->id . '" class="delete btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>';
-    //                 return $button;
-    //             })
-    //             ->rawColumns(['action'])
-    //             ->make(true);
-    //     }
-    //     return view('admin.invoices.index');
-    // }
     public function index()
     {
-        $invoices = Invoice::orderBy('id', 'desc')->paginate(10);
+        $invoices = Invoice::orderBy('id', 'desc');
 
-        return view('admin.invoices.index')->with('invoices', $invoices);
+        if (request()->ajax()) {
+            return datatables()->of($invoices)
+                ->addIndexColumn()
+                ->addColumn('action', function ($data) {
+                    $button = '<button type="button" name="edit" id="' . $data->id . '" class="edit btn btn-primary btn-sm"><i class="feather icon-edit"></i></button>';
+                    $button .= '&nbsp;&nbsp;';
+                    $button .= '<button type="button" name="show" id="' . $data->id . '" class="show btn btn-info btn-sm"><i class="feather icon-eye"></i></button>';
+                    $button .= '&nbsp;&nbsp;';
+                    $button .= '<button type="button" name="delete" id="' . $data->id . '" class="delete btn btn-danger btn-sm"><i class="feather icon-trash"></i></button>';
+                    return $button;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+        }
+        return view('admin.invoices.index');
     }
 
     public function create()
     {
-        return view('frontend.create');
+        return view('admin.invoices.create');
     }
+
+    // public function store(Request $request)
+    // {
+    //     $request->validate([
+    //         'first_name'    => 'required',
+    //         'last_name'     => 'required',
+    //         'email'         => 'required|unique:users',
+    //         'image'         => 'image',
+    //         'password'      => 'required|confirmed',
+    //         'permissions'   => 'required|min:1'
+    //     ]);
+
+    //     $request_data = $request->except(['password', 'password_confirmation', 'permissions', 'image']);
+    //     $request_data['password'] = bcrypt($request->password);
+
+    //     if ($request->image) {
+    //         Image::make($request->image)
+    //             ->resize(300, null, function ($constraint) {
+    //                 $constraint->aspectRatio();
+    //             })
+    //             ->save(public_path('uploads/user_images/' . $request->image->hashName()));
+    //         $request_data['image'] = $request->image->hashName();
+    //     }
+
+    //     $user = User::create($request_data);
+    //     $user->attachRole('admin');
+    //     $user->syncPermissions($request->permissions);
+
+    //     session()->flash('success', __('site.added_successfully'));
+    //     return redirect()->route('admin.users.index');
+    // }
 
     public function store(Request $request)
     {
@@ -91,13 +118,13 @@ class InvoiceController extends Controller
     public function show($id)
     {
         $invoice = Invoice::findOrFail($id);
-        return view('frontend.show', compact('invoice'));
+        return view('admin.invoices.show', compact('invoice'));
     }
 
     public function edit($id)
     {
         $invoice = Invoice::findOrFail($id);
-        return view('frontend.edit', compact('invoice'));
+        return view('admin.invoices.edit', compact('invoice'));
     }
 
     public function update(Request $request, $id)
@@ -166,7 +193,7 @@ class InvoiceController extends Controller
     public function print($id)
     {
         $invoice = Invoice::findOrFail($id);
-        return view('frontend.print', compact('invoice'));
+        return view('admin.invoices.print', compact('invoice'));
     }
 
     public function pdf($id)
@@ -202,7 +229,7 @@ class InvoiceController extends Controller
         $data['total_due']          = $invoice->total_due;
 
 
-        $pdf = PDF::loadView('frontend.pdf', $data);
+        $pdf = PDF::loadView('admin.invoices.pdf', $data);
 
         if (Route::currentRouteName() == 'invoice.pdf') {
             return $pdf->stream($invoice->invoice_number . '.pdf');

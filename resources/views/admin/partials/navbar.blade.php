@@ -64,7 +64,8 @@
                             <span>
                                 <img class="round"
                                     src="{{ url('admin_files/app-assets/images/portrait/small/avatar-s-11.jpg') }}"
-                                    alt="avatar" height="40" width="40"></span>
+                                    alt="avatar" height="40" width="40">
+                            </span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -87,7 +88,8 @@
 <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
     <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">
-            <li class="nav-item mr-auto"><a class="navbar-brand" href="{{ route('admin.index') }}">
+            <li class="nav-item mr-auto">
+                <a class="navbar-brand" href="{{ route('admin.index') }}">
                     <img class="round" src="{{ url('admin_files/invoice.png') }}" alt="avatar" height="35" width="35">
                     <h2 class="brand-text mb-0">Invoices</h2>
                 </a>
@@ -97,40 +99,17 @@
     <div class="shadow-bottom"></div>
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class="nav-item"><a href="{{ route('admin.index') }}"><i class="feather icon-home"></i><span
-                        class="menu-title">@lang('site.dashboard')</span></a>
-            </li>
-            <li class="navigation-header"><span>Apps</span></li>
-            <li class="nav-item active">
-                <a href="{{ url('/admin/invoices-ajax') }}"><i class="feather icon-slack"></i>
-                    <span class="menu-title">@lang('site.invoices') AJAX</span></a>
-            </li>
+            <br><li class="nav-item">
+                <a href="{{ route('admin.index') }}"><i class="feather icon-home"></i>
+                    <span class="menu-title">@lang('site.dashboard')</span></a>
+            </li> <br>
             <li class="nav-item">
-                <a href="#"><i class="feather icon-slack"></i>
-                    <span class="menu-title">@lang('site.invoices')</span>
-                </a>
-                <ul class="menu-content">
-                    <li>
-                        <a href="{{ url('/admin/invoices') }}"><i class="feather icon-circle"></i>
-                            <span class="menu-item">@lang('site.invoices')</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ url('/admin/invoices') }}"><i class="feather icon-circle"></i>
-                            <span class="menu-item">@lang('site.create')</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ url('/admin/invoices') }}"><i class="feather icon-circle"></i>
-                            <span class="menu-item">@lang('site.show')</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ url('/admin/invoices') }}"><i class="feather icon-circle"></i>
-                            <span class="menu-item">@lang('site.edit')</span>
-                        </a>
-                    </li>
-                </ul>
+                <a href="{{ url('/admin/invoices-ajax') }}"><i class="feather icon-slack"></i>
+                    <span class="menu-title">@lang('site.invoices') - AJAX</span></a>
+            </li> <br>
+            <li class="nav-item">
+                <a href="{{ url('/admin/invoices') }}"><i class="feather icon-slack"></i>
+                    <span class="menu-title">@lang('site.invoices')</span></a>
             </li>
         </ul>
     </div>
