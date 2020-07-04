@@ -19,6 +19,7 @@ return [
     'close'                     => 'Close',
     'change'                    => 'Change',
     'action'                    => 'Action',
+    'email'                     => 'E-mail',
 
     'confirm_delete'            => 'Confirm Delete',
     'yes'                       => 'Yes',

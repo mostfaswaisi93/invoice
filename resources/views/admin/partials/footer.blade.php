@@ -34,6 +34,10 @@
 <script src="{{ url('admin_files/app-assets/js/scripts/datatables/datatable.js') }}"></script>
 <!-- END: Page JS-->
 
+<!-- BEGIN: Custom JS-->
+<script src="{{ url('admin_files/app-assets/js/custom.js') }}"></script>
+<!-- END: Custom JS-->
+
 @stack('scripts')
 
 </body>

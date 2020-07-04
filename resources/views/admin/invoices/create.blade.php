@@ -82,10 +82,116 @@
                                                 placeholder="@lang('site.invoice_date')">
                                         </div>
                                     </div>
-                                    <div class="col-12">
-                                        <button type="submit" class="btn btn-primary mr-1 mb-1">
+                                    <div class="table-responsive">
+                                        <table class="table" id="invoice_details">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    <th>@lang('site.product_name')</th>
+                                                    <th>@lang('site.unit')</th>
+                                                    <th>@lang('site.quantity')</th>
+                                                    <th>@lang('site.unit_price')</th>
+                                                    <th>@lang('site.product_subtotal')</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="cloning_row" id="0">
+                                                    <td>#</td>
+                                                    <td>
+                                                        <input type="text" name="product_name[0]" id="product_name"
+                                                            class="product_name form-control">
+                                                        @error('product_name')<span
+                                                            class="help-block text-danger">{{ $message }}</span>@enderror
+                                                    </td>
+                                                    <td>
+                                                        <select name="unit[0]" id="unit" class="unit form-control">
+                                                            <option></option>
+                                                            <option value="piece">@lang('site.piece')</option>
+                                                            <option value="g">@lang('site.gram')</option>
+                                                            <option value="kg">@lang('site.kilo_gram')</option>
+                                                        </select>
+                                                        @error('unit')<span
+                                                            class="help-block text-danger">{{ $message }}</span>@enderror
+                                                    </td>
+                                                    <td>
+                                                        <input type="number" name="quantity[0]" step="0.01"
+                                                            id="quantity" class="quantity form-control">
+                                                        @error('quantity')<span
+                                                            class="help-block text-danger">{{ $message }}</span>@enderror
+                                                    </td>
+                                                    <td>
+                                                        <input type="number" name="unit_price[0]" step="0.01"
+                                                            id="unit_price" class="unit_price form-control">
+                                                        @error('unit_price')<span
+                                                            class="help-block text-danger">{{ $message }}</span>@enderror
+                                                    </td>
+                                                    <td>
+                                                        <input type="number" step="0.01" name="row_sub_total[0]"
+                                                            id="row_sub_total" class="row_sub_total form-control"
+                                                            readonly="readonly">
+                                                        @error('row_sub_total')<span
+                                                            class="help-block text-danger">{{ $message }}</span>@enderror
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+
+                                            <tfoot>
+                                                <tr>
+                                                    <td colspan="6">
+                                                        <button type="button"
+                                                            class="btn_add btn btn-primary">@lang('site.add_another_product')</button>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="3"></td>
+                                                    <td colspan="2">@lang('site.sub_total')</td>
+                                                    <td><input type="number" step="0.01" name="sub_total" id="sub_total"
+                                                            class="sub_total form-control" readonly="readonly"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="3"></td>
+                                                    <td colspan="2">@lang('site.discount')</td>
+                                                    <td>
+                                                        <div class="input-group mb-3">
+                                                            <select name="discount_type" id="discount_type"
+                                                                class="discount_type custom-select">
+                                                                <option value="fixed">@lang('site.sr')</option>
+                                                                <option value="percentage">@lang('site.percentage')
+                                                                </option>
+                                                            </select>
+                                                            <div class="input-group-append">
+                                                                <input type="number" step="0.01" name="discount_value"
+                                                                    id="discount_value"
+                                                                    class="discount_value form-control" value="0.00">
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="3"></td>
+                                                    <td colspan="2">@lang('site.vat')</td>
+                                                    <td><input type="number" step="0.01" name="vat_value" id="vat_value"
+                                                            class="vat_value form-control" readonly="readonly"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="3"></td>
+                                                    <td colspan="2">@lang('site.shipping')</td>
+                                                    <td><input type="number" step="0.01" name="shipping" id="shipping"
+                                                            class="shipping form-control"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="3"></td>
+                                                    <td colspan="2">@lang('site.total_due')</td>
+                                                    <td><input type="number" step="0.01" name="total_due" id="total_due"
+                                                            class="total_due form-control" readonly="readonly"></td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                    </div>
+                                    <div class="text-right pt-3 col-12">
+                                        <button type="submit" class="btn btn-primary">
                                             <i class="feather icon-plus"></i>
-                                            @lang('site.add')
+                                            @lang('site.save')
                                         </button>
                                     </div>
                                 </div>

@@ -91,10 +91,12 @@ body {
 
     // main navbar and header navbar shadow(generic navbar)
     .header-navbar-shadow {
-      background: linear-gradient(180deg,
-          rgba(44, 48, 60, 0.9) 44%,
-          rgba(44, 48, 60, 0.43) 73%,
-          rgba(44, 48, 60, 0));
+      background: linear-gradient(
+        180deg,
+        rgba(44, 48, 60, 0.9) 44%,
+        rgba(44, 48, 60, 0.43) 73%,
+        rgba(44, 48, 60, 0)
+      );
     }
 
     .header-navbar {
@@ -187,6 +189,33 @@ body {
               }
             }
           }
+          .dropdown-cart {
+            &.empty-cart {
+              &:before {
+                background-color: $content-dark-bg;
+              }
+            }
+            li {
+              color: $white;
+            }
+            .dropdown-header {
+              span {
+                color: $white;
+              }
+            }
+            .media-list {
+              .media {
+                background-color: $white;
+                .media-body {
+                  background-color: $content-dark-bg;
+                  padding-left: 1rem;
+                }
+                &:hover {
+                  background-color: $white !important;
+                }
+              }
+            }
+          }
         }
       }
 
@@ -208,7 +237,6 @@ body {
     //Text color for Blank page with transparent card
     &.blank-page {
       .card.bg-transparent {
-
         h1,
         h2,
         h3,
@@ -229,16 +257,18 @@ body {
       background-color: $dark-card-color;
 
       .shadow-bottom {
-        background: linear-gradient(180deg,
-            #0f1642 44%,
-            rgba(15, 22, 66, 0.51) 73%,
-            rgba(44, 48, 60, 0));
+        background: linear-gradient(
+          180deg,
+          #0f1642 44%,
+          rgba(15, 22, 66, 0.51) 73%,
+          rgba(44, 48, 60, 0)
+        );
       }
 
       &:not(.expanded) {
         .navigation {
           .sidebar-group-active {
-            >a {
+            > a {
               background-color: $content-dark-bg;
             }
           }
@@ -284,7 +314,6 @@ body {
         }
 
         .active {
-
           .menu-title,
           i {
             color: $white;
@@ -317,7 +346,7 @@ body {
       .main-menu:not(.expanded) {
         .navigation-main {
           li.active {
-            >a {
+            > a {
               background: $content-dark-bg !important;
             }
           }
@@ -419,7 +448,6 @@ body {
         }
 
         .data-items {
-
           .form-control,
           .custom-select {
             background-color: $dark-card-color;
@@ -430,7 +458,6 @@ body {
 
     // Grid
     .bd-example {
-
       .row,
       .d-flex {
         background-color: $content-dark-bg;
@@ -469,14 +496,12 @@ body {
     /********* COMPONENTS *********/
     // alerts
     .alert {
-
       .alert-heading,
       p {
         color: inherit;
       }
 
       &.alert-dark {
-
         .alert-heading,
         p {
           color: $gray-600;
@@ -617,7 +642,6 @@ body {
       }
 
       &.btn-flat-dark {
-
         &:active,
         &:focus {
           background: $gray-700;
@@ -631,10 +655,8 @@ body {
 
     // drodpown
     .dropdown-toggle {
-
       // color: $white;
       &:hover {
-
         i,
         &:after {
           color: $white;
@@ -670,7 +692,7 @@ body {
       }
     }
 
-    .btn-white~.dropdown-menu {
+    .btn-white ~ .dropdown-menu {
       .dropdown-item:not(.acitve):hover {
         color: $primary !important;
       }
@@ -679,7 +701,7 @@ body {
     .btn-dark,
     .btn-outline-dark,
     .btn-flat-dark {
-      &~.dropdown-menu {
+      & ~ .dropdown-menu {
         .dropdown-item:hover {
           color: $theme-dark-text-color;
         }
@@ -701,7 +723,6 @@ body {
 
     // modal
     .modal {
-
       .modal-header,
       .modal-header[class*="bg-"] {
         // background-color: $dark-card-color !important;
@@ -850,7 +871,7 @@ body {
         }
       }
 
-      &~.tab-content {
+      & ~ .tab-content {
         .tab-pane {
           background-color: $dark-card-color;
         }
@@ -860,10 +881,9 @@ body {
     // vertical nav tabs
     .nav-vertical {
       .nav.nav-tabs {
-
         &.nav-left,
         &.nav-right {
-          &~.tab-content {
+          & ~ .tab-content {
             .tab-pane {
               background-color: $dark-card-color;
             }
@@ -926,7 +946,6 @@ body {
 
       &.overlay-img-card {
         .card-img-overlay {
-
           span,
           p {
             color: $white;
@@ -950,9 +969,11 @@ body {
     // analytics decor card
     #dashboard-analytics {
       .bg-analytics {
-        background: linear-gradient(118deg,
-            rgba($primary, 1),
-            rgba($primary, 0.7));
+        background: linear-gradient(
+          118deg,
+          rgba($primary, 1),
+          rgba($primary, 0.7)
+        );
 
         p {
           color: $white;
@@ -970,7 +991,6 @@ body {
       .chat-application {
         .chat-app-window {
           .user-chats {
-
             // Chat area css
             .chats {
               .chat-body {
@@ -1100,7 +1120,6 @@ body {
       }
 
       .chip-body {
-
         .chip-text,
         span {
           color: $white;
@@ -1122,7 +1141,6 @@ body {
 
       &.divider-dark {
         .divider-text {
-
           &::before,
           &::after {
             border-color: $gray-700 !important;
@@ -1134,7 +1152,6 @@ body {
     // list group
     .list-group {
       .list-group-item {
-
         &:not([class*="list-group-item-"]),
         &.list-group-item-action {
           background-color: $dark-card-color;
@@ -1189,14 +1206,14 @@ body {
         color: $theme-dark-text-color;
       }
 
-      &~.form-control-position {
+      & ~ .form-control-position {
         i {
           color: $theme-dark-text-color;
         }
       }
 
       &:focus {
-        &~.form-control-position {
+        & ~ .form-control-position {
           i {
             color: $primary;
           }
@@ -1256,7 +1273,6 @@ body {
 
       &.disabled-touchspin {
         .bootstrap-touchspin-injected {
-
           .bootstrap-touchspin-down,
           .bootstrap-touchspin-up,
           .disabled-max-min {
@@ -1345,19 +1361,19 @@ body {
     // switch
     .custom-switch {
       .custom-control-input[disabled] {
-        &~.custom-control-label {
+        & ~ .custom-control-label {
           opacity: 0.5;
         }
       }
 
       .custom-control-input {
         &:not(:disabled):active {
-          &~.custom-control-label::before {
+          & ~ .custom-control-label::before {
             background-color: $primary;
           }
         }
 
-        &:checked~.custom-control-label::before {
+        &:checked ~ .custom-control-label::before {
           background-color: $primary;
         }
       }
@@ -1379,7 +1395,6 @@ body {
       background-color: $content-dark-bg;
 
       .picker__header {
-
         .picker__month,
         .picker__year {
           color: $theme-dark-text-color;
@@ -1436,7 +1451,6 @@ body {
       }
 
       .picker__footer {
-
         .picker__button--today,
         .picker__button--clear,
         .picker__button--close {
@@ -1453,7 +1467,6 @@ body {
           background-color: $content-dark-bg;
 
           .picker__list-item {
-
             &.picker__list-item--selected,
             &:hover {
               background-color: $dark-card-color;
@@ -1474,11 +1487,11 @@ body {
       }
     }
 
-    .custom-control-label::before{
+    .custom-control-label::before {
       background-color: $theme-dark-border-color;
     }
-    .custom-control-input:disabled ~ .custom-control-label::before{
-      background-color: rgba($theme-dark-border-color,0.5);
+    .custom-control-input:disabled ~ .custom-control-label::before {
+      background-color: rgba($theme-dark-border-color, 0.5);
       border-color: $theme-dark-border-color;
     }
 
@@ -1486,7 +1499,6 @@ body {
     .wizard {
       .steps {
         ul {
-
           .disabled,
           .done {
             a {
@@ -1508,7 +1520,6 @@ body {
 
     // input groups
     .input-group {
-
       .input-group-prepend,
       .input-group-append {
         .input-group-text {
@@ -1518,13 +1529,13 @@ body {
       }
 
       .input-group-prepend {
-        &~.form-control {
+        & ~ .form-control {
           border-left: 1px solid $theme-dark-border-color;
         }
       }
 
       .form-control {
-        &~.input-group-append {
+        & ~ .input-group-append {
           border-left: 1px solid $theme-dark-border-color;
         }
       }
@@ -1532,9 +1543,8 @@ body {
 
     // floating label
     .form-label-group {
-
-      &>input:not(:focus):not(:placeholder-shown)~label,
-      &>textarea:not(:focus):not(:placeholder-shown)~label {
+      & > input:not(:focus):not(:placeholder-shown) ~ label,
+      & > textarea:not(:focus):not(:placeholder-shown) ~ label {
         color: $theme-dark-text-color !important;
       }
     }
@@ -1548,7 +1558,6 @@ body {
       .thead,
       tbody {
         tr:not([class*="table-"]) {
-
           th,
           td {
             border: 0;
@@ -1573,10 +1582,8 @@ body {
 
       tbody {
         tr {
-
           // for contextual classes
           &[class*="table-"] {
-
             td,
             th {
               background-color: unset;
@@ -1586,7 +1593,6 @@ body {
           }
 
           &.table-dark {
-
             td,
             th {
               color: $white;
@@ -1594,7 +1600,6 @@ body {
           }
 
           &.table-active {
-
             td,
             th {
               color: $theme-dark-text-color;
@@ -1619,7 +1624,6 @@ body {
         thead,
         tbody {
           tr {
-
             th,
             td {
               border: 1px solid $theme-dark-border-color;
@@ -1669,7 +1673,6 @@ body {
         thead,
         tbody {
           tr {
-
             th,
             td {
               background-color: $dark-card-color;
@@ -1682,7 +1685,6 @@ body {
     // datatable
     .dataTables_wrapper {
       .dt-buttons {
-
         .buttons-copy,
         .buttons-excel,
         .buttons-pdf,
@@ -1697,7 +1699,6 @@ body {
 
         tbody,
         thead {
-
           td,
           th {
             border: 0;
@@ -1746,7 +1747,6 @@ body {
 
           thead,
           tfoot {
-
             th,
             td {
               border-bottom: 1px solid $theme-dark-border-color;
@@ -1903,7 +1903,6 @@ body {
     }
 
     #search-website {
-
       // search page
       .search-bar {
         .form-control {
@@ -2030,7 +2029,6 @@ body {
 
       .apexcharts-tooltip.dark {
         .apexcharts-tooltip-text {
-
           .apexcharts-tooltip-text-label,
           .apexcharts-tooltip-text-value {
             color: $white;
@@ -2100,7 +2098,6 @@ body {
       }
 
       .apexcharts-toolbar {
-
         .apexcharts-zoom-in-icon,
         .apexcharts-zoom-out-icon,
         .apexcharts-zoom-icon,
@@ -2140,7 +2137,7 @@ body {
               }
 
               &:focus {
-                &~.form-control-position {
+                & ~ .form-control-position {
                   i {
                     color: $primary;
                   }
@@ -2166,7 +2163,6 @@ body {
           // for app-menu text color
           .email-app-menu {
             .sidebar-menu-list {
-
               .list-group-messages,
               .list-group-labels {
                 .list-group-item {
@@ -2212,7 +2208,6 @@ body {
 
                 .user-details,
                 .mail-message {
-
                   p,
                   .list-group-item-text {
                     color: $theme-dark-text-color;
@@ -2411,7 +2406,6 @@ body {
               }
 
               .todo-item-action {
-
                 .todo-item-favorite:not(.warning),
                 .todo-item-delete,
                 .todo-item-info:not(.success) {
@@ -2428,7 +2422,6 @@ body {
 
     // ecommerce application
     &.ecommerce-application {
-
       // sidebar
       .sidebar-left {
         .sidebar-shop {
@@ -2443,9 +2436,8 @@ body {
           }
 
           .ratings-list {
-
             li,
-            &~.stars-received {
+            & ~ .stars-received {
               color: $theme-dark-text-color;
             }
           }
@@ -2455,7 +2447,6 @@ body {
       // main content
       .content-right,
       .content-body {
-
         // header items
         .ecommerce-header-items {
           .result-toggler {
@@ -2479,7 +2470,6 @@ body {
 
             // change view btn
             .view-btn-option {
-
               .grid-view-btn,
               .list-view-btn {
                 background-color: $dark-card-color !important;
@@ -2801,7 +2791,6 @@ body {
           }
 
           li.active {
-
             i,
             span {
               color: $white !important;
@@ -2822,7 +2811,7 @@ body {
 
             .dropdown-menu {
               li.open.active {
-                >a {
+                > a {
                   color: $theme-dark-text-color !important;
                 }
               }
@@ -2833,10 +2822,10 @@ body {
 
       &.vertical-overlay-menu {
         .main-menu {
-          .navigation>li ul .active {
+          .navigation > li ul .active {
             box-shadow: none;
 
-            .hover>a {
+            .hover > a {
               background-color: transparent;
             }
           }
@@ -2858,9 +2847,11 @@ body {
               .open {
                 ul li.active {
                   a {
-                    background: linear-gradient(118deg,
-                        $primary,
-                        rgba($primary, 0.7)) !important;
+                    background: linear-gradient(
+                      118deg,
+                      $primary,
+                      rgba($primary, 0.7)
+                    ) !important;
                     margin-bottom: 7px;
                     box-shadow: 0px 0px 6px 1px rgba($primary, 0.6) !important;
                     color: $white;

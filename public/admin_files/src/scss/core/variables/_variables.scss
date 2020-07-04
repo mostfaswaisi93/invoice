@@ -42,36 +42,16 @@ $warning: $orange;
 $spacer: 1rem;
 $spacers: ();
 // stylelint-disable-next-line scss/dollar-variable-default
-$spacers: map-merge(
-  (
-    0: 0,
-    25: (
-      $spacer * 0.25
-    ),
-    50: (
-      $spacer * 0.5
-    ),
-    75: (
-      $spacer * 0.75
-    ),
-    1: (
-      $spacer
-    ),
-    2: (
-      $spacer * 1.5
-    ),
-    3: (
-      $spacer * 3
-    ),
-    4: (
-      $spacer * 3.5
-    ),
-    5: (
-      $spacer * 4
-    )
-  ),
-  $spacers
-);
+$spacers: map-merge((0: 0,
+    25: ($spacer * 0.25),
+    50: ($spacer * 0.5),
+    75: ($spacer * 0.75),
+    1: ($spacer),
+    2: ($spacer * 1.5),
+    3: ($spacer * 3),
+    4: ($spacer * 3.5),
+    5: ($spacer * 4)),
+  $spacers);
 
 // Body
 //
@@ -112,8 +92,14 @@ $border-radius-sm: 0.25rem;
 // Font, line-height, and color for body text, headings, and more.
 
 // stylelint-disable value-keyword-case
-$font-family-sans-serif: "Montserrat", Helvetica, Arial, serif;
-$font-family-monospace: "Montserrat", Helvetica, Arial, serif;
+$font-family-sans-serif: "Montserrat",
+Helvetica,
+Arial,
+serif;
+$font-family-monospace: "Montserrat",
+Helvetica,
+Arial,
+serif;
 
 // stylelint-enable value-keyword-case
 $font-size-base: 1rem;
@@ -188,9 +174,7 @@ $input-focus-box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.15);
 $input-placeholder-color: rgba(0, 0, 0, 0.5);
 $input-plaintext-color: $gray-500;
 
-$input-height: calc(
-  #{$input-line-height * 1em} + #{$input-padding-y * 2} + 1px
-) !default;
+$input-height: calc(#{$input-line-height * 1em} + #{$input-padding-y * 2} + 1px) !default;
 
 $custom-checkbox-indicator-border-radius: $border-radius-sm;
 
