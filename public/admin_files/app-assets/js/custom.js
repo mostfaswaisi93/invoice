@@ -1,12 +1,12 @@
 $(document).ready(function() {
-    $('.pickdate').pickadate({
-        format: 'yyyy-mm-dd',
-        selectMonth: true,
-        selectYear: true,
-        clear: 'Clear',
-        close: 'Ok',
-        closeOnSelect: true
-    });
+    // $('.pickdate').pickadate({
+    //     format: 'yyyy-mm-dd',
+    //     selectMonth: true,
+    //     selectYear: true,
+    //     clear: 'Clear',
+    //     close: 'Ok',
+    //     closeOnSelect: true
+    // });
 
     $('#invoice_details').on('keyup blur', '.quantity', function() {
         let $row = $(this).closest('tr');

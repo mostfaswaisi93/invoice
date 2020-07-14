@@ -16,11 +16,11 @@ class InvoiceDetails extends Model
     public function unitText()
     {
         if ($this->unit == 'piece') {
-            $text = __('Frontend/frontend.piece');
+            $text = __('site.piece');
         } elseif ($this->unit == 'g') {
-            $text = __('Frontend/frontend.gram');
+            $text = __('site.gram');
         } elseif ($this->unit == 'kg') {
-            $text = __('Frontend/frontend.kilo_gram');
+            $text = __('site.kilo_gram');
         }
 
         return $text;
