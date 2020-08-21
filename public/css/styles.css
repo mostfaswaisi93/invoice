@@ -1,0 +1,17 @@
+.btn.btn-sm.btn-icon:hover {
+    background-color: #6d63e6;
+    color: #fff;
+}
+
+.portlet .card {
+    border: 1px solid #5c54c4;
+}
+
+.portlet .card-header {
+    background-color: #5c54c5;
+    padding-bottom: 15px;
+}
+
+.portlet .card-title {
+    color: #fff;
+}
