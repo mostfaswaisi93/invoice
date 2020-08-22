@@ -6,12 +6,12 @@
     <div class="content-header-left col-md-9 col-12 mb-2">
         <div class="row breadcrumbs-top">
             <div class="col-12">
-                <h2 class="content-header-title float-left mb-0">@lang('site.create_invoice')</h2>
+                <h2 class="content-header-title float-left mb-0">@lang('admin.create_invoice')</h2>
                 <div class="breadcrumb-wrapper col-12">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/admin">@lang('site.home')</a></li>
-                        <li class="breadcrumb-item"><a href="/admin/invoices">@lang('site.invoices')</a></li>
-                        <li class="breadcrumb-item active">@lang('site.create_invoice')</li>
+                        <li class="breadcrumb-item"><a href="/admin">@lang('admin.home')</a></li>
+                        <li class="breadcrumb-item"><a href="/admin/invoices">@lang('admin.invoices')</a></li>
+                        <li class="breadcrumb-item active">@lang('admin.create_invoice')</li>
                     </ol>
                 </div>
             </div>
@@ -24,7 +24,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">@lang('site.create_invoice')</h4>
+                    <h4 class="card-title">@lang('admin.create_invoice')</h4>
                 </div>
                 <div class="card-content">
                     <div class="card-body">
@@ -36,50 +36,50 @@
                                 <div class="row">
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
-                                            <label for="customer_name">@lang('site.customer_name')</label>
+                                            <label for="customer_name">@lang('admin.customer_name')</label>
                                             <input type="text" name="customer_name" id="customer_name"
                                                 class="form-control" value="{{ old('customer_name') }}"
-                                                placeholder="@lang('site.customer_name')">
+                                                placeholder="@lang('admin.customer_name')">
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
-                                            <label for="customer_email">@lang('site.customer_email')</label>
+                                            <label for="customer_email">@lang('admin.customer_email')</label>
                                             <input type="text" name="customer_email" id="customer_email"
                                                 class="form-control" value="{{ old('customer_email') }}"
-                                                placeholder="@lang('site.customer_email')">
+                                                placeholder="@lang('admin.customer_email')">
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
-                                            <label for="customer_mobile">@lang('site.customer_mobile')</label>
+                                            <label for="customer_mobile">@lang('admin.customer_mobile')</label>
                                             <input type="text" name="customer_mobile" id="customer_mobile"
                                                 class="form-control" value="{{ old('customer_mobile') }}"
-                                                placeholder="@lang('site.customer_mobile')">
+                                                placeholder="@lang('admin.customer_mobile')">
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
-                                            <label for="company_name">@lang('site.company_name')</label>
+                                            <label for="company_name">@lang('admin.company_name')</label>
                                             <input type="text" name="company_name" id="company_name"
                                                 class="form-control" value="{{ old('company_name') }}"
-                                                placeholder="@lang('site.company_name')">
+                                                placeholder="@lang('admin.company_name')">
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
-                                            <label for="invoice_number">@lang('site.invoice_number')</label>
+                                            <label for="invoice_number">@lang('admin.invoice_number')</label>
                                             <input type="text" name="invoice_number" id="invoice_number"
                                                 class="form-control" value="{{ old('invoice_number') }}"
-                                                placeholder="@lang('site.invoice_number')">
+                                                placeholder="@lang('admin.invoice_number')">
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
-                                            <label for="invoice_date">@lang('site.invoice_date')</label>
+                                            <label for="invoice_date">@lang('admin.invoice_date')</label>
                                             <input type="text" name="invoice_date" id="invoice_date"
                                                 class="form-control" value="{{ old('invoice_date') }}"
-                                                placeholder="@lang('site.invoice_date')">
+                                                placeholder="@lang('admin.invoice_date')">
                                         </div>
                                     </div>
                                     <div class="table-responsive">
@@ -87,11 +87,11 @@
                                             <thead>
                                                 <tr>
                                                     <th></th>
-                                                    <th>@lang('site.product_name')</th>
-                                                    <th>@lang('site.unit')</th>
-                                                    <th>@lang('site.quantity')</th>
-                                                    <th>@lang('site.unit_price')</th>
-                                                    <th>@lang('site.product_subtotal')</th>
+                                                    <th>@lang('admin.product_name')</th>
+                                                    <th>@lang('admin.unit')</th>
+                                                    <th>@lang('admin.quantity')</th>
+                                                    <th>@lang('admin.unit_price')</th>
+                                                    <th>@lang('admin.product_subtotal')</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -106,9 +106,9 @@
                                                     <td>
                                                         <select name="unit[0]" id="unit" class="unit form-control">
                                                             <option></option>
-                                                            <option value="piece">@lang('site.piece')</option>
-                                                            <option value="g">@lang('site.gram')</option>
-                                                            <option value="kg">@lang('site.kilo_gram')</option>
+                                                            <option value="piece">@lang('admin.piece')</option>
+                                                            <option value="g">@lang('admin.gram')</option>
+                                                            <option value="kg">@lang('admin.kilo_gram')</option>
                                                         </select>
                                                         @error('unit')<span
                                                             class="help-block text-danger">{{ $message }}</span>@enderror
@@ -139,24 +139,24 @@
                                                 <tr>
                                                     <td colspan="6">
                                                         <button type="button"
-                                                            class="btn_add btn btn-primary">@lang('site.add_another_product')</button>
+                                                            class="btn_add btn btn-primary">@lang('admin.add_another_product')</button>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td colspan="3"></td>
-                                                    <td colspan="2">@lang('site.sub_total')</td>
+                                                    <td colspan="2">@lang('admin.sub_total')</td>
                                                     <td><input type="number" step="0.01" name="sub_total" id="sub_total"
                                                             class="sub_total form-control" readonly="readonly"></td>
                                                 </tr>
                                                 <tr>
                                                     <td colspan="3"></td>
-                                                    <td colspan="2">@lang('site.discount')</td>
+                                                    <td colspan="2">@lang('admin.discount')</td>
                                                     <td>
                                                         <div class="input-group mb-3">
                                                             <select name="discount_type" id="discount_type"
                                                                 class="discount_type custom-select">
-                                                                <option value="fixed">@lang('site.sr')</option>
-                                                                <option value="percentage">@lang('site.percentage')
+                                                                <option value="fixed">@lang('admin.sr')</option>
+                                                                <option value="percentage">@lang('admin.percentage')
                                                                 </option>
                                                             </select>
                                                             <div class="input-group-append">
@@ -169,19 +169,19 @@
                                                 </tr>
                                                 <tr>
                                                     <td colspan="3"></td>
-                                                    <td colspan="2">@lang('site.vat')</td>
+                                                    <td colspan="2">@lang('admin.vat')</td>
                                                     <td><input type="number" step="0.01" name="vat_value" id="vat_value"
                                                             class="vat_value form-control" readonly="readonly"></td>
                                                 </tr>
                                                 <tr>
                                                     <td colspan="3"></td>
-                                                    <td colspan="2">@lang('site.shipping')</td>
+                                                    <td colspan="2">@lang('admin.shipping')</td>
                                                     <td><input type="number" step="0.01" name="shipping" id="shipping"
                                                             class="shipping form-control"></td>
                                                 </tr>
                                                 <tr>
                                                     <td colspan="3"></td>
-                                                    <td colspan="2">@lang('site.total_due')</td>
+                                                    <td colspan="2">@lang('admin.total_due')</td>
                                                     <td><input type="number" step="0.01" name="total_due" id="total_due"
                                                             class="total_due form-control" readonly="readonly"></td>
                                                 </tr>
@@ -191,7 +191,7 @@
                                     <div class="text-right pt-3 col-12">
                                         <button type="submit" class="btn btn-primary">
                                             <i class="feather icon-plus"></i>
-                                            @lang('site.save')
+                                            @lang('admin.save')
                                         </button>
                                     </div>
                                 </div>

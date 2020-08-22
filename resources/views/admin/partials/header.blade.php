@@ -6,10 +6,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta name="description" content="Invoices Laravel Project">
-    <meta name="keywords" content="Invoices Laravel Project">
+    <meta name="description" content="Invoices - Laravel Project">
+    <meta name="keywords" content="Invoices - Laravel Project">
     <meta name="author" content="PIXINVENT">
-    <title>Invoices</title>
+    <title>@lang('admin.invoices') | @yield('title')</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="apple-touch-icon" href="{{ url('admin_files/app-assets/images/ico/apple-icon-120.png') }}">
     <link rel="shortcut icon" type="image/x-icon" href="{{ url('admin_files/favicon.ico') }}">
@@ -64,7 +65,17 @@
     <link rel="stylesheet" type="text/css" href="{{ url('admin_files/assets/css/style-rtl.css') }}">
     <!-- END: Custom CSS-->
         
+    <link rel="stylesheet" type="text/css" href="{{url('/css/styles-rtl.css')}}">
+
     @endif
+
+    {{-- CDN --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.css">
+    <script src="https://unpkg.com/sweetalert2@7.1.2/dist/sweetalert2.all.js"></script>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="{{url('/css/styles.css')}}">
 
 </head>
 <!-- END: Head-->

@@ -1,6 +1,6 @@
 <?php
 
-use App\Invoice;
+use App\Models\Invoice;
 use Carbon\Carbon;
 use Faker\Factory;
 use Illuminate\Database\Seeder;

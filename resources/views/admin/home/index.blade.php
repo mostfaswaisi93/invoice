@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+@section('title') {{ trans('admin.home') }}@endsection
 
 @section('content')
 
@@ -10,7 +11,7 @@
                     <div class="card-body text-center">
                         <img class="round" src="{{ url('admin_files/invoice.png') }}" alt="avatar" height="93"
                             width="90">
-                    </div>
+                    </div> <br>
                 </div>
             </div>
         </div>
@@ -22,8 +23,8 @@
                             <i class="feather icon-slack text-primary font-medium-5"></i>
                         </div>
                     </div>
-                    <h2 class="text-bold-700 mt-1 mb-25">{{ $invoices_count }} @lang('site.invoice')</h2>
-                    <p class="mb-0">@lang('site.invoices') - AJAX</p>
+                    <h2 class="text-bold-700 mt-1 mb-25">{{ $invoices_count }} {{ trans('admin.invoice') }} </h2>
+                    <p class="mb-0">{{ trans('admin.invoices') }} - AJAX</p> <br>
                 </div>
                 <div class="card-content">
                     <div id="subscribe-gain-chart"></div>
@@ -38,8 +39,8 @@
                             <i class="feather icon-slack text-warning font-medium-5"></i>
                         </div>
                     </div>
-                    <h2 class="text-bold-700 mt-1 mb-25">{{ $invoices_count }} @lang('site.invoice')</h2>
-                    <p class="mb-0">@lang('site.invoices')</p>
+                    <h2 class="text-bold-700 mt-1 mb-25">{{ $invoices_count }} {{ trans('admin.invoice') }}</h2>
+                    <p class="mb-0">{{ trans('admin.invoices') }}</p> <br>
                 </div>
                 <div class="card-content">
                     <div id="orders-received-chart"></div>

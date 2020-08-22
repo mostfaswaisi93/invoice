@@ -6,12 +6,12 @@
     <div class="content-header-left col-md-9 col-12 mb-2">
         <div class="row breadcrumbs-top">
             <div class="col-12">
-                <h2 class="content-header-title float-left mb-0">@lang('site.invoices')</h2>
+                <h2 class="content-header-title float-left mb-0">{{ trans('admin.invoices') }}</h2>
                 <div class="breadcrumb-wrapper col-12">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/admin">Home</a>
                         </li>
-                        <li class="breadcrumb-item active">@lang('site.invoices')</li>
+                        <li class="breadcrumb-item active">@lang('admin.invoices')</li>
                     </ol>
                 </div>
             </div>
@@ -25,21 +25,21 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">@lang('site.invoices')</h4>
+                        <h4 class="card-title">@lang('admin.invoices')</h4>
                     </div>
                     <div class="card-content">
                         <div class="card-body">
                             <button id="addRow" class="btn btn-primary mb-2">
-                                <i class="feather icon-plus"></i>&nbsp; @lang('site.add')</button>
+                                <i class="feather icon-plus"></i>&nbsp; @lang('admin.add')</button>
                             <div class="table-responsive">
                                 <table class="table add-rows" id="data-table">
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>@lang('site.customer_name')</th>
-                                            <th>@lang('site.invoice_date')</th>
-                                            <th>@lang('site.total_due')</th>
-                                            <th>@lang('site.action')</th>
+                                            <th>@lang('admin.customer_name')</th>
+                                            <th>@lang('admin.invoice_date')</th>
+                                            <th>@lang('admin.total_due')</th>
+                                            <th>@lang('admin.action')</th>
                                         </tr>
                                     </thead>
                                     </thead>

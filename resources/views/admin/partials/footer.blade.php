@@ -1,7 +1,7 @@
 <!-- BEGIN: Footer-->
 <footer class="footer footer-static footer-light">
     <p class="clearfix blue-grey lighten-2 mb-0"><span class="float-md-left d-block d-md-inline-block mt-25">
-            &copy; @lang('site.all_rights')</span>
+            &copy; @lang('admin.all_rights')</span>
         <span class="float-md-right d-none d-md-block"> <a href="https://github.com/mostfaswaisi93">mostfaswaisi93</a>
             <i class="feather icon-heart pink"></i></span>
         <button class="btn btn-primary btn-icon scroll-top" type="button"><i class="feather icon-arrow-up"></i></button>
@@ -34,9 +34,27 @@
 <script src="{{ url('admin_files/app-assets/js/scripts/datatables/datatable.js') }}"></script>
 <!-- END: Page JS-->
 
-<!-- BEGIN: Custom JS-->
-<script src="{{ url('admin_files/app-assets/js/custom.js') }}"></script>
-<!-- END: Custom JS-->
+{{-- Custom js --}}
+<script src="{{ asset('admin_files/js/custom/image_preview.js') }}"></script>
+
+{{-- CDN --}}
+<script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"></script>
+<script src="https://cdn.ckeditor.com/4.13.0/basic/ckeditor.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
+{!! Toastr::message() !!}
+<script>
+    $(document).ready(function () {
+        CKEDITOR.config.language    =  "{{ app()->getLocale() }}";
+        CKEDITOR.config.height      =  '5em';
+    });
+
+    function FileUpload() {
+        event.preventDefault();
+        document.getElementById("image").click();
+    };
+</script>
 
 @stack('scripts')
 
