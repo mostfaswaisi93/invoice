@@ -9,7 +9,7 @@
     <meta name="description" content="Invoices - Laravel Project">
     <meta name="keywords" content="Invoices - Laravel Project">
     <meta name="author" content="PIXINVENT">
-    <title>@lang('admin.invoices') | @yield('title')</title>
+    <title>{{ trans('admin.invoice') }} | @yield('title')</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="apple-touch-icon" href="{{ url('admin_files/app-assets/images/ico/apple-icon-120.png') }}">

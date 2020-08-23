@@ -7,7 +7,7 @@
             <li class="nav-item mr-auto">
                 <a class="navbar-brand" href="{{ route('admin.index') }}">
                     <img class="round" src="{{ url('admin_files/invoice.png') }}" alt="avatar" height="35" width="35">
-                    <h2 class="brand-text mb-0">Invoices</h2>
+                    <h2 class="brand-text mb-0">Invoice</h2>
                 </a>
             </li>
         </ul>
@@ -19,25 +19,25 @@
             <li {{ request()->route()->getName() === 'admin.index' ? 'class=active' : '' }}>
                 <a href="{{ route('admin.index') }}" class="nav-link">
                     <i class="fa fa-home"></i>
-                    <span class="title">@lang('admin.home')</span>
+                    <span class="title">{{ trans('admin.home') }}</span>
                 </a>
             </li>
             <li {{ request()->route()->getName() === 'admin.contacts.index' ? 'class=active' : '' }}>
                 <a href="#" class="nav-link">
                     <i class="ficon feather icon-mail"></i>
-                    <span class="title">@lang('admin.contacts')</span>
+                    <span class="title">{{ trans('admin.contacts') }}</span>
                 </a>
             </li>
             <li class="nav-item">
                 <a href="#">
                     <i class="feather icon-file"></i>
-                    <span class="menu-title">@lang('admin.invoices')</span>
+                    <span class="menu-title">{{ trans('admin.invoices') }}</span>
                 </a>
                 <ul class="menu-content">
                     <li {{ request()->route()->getName() === 'admin.invoices.index' ? 'class=active' : '' }}>
                         <a href="{{ route('admin.invoices.index') }}" class="nav-link">
                             <i class="feather icon-file"></i>
-                            <span class="title">@lang('admin.invoices')</span>
+                            <span class="title">{{ trans('admin.invoices') }}</span>
                         </a>
                     </li>
                 </ul>
@@ -45,13 +45,13 @@
             <li class="nav-item">
                 <a href="#">
                     <i class="feather icon-users"></i>
-                    <span class="menu-title">@lang('admin.users')</span>
+                    <span class="menu-title">{{ trans('admin.users') }}</span>
                 </a>
                 <ul class="menu-content">
                     <li {{ request()->route()->getName() === 'admin.users.index' ? 'class=active' : '' }}>
                         <a href="#" class="nav-link">
                             <i class="feather icon-users"></i>
-                            <span class="title">@lang('admin.users_management')</span>
+                            <span class="title">{{ trans('admin.users_management') }}</span>
                         </a>
                     </li>
                 </ul>
@@ -59,7 +59,7 @@
             <li class="nav-item">
                 <a href="#">
                     <i class="fa fa-bar-chart"></i>
-                    <span class="menu-title">@lang('admin.reports')</span>
+                    <span class="menu-title">{{ trans('admin.reports') }}</span>
                 </a>
                 <ul class="menu-content">
                     <li>
@@ -79,7 +79,7 @@
             <li {{ request()->route()->getName() === 'admin.settings.index' ? 'class=active' : '' }}>
                 <a href="#" class="nav-link">
                     <i class="feather icon-settings"></i>
-                    <span class="title">@lang('admin.settings')</span>
+                    <span class="title">{{ trans('admin.settings') }}</span>
                 </a>
             </li>
         </ul>
