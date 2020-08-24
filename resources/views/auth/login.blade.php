@@ -10,7 +10,7 @@
     <meta name="description" content="E-commerce Laravel Project">
     <meta name="keywords" content="E-commerce Laravel Project">
     <meta name="author" content="PIXINVENT">
-    <title>Login Page - E-commerce</title>
+    <title>{{ trans('admin.invoice') }} | {{ trans('admin.login') }}</title>
     <link rel="apple-touch-icon" href="{{ url('admin_files/app-assets/images/ico/apple-icon-120.png') }}">
     <link rel="shortcut icon" type="image/x-icon" href="{{ url('admin_files/app-assets/images/ico/favicon.ico') }}">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
@@ -98,10 +98,10 @@
                                     <div class="card rounded-0 mb-0 px-2">
                                         <div class="card-header pb-1">
                                             <div class="card-title">
-                                                <h4 class="mb-0">Login</h4>
+                                                <h4 class="mb-0">{{ trans('admin.login') }}</h4>
                                             </div>
                                         </div>
-                                        <p class="px-2">Welcome, please login to your account.</p>
+                                        <p class="px-2">{{ trans('admin.login_msg') }}</p>
                                         <div class="card-content">
                                             <div class="card-body pt-1">
                                                 <form action="{{route('login')}}" method="POST">
@@ -110,12 +110,12 @@
                                                     @include('partials._errors')
                                                     <fieldset
                                                         class="form-label-group form-group position-relative has-icon-left">
-                                                        <input id="email" type="email" class="form-control" name="email"
-                                                            placeholder="{{ trans('admin.email') }}">
+                                                        <input id="username" type="username" class="form-control"
+                                                            name="username" placeholder="{{ trans('admin.username') }}">
                                                         <div class="form-control-position">
                                                             <i class="feather icon-user"></i>
                                                         </div>
-                                                        <label for="email">{{ trans('admin.email') }}</label>
+                                                        <label for="username">{{ trans('admin.username') }}</label>
                                                     </fieldset>
                                                     <fieldset class="form-label-group position-relative has-icon-left">
                                                         <input id="password" type="password" class="form-control"
@@ -125,24 +125,8 @@
                                                         </div>
                                                         <label for="password">{{ trans('admin.password') }}</label>
                                                     </fieldset>
-                                                    <div
-                                                        class="form-group d-flex justify-content-between align-items-center">
-                                                        <div class="text-left">
-                                                            <fieldset class="checkbox">
-                                                                <div class="vs-checkbox-con vs-checkbox-primary">
-                                                                    <input type="checkbox" name="rememberme" checked>
-                                                                    <span class="vs-checkbox">
-                                                                        <span class="vs-checkbox--check">
-                                                                            <i class="vs-icon feather icon-check"></i>
-                                                                        </span>
-                                                                    </span>
-                                                                    <span class="">{{ trans('admin.remember_me') }}</span>
-                                                                </div>
-                                                            </fieldset>
-                                                        </div>
-                                                        <div class="text-right"><a href="#" class="card-link">Forgot
-                                                                Password?</a></div>
-                                                    </div>
+                                                    <a href="{{ route('register') }}"
+                                                        class="btn btn-outline-primary float-left btn-inline mb-50">{{ trans('admin.register') }}</a>
                                                     <button type="submit"
                                                         class="btn btn-primary float-right btn-inline">{{ trans('admin.login') }}</button>
                                                 </form>
