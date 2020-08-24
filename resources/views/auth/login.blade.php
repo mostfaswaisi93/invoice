@@ -70,6 +70,8 @@
 
     @endif
 
+    <link rel="stylesheet" type="text/css" href="{{url('/css/styles.css')}}">
+
 </head>
 <!-- END: Head-->
 
@@ -83,8 +85,7 @@
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper">
-            <div class="content-header row">
-            </div>
+            <div class="content-header row"></div>
             <div class="content-body">
                 <section class="row flexbox-container">
                     <div class="col-xl-8 col-11 d-flex justify-content-center">
@@ -106,11 +107,10 @@
                                             <div class="card-body pt-1">
                                                 <form action="{{route('login')}}" method="POST">
                                                     @csrf
-                                                    @method('post')
                                                     @include('partials._errors')
                                                     <fieldset
                                                         class="form-label-group form-group position-relative has-icon-left">
-                                                        <input id="username" type="username" class="form-control"
+                                                        <input id="username" type="text" class="form-control"
                                                             name="username" placeholder="{{ trans('admin.username') }}">
                                                         <div class="form-control-position">
                                                             <i class="feather icon-user"></i>

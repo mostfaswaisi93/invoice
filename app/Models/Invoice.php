@@ -2,9 +2,7 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-
-class Invoice extends Model
+class Invoice extends BaseModel
 {
     // protected $fillable = [
     //     'customer_name', 'customer_email', 'customer_mobile', 'company_name', 'invoice_number', 'invoice_date',

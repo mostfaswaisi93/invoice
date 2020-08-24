@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="loading" lang="en" data-textdirection="rtl">
+<html class="loading" dir="{{ LaravelLocalization::getCurrentLocaleDirection() }}">
 <!-- BEGIN: Head-->
 
 <head>
@@ -15,6 +15,34 @@
     <link rel="apple-touch-icon" href="{{ url('admin_files/app-assets/images/ico/apple-icon-120.png') }}">
     <link rel="shortcut icon" type="image/x-icon" href="{{ url('admin_files/app-assets/images/ico/favicon.ico') }}">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
+
+    @if (app()->getLocale() == 'en')
+
+    <!-- BEGIN: Vendor CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ url('admin_files/app-assets/vendors/css/vendors.min.css') }}">
+    <!-- END: Vendor CSS-->
+
+    <!-- BEGIN: Theme CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ url('admin_files/app-assets/css/bootstrap.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url('admin_files/app-assets/css/bootstrap-extended.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url('admin_files/app-assets/css/colors.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url('admin_files/app-assets/css/components.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url('admin_files/app-assets/css/themes/dark-layout.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url('admin_files/app-assets/css/themes/semi-dark-layout.css') }}">
+
+    <!-- BEGIN: Page CSS-->
+    <link rel="stylesheet" type="text/css"
+        href="{{ url('admin_files/app-assets/css/core/menu/menu-types/vertical-menu.css') }}">
+    <link rel="stylesheet" type="text/css"
+        href="{{ url('admin_files/app-assets/css/core/colors/palette-gradient.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url('admin_files/app-assets/css/pages/authentication.css') }}">
+    <!-- END: Page CSS-->
+
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="{{ url('admin_files/assets/css/style.css') }}">
+    <!-- END: Custom CSS-->
+
+    @else
 
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="{{ url('admin_files/app-assets/vendors/css/vendors-rtl.min.css') }}">
@@ -42,6 +70,10 @@
     <link rel="stylesheet" type="text/css" href="{{ url('admin_files/assets/css/style-rtl.css') }}">
     <!-- END: Custom CSS-->
 
+    @endif
+
+    <link rel="stylesheet" type="text/css" href="{{url('/css/styles.css')}}">
+
 </head>
 <!-- END: Head-->
 
@@ -55,8 +87,7 @@
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper">
-            <div class="content-header row">
-            </div>
+            <div class="content-header row"></div>
             <div class="content-body">
                 <section class="row flexbox-container">
                     <div class="col-xl-8 col-10 d-flex justify-content-center">
@@ -76,41 +107,44 @@
                                         <p class="px-2">{{ trans('admin.register_msg') }}</p>
                                         <div class="card-content">
                                             <div class="card-body pt-0">
-                                                <form action="index.html">
+                                                <form action="{{route('register')}}" method="POST">
+                                                    @csrf
+                                                    @include('partials._errors')
                                                     <div class="form-label-group">
                                                         <input type="text" id="name" name="name" class="form-control"
-                                                            placeholder="{{ trans('admin.name') }}" required>
+                                                            placeholder="{{ trans('admin.name') }}">
                                                         <label for="name">{{ trans('admin.name') }}</label>
                                                     </div>
                                                     <div class="form-label-group">
-                                                        <input type="text" name="username" id="username"
+                                                        <input type="text" id="username" name="username"
                                                             class="form-control"
-                                                            placeholder="{{ trans('admin.username') }}" required>
+                                                            placeholder="{{ trans('admin.username') }}">
                                                         <label for="username">{{ trans('admin.username') }}</label>
                                                     </div>
                                                     <div class="form-label-group">
                                                         <input type="email" name="email" id="email" class="form-control"
-                                                            placeholder="{{ trans('admin.email') }}" required>
+                                                            placeholder="{{ trans('admin.email') }}">
                                                         <label for="email">{{ trans('admin.email') }}</label>
                                                     </div>
                                                     <div class="form-label-group">
                                                         <input type="password" name="password" id="password"
                                                             class="form-control"
-                                                            placeholder="{{ trans('admin.password') }}" required>
+                                                            placeholder="{{ trans('admin.password') }}"
+                                                            autocomplete="new-password">
                                                         <label for="password">{{ trans('admin.password') }}</label>
                                                     </div>
                                                     <div class="form-label-group">
                                                         <input type="password" name="password_confirmation"
-                                                            id="password_confirmation" class="form-control"
+                                                            id="password-confirm" class="form-control"
                                                             placeholder="{{ trans('admin.password_confirmation') }}"
-                                                            required>
+                                                            autocomplete="new-password">
                                                         <label
-                                                            for="password_confirmation">{{ trans('admin.password_confirmation') }}</label>
+                                                            for="password-confirm">{{ trans('admin.password_confirmation') }}</label>
                                                     </div>
                                                     <a href="{{ route('login') }}"
                                                         class="btn btn-outline-primary float-left btn-inline mb-50">{{ trans('admin.login') }}</a>
                                                     <button type="submit"
-                                                        class="btn btn-primary float-right btn-inline mb-50">{{ trans('admin.register') }}</a>
+                                                        class="btn btn-primary float-right btn-inline mb-50">{{ trans('admin.register') }}</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -125,22 +159,15 @@
     </div>
     <!-- END: Content-->
 
-
     <!-- BEGIN: Vendor JS-->
     <script src="{{ url('admin_files/app-assets/vendors/js/vendors.min.js') }}"></script>
     <!-- BEGIN Vendor JS-->
-
-    <!-- BEGIN: Page Vendor JS-->
-    <!-- END: Page Vendor JS-->
 
     <!-- BEGIN: Theme JS-->
     <script src="{{ url('admin_files/app-assets/js/core/app-menu.js') }}"></script>
     <script src="{{ url('admin_files/app-assets/js/core/app.js') }}"></script>
     <script src="{{ url('admin_files/app-assets/js/scripts/components.js') }}"></script>
     <!-- END: Theme JS-->
-
-    <!-- BEGIN: Page JS-->
-    <!-- END: Page JS-->
 
 </body>
 <!-- END: Body-->

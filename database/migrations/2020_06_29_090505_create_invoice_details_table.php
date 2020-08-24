@@ -22,6 +22,7 @@ class CreateInvoiceDetailsTable extends Migration
             $table->decimal('unit_price', 8, 2)->default(0.00);
             $table->decimal('row_sub_total', 8, 2)->default(0.00);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

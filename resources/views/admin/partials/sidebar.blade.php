@@ -22,12 +22,6 @@
                     <span class="title">{{ trans('admin.home') }}</span>
                 </a>
             </li>
-            <li {{ request()->route()->getName() === 'admin.contacts.index' ? 'class=active' : '' }}>
-                <a href="#" class="nav-link">
-                    <i class="ficon feather icon-mail"></i>
-                    <span class="title">{{ trans('admin.contacts') }}</span>
-                </a>
-            </li>
             <li class="nav-item">
                 <a href="#">
                     <i class="feather icon-file"></i>
@@ -38,20 +32,6 @@
                         <a href="{{ route('admin.invoices.index') }}" class="nav-link">
                             <i class="feather icon-file"></i>
                             <span class="title">{{ trans('admin.invoices') }}</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <li class="nav-item">
-                <a href="#">
-                    <i class="feather icon-users"></i>
-                    <span class="menu-title">{{ trans('admin.users') }}</span>
-                </a>
-                <ul class="menu-content">
-                    <li {{ request()->route()->getName() === 'admin.users.index' ? 'class=active' : '' }}>
-                        <a href="#" class="nav-link">
-                            <i class="feather icon-users"></i>
-                            <span class="title">{{ trans('admin.users_management') }}</span>
                         </a>
                     </li>
                 </ul>
@@ -72,8 +52,8 @@
             </li>
             <li class="nav-item">
                 <a href="page-account-settings.html">
-                    <i class="feather icon-settings"></i>
-                    <span class="menu-title">Account Settings</span>
+                    <i class="feather icon-user-check"></i>
+                    <span class="menu-title">{{ trans('admin.account_settings') }}</span>
                 </a>
             </li>
             <li {{ request()->route()->getName() === 'admin.settings.index' ? 'class=active' : '' }}>

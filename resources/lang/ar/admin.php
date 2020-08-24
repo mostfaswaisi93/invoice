@@ -63,6 +63,7 @@ return [
     'messages'                  => 'الرسائل',
     'message'                   => 'الرسالة',
     'settings'                  => 'إعدادات النظام',
+    'account_settings'          => 'إعدادات الحساب',
     'languages'                 => 'اللغات',
     'update_settings'           => 'تعديل إعدادات النظام',
     'user'                      => 'مستخدم',

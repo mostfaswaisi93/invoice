@@ -28,6 +28,7 @@ class CreateInvoicesTable extends Migration
             $table->decimal('shipping', 8, 2)->default(0.00);
             $table->decimal('total_due', 8, 2)->default(0.00);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
