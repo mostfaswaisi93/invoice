@@ -13,6 +13,9 @@ Route::group(
             Route::resource('invoices', 'InvoiceController');
             Route::resource('invoices-ajax', 'InvoiceAjaxController');
 
+            Route::get('settings', 'SettingController@index')->name('settings.index');
+            Route::post('settings', 'SettingController@update')->name('settings.update');
+
             Route::resource('users', 'UserController');
         });
     }

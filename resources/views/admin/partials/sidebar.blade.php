@@ -7,7 +7,7 @@
             <li class="nav-item mr-auto">
                 <a class="navbar-brand" href="{{ route('admin.index') }}">
                     <img class="round" src="{{ url('admin_files/invoice.png') }}" alt="avatar" height="35" width="35">
-                    <h2 class="brand-text mb-0">Invoice</h2>
+                    <h2 class="brand-text mb-0" style="color: #fff">{{ trans('admin.invoice') }}</h2>
                 </a>
             </li>
         </ul>
@@ -51,10 +51,24 @@
                 </ul>
             </li>
             <li class="nav-item">
-                <a href="page-account-settings.html">
+                <a href="#">
                     <i class="feather icon-user-check"></i>
                     <span class="menu-title">{{ trans('admin.account_settings') }}</span>
                 </a>
+                <ul class="menu-content">
+                    <li {{ request()->route()->getName() === 'admin.users.edit' ? 'class=active' : '' }}>
+                        <a href="users/{{ auth()->user()->id }}/edit" class="nav-link">
+                            <i class="feather icon-edit"></i>
+                            <span class="title">{{ trans('admin.edit_user') }}</span>
+                        </a>
+                    </li>
+                    <li {{ request()->route()->getName() === 'admin.users.change' ? 'class=active' : '' }}>
+                        <a href="users/{{ auth()->user()->id }}/change" class="nav-link">
+                            <i class="feather icon-lock "></i>
+                            <span class="title">{{ trans('admin.change_password') }}</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
             <li {{ request()->route()->getName() === 'admin.settings.index' ? 'class=active' : '' }}>
                 <a href="#" class="nav-link">

@@ -24,6 +24,7 @@ return [
     'remember_me'               => 'تذكرني',
     'password'                  => 'كلمة المرور',
     'password_confirmation'     => 'تأكيد كلمة المرور',
+    'change_password'           => 'تغيير كلمة المرور',
 
     'are_sure'                  => 'هل أنت متأكد من ذلك؟',
     'confirm_delete'            => 'تأكيد الحذف',
