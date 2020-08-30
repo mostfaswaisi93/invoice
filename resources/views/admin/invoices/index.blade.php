@@ -1,4 +1,5 @@
 @extends('layouts.admin')
+@section('title') {{ trans('admin.invoices') }} @endsection
 
 @section('content')
 

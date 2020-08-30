@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('title') @lang('admin.settings') @endsection
+@section('title') {{ trans('admin.settings') }} @endsection
 
 @section('content')
 
@@ -7,13 +7,13 @@
     <div class="content-header-left col-md-9 col-12 mb-2">
         <div class="row breadcrumbs-top">
             <div class="col-12">
-                <h2 class="content-header-title float-left mb-0">@lang('admin.update_settings')</h2>
+                <h2 class="content-header-title float-left mb-0">{{ trans('admin.update_settings') }}</h2>
                 <div class="breadcrumb-wrapper col-12">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item">
-                            <a href="{{ route('admin.index') }}">@lang('admin.home')</a>
+                            <a href="{{ route('admin.index') }}">{{ trans('admin.home') }}</a>
                         </li>
-                        <li class="breadcrumb-item active">@lang('admin.update_settings')</li>
+                        <li class="breadcrumb-item active">{{ trans('admin.update_settings') }}</li>
                     </ol>
                 </div>
             </div>
@@ -27,7 +27,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title"><i class="fa fa-file-text"></i> @lang('admin.update_settings')</h4>
+                        <h4 class="card-title"><i class="fa fa-file-text"></i> {{ trans('admin.update_settings') }}</h4>
                     </div>
                     <div class="card-content">
                         <div class="card-body ">
@@ -40,58 +40,58 @@
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
                                                 <div class="controls">
-                                                    <label>@lang('admin.name')</label>
+                                                    <label>{{ trans('admin.name') }}</label>
                                                     <input id="name" type="text" name="name" class="form-control"
-                                                        value="{{ $settings->name }}" placeholder="@lang('admin.name')">
+                                                        value="{{ $settings->name }}" placeholder="{{ trans('admin.name') }}">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
                                                 <div class="controls">
-                                                    <label>@lang('admin.title')</label>
+                                                    <label>{{ trans('admin.title') }}</label>
                                                     <input id="title" type="text" name="title" class="form-control"
                                                         value="{{ $settings->title }}"
-                                                        placeholder="@lang('admin.title')">
+                                                        placeholder="{{ trans('admin.title') }}">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
                                                 <div class="controls">
-                                                    <label>@lang('admin.value')</label>
+                                                    <label>{{ trans('admin.value') }}</label>
                                                     <input id="value" type="text" name="value" class="form-control"
                                                         value="{{ $settings->value }}"
-                                                        placeholder="@lang('admin.value')">
+                                                        placeholder="{{ trans('admin.value') }}">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
                                                 <div class="controls">
-                                                    <label>@lang('admin.type')</label>
+                                                    <label>{{ trans('admin.type') }}</label>
                                                     <input id="type" type="text" name="type" class="form-control"
-                                                        value="{{ $settings->type }}" placeholder="@lang('admin.type')">
+                                                        value="{{ $settings->type }}" placeholder="{{ trans('admin.type') }}">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
                                                 <div class="controls">
-                                                    <label>@lang('admin.options')</label>
+                                                    <label>{{ trans('admin.options') }}</label>
                                                     <input id="options" type="text" name="options" class="form-control"
                                                         value="{{ $settings->options }}"
-                                                        placeholder="@lang('admin.options')">
+                                                        placeholder="{{ trans('admin.options') }}">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-6 col-12">
                                             <div class="form-group">
                                                 <div class="controls">
-                                                    <label>@lang('admin.sorting_number')</label>
+                                                    <label>{{ trans('admin.sorting_number') }}</label>
                                                     <input id="sorting_number" type="text" name="sorting_number"
                                                         class="form-control" value="{{ $settings->sorting_number }}"
-                                                        placeholder="@lang('admin.sorting_number')">
+                                                        placeholder="{{ trans('admin.sorting_number') }}">
                                                 </div>
                                             </div>
                                         </div>
@@ -99,7 +99,7 @@
                                             <div class="form-group">
                                                 <div class="controls">
                                                     <button type="submit" class="btn btn-primary">
-                                                        @lang('admin.update')
+                                                        {{ trans('admin.update') }}
                                                     </button>
                                                 </div>
                                             </div>

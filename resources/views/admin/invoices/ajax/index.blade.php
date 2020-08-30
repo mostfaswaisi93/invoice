@@ -9,9 +9,9 @@
                 <h2 class="content-header-title float-left mb-0">{{ trans('admin.invoices') }}</h2>
                 <div class="breadcrumb-wrapper col-12">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/admin">Home</a>
+                        <li class="breadcrumb-item"><a href="/admin">{{ trans('admin.home') }}</a>
                         </li>
-                        <li class="breadcrumb-item active">@lang('admin.invoices')</li>
+                        <li class="breadcrumb-item active">{{ trans('admin.invoices') }}</li>
                     </ol>
                 </div>
             </div>
@@ -25,21 +25,21 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <h4 class="card-title">@lang('admin.invoices')</h4>
+                        <h4 class="card-title">{{ trans('admin.invoices') }}</h4>
                     </div>
                     <div class="card-content">
                         <div class="card-body">
                             <button id="addRow" class="btn btn-primary mb-2">
-                                <i class="feather icon-plus"></i>&nbsp; @lang('admin.add')</button>
+                                <i class="feather icon-plus"></i>&nbsp; {{ trans('admin.add') }}</button>
                             <div class="table-responsive">
                                 <table class="table add-rows" id="data-table">
                                     <thead>
                                         <tr>
                                             <th>#</th>
-                                            <th>@lang('admin.customer_name')</th>
-                                            <th>@lang('admin.invoice_date')</th>
-                                            <th>@lang('admin.total_due')</th>
-                                            <th>@lang('admin.action')</th>
+                                            <th>{{ trans('admin.customer_name') }}</th>
+                                            <th>{{ trans('admin.invoice_date') }}</th>
+                                            <th>{{ trans('admin.total_due') }}</th>
+                                            <th>{{ trans('admin.action') }}</th>
                                         </tr>
                                     </thead>
                                     </thead>
