@@ -5,6 +5,7 @@ namespace App\Models;
 class InvoiceDetails extends BaseModel
 {
     protected $guarded = [];
+    protected $table = 'invoice_details';
 
     public function invoice()
     {
@@ -14,11 +15,11 @@ class InvoiceDetails extends BaseModel
     public function unitText()
     {
         if ($this->unit == 'piece') {
-            $text = __('site.piece');
+            $text = trans('admin.piece');
         } elseif ($this->unit == 'g') {
-            $text = __('site.gram');
+            $text = trans('admin.gram');
         } elseif ($this->unit == 'kg') {
-            $text = __('site.kilo_gram');
+            $text = trans('admin.kilo_gram');
         }
 
         return $text;

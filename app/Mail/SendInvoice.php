@@ -13,21 +13,11 @@ class SendInvoice extends Mailable
 
     public $invoice;
 
-    /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
     public function __construct($invoice)
     {
         $this->invoice = $invoice;
     }
 
-    /**
-     * Build the message.
-     *
-     * @return $this
-     */
     public function build()
     {
         return $this->subject(__('Emails/emails.new_invoice'))->view('emails.send_invoice')
