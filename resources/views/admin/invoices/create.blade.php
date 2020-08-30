@@ -135,7 +135,6 @@
                                                     </td>
                                                 </tr>
                                             </tbody>
-
                                             <tfoot>
                                                 <tr>
                                                     <td colspan="6">
