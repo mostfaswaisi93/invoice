@@ -34,6 +34,12 @@
                             <span class="title">{{ trans('admin.invoices') }}</span>
                         </a>
                     </li>
+                    {{-- <li {{ request()->route()->getName() === 'admin.invoices.ajax.index' ? 'class=active' : '' }}>
+                        <a href="{{ route('admin.invoices.ajax.index') }}" class="nav-link">
+                            <i class="feather icon-file"></i>
+                            <span class="title">{{ trans('admin.invoices') }} AJAX</span>
+                        </a>
+                    </li> --}}
                 </ul>
             </li>
             <li class="nav-item">
@@ -71,7 +77,7 @@
                 </ul>
             </li>
             <li {{ request()->route()->getName() === 'admin.settings.index' ? 'class=active' : '' }}>
-                <a href="#" class="nav-link">
+                <a href="{{ route('admin.settings.index') }}" class="nav-link">
                     <i class="feather icon-settings"></i>
                     <span class="title">{{ trans('admin.settings') }}</span>
                 </a>
