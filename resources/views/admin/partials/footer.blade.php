@@ -36,6 +36,7 @@
 
 {{-- Custom js --}}
 <script src="{{ asset('admin_files/js/custom/image_preview.js') }}"></script>
+<script src="{{ asset('admin_files/js/custom/custom.js') }}"></script>
 
 {{-- CDN --}}
 <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
