@@ -104,12 +104,12 @@ class InvoiceController extends Controller
 
         if ($details) {
             return redirect()->back()->with([
-                'message' => __('Frontend/frontend.created_successfully'),
+                'message' => __('admin.created_successfully'),
                 'alert-type' => 'success'
             ]);
         } else {
             return redirect()->back()->with([
-                'message' => __('Frontend/frontend.created_failed'),
+                'message' => __('admin.created_failed'),
                 'alert-type' => 'danger'
             ]);
         }
@@ -162,12 +162,12 @@ class InvoiceController extends Controller
 
         if ($details) {
             return redirect()->back()->with([
-                'message' => __('Frontend/frontend.updated_successfully'),
+                'message' => __('admin.updated_successfully'),
                 'alert-type' => 'success'
             ]);
         } else {
             return redirect()->back()->with([
-                'message' => __('Frontend/frontend.updated_failed'),
+                'message' => __('admin.updated_failed'),
                 'alert-type' => 'danger'
             ]);
         }
@@ -179,12 +179,12 @@ class InvoiceController extends Controller
         if ($invoice) {
             $invoice->delete();
             return redirect()->route('invoice.index')->with([
-                'message' => __('Frontend/frontend.deleted_successfully'),
+                'message' => __('admin.deleted_successfully'),
                 'alert-type' => 'success'
             ]);
         } else {
             return redirect()->route('invoice.index')->with([
-                'message' => __('Frontend/frontend.deleted_failed'),
+                'message' => __('admin.deleted_failed'),
                 'alert-type' => 'danger'
             ]);
         }
@@ -203,9 +203,9 @@ class InvoiceController extends Controller
         $data['invoice_id']         = $invoice->id;
         $data['invoice_date']       = $invoice->invoice_date;
         $data['customer']           = [
-            __('Frontend/frontend.customer_name')       => $invoice->customer_name,
-            __('Frontend/frontend.customer_mobile')     => $invoice->customer_mobile,
-            __('Frontend/frontend.customer_email')      => $invoice->customer_email
+            __('admin.customer_name')       => $invoice->customer_name,
+            __('admin.customer_mobile')     => $invoice->customer_mobile,
+            __('admin.customer_email')      => $invoice->customer_email
         ];
         $items = [];
         $invoice_details            =  $invoice->details()->get();
@@ -248,7 +248,7 @@ class InvoiceController extends Controller
         Mail::to($invoice->customer_email)->locale(config('app.locale'))->send(new SendInvoice($invoice));
 
         return redirect()->route('invoice.index')->with([
-            'message' => __('Frontend/frontend.sent_successfully'),
+            'message' => __('admin.sent_successfully'),
             'alert-type' => 'success'
         ]);
     }

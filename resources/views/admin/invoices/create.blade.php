@@ -1,6 +1,24 @@
 @extends('layouts.admin')
 @section('title') {{ trans('admin.create_invoice') }} @endsection
 
+@push('style')
+
+<link rel="stylesheet" href="{{ url('admin_files/files/css/pickadate/classic.css') }}">
+<link rel="stylesheet" href="{{ url('admin_files/files/css/pickadate/classic.date.css') }}">
+@if (app()->getLocale() == 'ar')
+<link rel="stylesheet" href="{{ url('admin_files/files/css/pickadate/rtl.css') }}">
+@endif
+
+<style>
+    form.form label.error,
+    label.error {
+        color: red;
+        font-style: italic;
+    }
+</style>
+
+@endpush
+
 @section('content')
 
 <div class="content-header row">
@@ -29,10 +47,8 @@
                 </div>
                 <div class="card-content">
                     <div class="card-body">
-                        @include('partials._errors')
-                        <form action="{{ route('admin.invoices.store') }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.invoices.store') }}" method="post" class="form">
                             @csrf
-                            @method('post')
                             <div class="form-body">
                                 <div class="row">
                                     <div class="col-md-4 col-12">
@@ -41,6 +57,8 @@
                                             <input type="text" name="customer_name" id="customer_name"
                                                 class="form-control" value="{{ old('customer_name') }}"
                                                 placeholder="{{ trans('admin.customer_name') }}">
+                                            @error('customer_name')<span
+                                                class="help-block text-danger">{{ $message }}</span>@enderror
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
@@ -49,6 +67,8 @@
                                             <input type="text" name="customer_email" id="customer_email"
                                                 class="form-control" value="{{ old('customer_email') }}"
                                                 placeholder="{{ trans('admin.customer_email') }}">
+                                            @error('customer_email')<span
+                                                class="help-block text-danger">{{ $message }}</span>@enderror
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
@@ -57,6 +77,8 @@
                                             <input type="text" name="customer_mobile" id="customer_mobile"
                                                 class="form-control" value="{{ old('customer_mobile') }}"
                                                 placeholder="{{ trans('admin.customer_mobile') }}">
+                                            @error('customer_mobile')<span
+                                                class="help-block text-danger">{{ $message }}</span>@enderror
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
@@ -65,6 +87,8 @@
                                             <input type="text" name="company_name" id="company_name"
                                                 class="form-control" value="{{ old('company_name') }}"
                                                 placeholder="{{ trans('admin.company_name') }}">
+                                            @error('company_name')<span
+                                                class="help-block text-danger">{{ $message }}</span>@enderror
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
@@ -73,14 +97,18 @@
                                             <input type="text" name="invoice_number" id="invoice_number"
                                                 class="form-control" value="{{ old('invoice_number') }}"
                                                 placeholder="{{ trans('admin.invoice_number') }}">
+                                            @error('invoice_number')<span
+                                                class="help-block text-danger">{{ $message }}</span>@enderror
                                         </div>
                                     </div>
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
                                             <label for="invoice_date">{{ trans('admin.invoice_date') }}</label>
                                             <input type="text" name="invoice_date" id="invoice_date"
-                                                class="form-control" value="{{ old('invoice_date') }}"
+                                                class="form-control pickdate" value="{{ old('invoice_date') }}"
                                                 placeholder="{{ trans('admin.invoice_date') }}">
+                                            @error('invoice_date')<span
+                                                class="help-block text-danger">{{ $message }}</span>@enderror
                                         </div>
                                     </div>
                                     <div class="table-responsive">
@@ -150,9 +178,9 @@
                                                             class="sub_total form-control" readonly="readonly"></td>
                                                 </tr>
                                                 <tr>
-                                                    <td colspan="3"></td>
-                                                    <td colspan="2">{{ trans('admin.discount') }}</td>
-                                                    <td>
+                                                    <td colspan="3" width="35%"></td>
+                                                    <td colspan="2" width="35%">{{ trans('admin.discount') }}</td>
+                                                    <td width="30%">
                                                         <div class="input-group mb-3">
                                                             <select name="discount_type" id="discount_type"
                                                                 class="discount_type custom-select">
@@ -190,8 +218,7 @@
                                         </table>
                                     </div>
                                     <div class="text-right pt-3 col-12">
-                                        <button type="submit" class="btn btn-primary">
-                                            <i class="feather icon-plus"></i>
+                                        <button type="submit" name="save" class="btn btn-primary">
                                             {{ trans('admin.save') }}
                                         </button>
                                     </div>
@@ -206,3 +233,18 @@
 </section>
 
 @endsection
+
+@push('scripts')
+
+<script src="{{ url('admin_files/files/js/form_validation/jquery.form.js') }}"></script>
+<script src="{{ url('admin_files/files/js/form_validation/jquery.validate.min.js') }}"></script>
+<script src="{{ url('admin_files/files/js/form_validation/additional-methods.min.js') }}"></script>
+<script src="{{ url('admin_files/files/js/pickadate/picker.js') }}"></script>
+<script src="{{ url('admin_files/files/js/pickadate/picker.date.js') }}"></script>
+@if (app()->getLocale() == 'ar')
+<script src="{{ url('admin_files/files/js/form_validation/messages_ar.js') }}"></script>
+<script src="{{ url('admin_files/files/js/pickadate/ar.js') }}"></script>
+@endif
+<script src="{{ url('admin_files/files/js/custom.js') }}"></script>
+
+@endpush

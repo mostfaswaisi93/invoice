@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).ready(function() {
     $('.pickdate').pickadate({
         format: 'yyyy-mm-dd',
         selectMonth: true,
@@ -8,7 +8,7 @@ $(document).ready(function(){
         closeOnSelect: true
     });
 
-    $('#invoice_details').on('keyup blur', '.quantity', function () {
+    $('#invoice_details').on('keyup blur', '.quantity', function() {
         let $row = $(this).closest('tr');
         let quantity = $row.find('.quantity').val() || 0;
         let unit_price = $row.find('.unit_price').val() || 0;
@@ -21,7 +21,7 @@ $(document).ready(function(){
 
     });
 
-    $('#invoice_details').on('keyup blur', '.unit_price', function () {
+    $('#invoice_details').on('keyup blur', '.unit_price', function() {
         let $row = $(this).closest('tr');
         let quantity = $row.find('.quantity').val() || 0;
         let unit_price = $row.find('.unit_price').val() || 0;
@@ -33,31 +33,31 @@ $(document).ready(function(){
         $('#total_due').val(sum_due_total());
     });
 
-    $('#invoice_details').on('keyup blur', '.discount_type', function () {
+    $('#invoice_details').on('keyup blur', '.discount_type', function() {
         $('#vat_value').val(calculate_vat());
         $('#total_due').val(sum_due_total());
     });
 
-    $('#invoice_details').on('keyup blur', '.discount_value', function () {
+    $('#invoice_details').on('keyup blur', '.discount_value', function() {
         $('#vat_value').val(calculate_vat());
         $('#total_due').val(sum_due_total());
     });
 
-    $('#invoice_details').on('keyup blur', '.shipping', function () {
+    $('#invoice_details').on('keyup blur', '.shipping', function() {
         $('#vat_value').val(calculate_vat());
         $('#total_due').val(sum_due_total());
     });
 
-    let sum_total = function ($selector) {
+    let sum_total = function($selector) {
         let sum = 0;
-        $($selector).each(function () {
+        $($selector).each(function() {
             let selectorVal = $(this).val() != '' ? $(this).val() : 0;
             sum += parseFloat(selectorVal);
         });
         return sum.toFixed(2);
     }
 
-    let calculate_vat = function () {
+    let calculate_vat = function() {
         let sub_totalVal = $('.sub_total').val() || 0;
         let discount_type = $('.discount_type').val();
         let discount_value = parseFloat($('.discount_value').val()) || 0;
@@ -68,7 +68,7 @@ $(document).ready(function(){
         return vatVal.toFixed(2);
     }
 
-    let sum_due_total = function () {
+    let sum_due_total = function() {
         let sum = 0;
         let sub_totalVal = $('.sub_total').val() || 0;
         let discount_type = $('.discount_type').val();
@@ -86,7 +86,7 @@ $(document).ready(function(){
         return sum.toFixed(2);
     }
 
-    $(document).on('click', '.btn_add', function () {
+    $(document).on('click', '.btn_add', function() {
         let trCount = $('#invoice_details').find('tr.cloning_row:last').length;
         let numberIncr = trCount > 0 ? parseInt($('#invoice_details').find('tr.cloning_row:last').attr('id')) + 1 : 0;
 
@@ -101,7 +101,7 @@ $(document).ready(function(){
             '</tr>'));
     });
 
-    $(document).on('click', '.delegated-btn', function (e) {
+    $(document).on('click', '.delegated-btn', function(e) {
         e.preventDefault();
         $(this).parent().parent().remove();
         $('#sub_total').val(sum_total('.row_sub_total'));
@@ -109,25 +109,25 @@ $(document).ready(function(){
         $('#total_due').val(sum_due_total());
     });
 
-    $('form').on('submit', function (e) {
-        $('input.product_name').each(function () { $(this).rules("add", { required: true }); });
-        $('select.unit').each(function () { $(this).rules("add", { required: true }); });
-        $('input.quantity').each(function () { $(this).rules("add", { required: true }); });
-        $('input.unit_price').each(function () { $(this).rules("add", { required: true }); });
-        $('input.row_sub_total').each(function () { $(this).rules("add", { required: true }); });
+    $('form').on('submit', function(e) {
+        $('input.product_name').each(function() { $(this).rules("add", { required: true }); });
+        $('select.unit').each(function() { $(this).rules("add", { required: true }); });
+        $('input.quantity').each(function() { $(this).rules("add", { required: true }); });
+        $('input.unit_price').each(function() { $(this).rules("add", { required: true }); });
+        $('input.row_sub_total').each(function() { $(this).rules("add", { required: true }); });
         e.preventDefault();
     });
 
     $('form').validate({
         rules: {
-            'customer_name' : { required:true },
-            'customer_email' : { required:true, email:true },
-            'customer_mobile' : { required:true, digits: true, minlength: 10, maxlength: 14 },
-            'company_name' : { required:true },
-            'invoice_number' : { required:true, digits: true },
-            'invoice_date' : { required:true },
+            'customer_name': { required: true },
+            'customer_email': { required: true, email: true },
+            'customer_mobile': { required: true, digits: true, minlength: 10, maxlength: 14 },
+            'company_name': { required: true },
+            'invoice_number': { required: true, digits: true },
+            'invoice_date': { required: true },
         },
-        submitHandler: function (form) {
+        submitHandler: function(form) {
             form.submit();
         }
     });
