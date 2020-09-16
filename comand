@@ -1,0 +1,7 @@
+features:
+
+1- MustVerifyEmail with mailtrap
+2- Reset Password with mailtrap
+3- Laravel Socialite - Facebook Login and Register
+developers.facebook
+4- Login with mobile or email or username

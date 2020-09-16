@@ -6,4 +6,4 @@ Route::get('/', function () {
     return redirect()->route('admin.index');
 });
 
-Auth::routes();
+// Auth::routes(['verify' => true]);
