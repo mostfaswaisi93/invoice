@@ -5,4 +5,4 @@ features:
 3- Laravel Socialite - Facebook Login and Register
 developers.facebook
 4- Login with mobile or email or username
-5- 
+5- Task Scheduler Expiration and send daily emails

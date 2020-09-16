@@ -50,6 +50,9 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
+        // Page Not Found
+        view()->replaceNamespace('errors', [resource_path('views/errors'), __DIR__ . '/views']);
+
         return parent::render($request, $exception);
     }
 }
