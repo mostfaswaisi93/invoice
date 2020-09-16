@@ -64,7 +64,7 @@
                                 <span class="avatar-status-online avatar-status-lg"></span>
                             </span>
                         </a>
-                        {{-- <div class="dropdown-menu dropdown-menu-right">
+                        <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="page-user-profile.html">
                                 <i class="feather icon-user"></i>
                                 Edit Profile
@@ -77,7 +77,7 @@
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
-                        </div> --}}
+                        </div>
                     </li>
                 </ul>
             </div>

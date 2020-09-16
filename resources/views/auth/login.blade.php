@@ -110,12 +110,12 @@
                                                     @include('partials._errors')
                                                     <fieldset
                                                         class="form-label-group form-group position-relative has-icon-left">
-                                                        <input id="username" type="text" class="form-control"
-                                                            name="username" placeholder="{{ trans('admin.username') }}">
+                                                        <input id="identify" type="text" class="form-control"
+                                                            name="identify" placeholder="{{ trans('admin.identify') }}">
                                                         <div class="form-control-position">
                                                             <i class="feather icon-user"></i>
                                                         </div>
-                                                        <label for="username">{{ trans('admin.username') }}</label>
+                                                        <label for="identify">{{ trans('admin.identify') }}</label>
                                                     </fieldset>
                                                     <fieldset class="form-label-group position-relative has-icon-left">
                                                         <input id="password" type="password" class="form-control"
