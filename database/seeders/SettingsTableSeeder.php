@@ -1,7 +1,9 @@
 <?php
 
-use Illuminate\Database\Seeder;
+namespace Database\Seeders;
+
 use App\Models\Setting;
+use Illuminate\Database\Seeder;
 
 class SettingsTableSeeder extends Seeder
 {

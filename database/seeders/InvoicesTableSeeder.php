@@ -1,9 +1,11 @@
 <?php
 
+namespace Database\Seeders;
+
 use App\Models\Invoice;
 use Carbon\Carbon;
-use Faker\Factory;
 use Illuminate\Database\Seeder;
+use Faker\Factory;
 
 class InvoicesTableSeeder extends Seeder
 {

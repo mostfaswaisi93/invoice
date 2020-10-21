@@ -2,8 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 class InvoiceDetails extends BaseModel
 {
+    use HasFactory;
+
     protected $guarded = [];
     protected $table = 'invoice_details';
 
