@@ -13,8 +13,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        \App\Console\Commands\Expiration::class,
-        \App\Console\Commands\Notify::class
+        //
     ];
 
     /**
@@ -25,8 +24,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('user:expire')->everyFiveMinutes();
-        $schedule->command('notify:email')->daily();
+        // $schedule->command('inspire')->hourly();
     }
 
     /**
@@ -36,7 +34,7 @@ class Kernel extends ConsoleKernel
      */
     protected function commands()
     {
-        $this->load(__DIR__ . '/Commands');
+        $this->load(__DIR__.'/Commands');
 
         require base_path('routes/console.php');
     }
