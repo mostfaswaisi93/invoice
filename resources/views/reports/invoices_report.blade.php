@@ -1,21 +1,21 @@
 @extends('layouts.master')
 @section('css')
-    <!-- Internal Data table css -->
-    <link href="{{ URL::asset('assets/plugins/datatable/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet" />
-    <link href="{{ URL::asset('assets/plugins/datatable/css/buttons.bootstrap4.min.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('assets/plugins/datatable/css/responsive.bootstrap4.min.css') }}" rel="stylesheet" />
-    <link href="{{ URL::asset('assets/plugins/datatable/css/jquery.dataTables.min.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('assets/plugins/datatable/css/responsive.dataTables.min.css') }}" rel="stylesheet">
-    <link href="{{ URL::asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
+<!-- Internal Data table css -->
+<link href="{{ URL::asset('assets/plugins/datatable/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet" />
+<link href="{{ URL::asset('assets/plugins/datatable/css/buttons.bootstrap4.min.css') }}" rel="stylesheet">
+<link href="{{ URL::asset('assets/plugins/datatable/css/responsive.bootstrap4.min.css') }}" rel="stylesheet" />
+<link href="{{ URL::asset('assets/plugins/datatable/css/jquery.dataTables.min.css') }}" rel="stylesheet">
+<link href="{{ URL::asset('assets/plugins/datatable/css/responsive.dataTables.min.css') }}" rel="stylesheet">
+<link href="{{ URL::asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
 
-    <!-- Internal Spectrum-colorpicker css -->
-    <link href="{{ URL::asset('assets/plugins/spectrum-colorpicker/spectrum.css') }}" rel="stylesheet">
+<!-- Internal Spectrum-colorpicker css -->
+<link href="{{ URL::asset('assets/plugins/spectrum-colorpicker/spectrum.css') }}" rel="stylesheet">
 
-    <!-- Internal Select2 css -->
-    <link href="{{ URL::asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
+<!-- Internal Select2 css -->
+<link href="{{ URL::asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
 
 @section('title')
-    تقرير الفواتير - مورا سوفت للادارة الفواتير
+تقرير الفواتير - مورا سوفت للادارة الفواتير
 @stop
 @endsection
 @section('page-header')
@@ -33,17 +33,17 @@
 @section('content')
 
 @if (count($errors) > 0)
-    <div class="alert alert-danger">
-        <button aria-label="Close" class="close" data-dismiss="alert" type="button">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        <strong>خطا</strong>
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
+<div class="alert alert-danger">
+    <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <strong>خطا</strong>
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
 @endif
 
 <!-- row -->
@@ -130,57 +130,57 @@
             <div class="card-body">
                 <div class="table-responsive">
                     @if (isset($details))
-                        <table id="example" class="table key-buttons text-md-nowrap" style=" text-align: center">
-                            <thead>
-                                <tr>
-                                    <th class="border-bottom-0">#</th>
-                                    <th class="border-bottom-0">رقم الفاتورة</th>
-                                    <th class="border-bottom-0">تاريخ القاتورة</th>
-                                    <th class="border-bottom-0">تاريخ الاستحقاق</th>
-                                    <th class="border-bottom-0">المنتج</th>
-                                    <th class="border-bottom-0">القسم</th>
-                                    <th class="border-bottom-0">الخصم</th>
-                                    <th class="border-bottom-0">نسبة الضريبة</th>
-                                    <th class="border-bottom-0">قيمة الضريبة</th>
-                                    <th class="border-bottom-0">الاجمالي</th>
-                                    <th class="border-bottom-0">الحالة</th>
-                                    <th class="border-bottom-0">ملاحظات</th>
+                    <table id="example" class="table key-buttons text-md-nowrap" style=" text-align: center">
+                        <thead>
+                            <tr>
+                                <th class="border-bottom-0">#</th>
+                                <th class="border-bottom-0">رقم الفاتورة</th>
+                                <th class="border-bottom-0">تاريخ القاتورة</th>
+                                <th class="border-bottom-0">تاريخ الاستحقاق</th>
+                                <th class="border-bottom-0">المنتج</th>
+                                <th class="border-bottom-0">القسم</th>
+                                <th class="border-bottom-0">الخصم</th>
+                                <th class="border-bottom-0">نسبة الضريبة</th>
+                                <th class="border-bottom-0">قيمة الضريبة</th>
+                                <th class="border-bottom-0">الاجمالي</th>
+                                <th class="border-bottom-0">الحالة</th>
+                                <th class="border-bottom-0">ملاحظات</th>
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php $i = 0; ?>
-                                @foreach ($details as $invoice)
-                                    <?php $i++; ?>
-                                    <tr>
-                                        <td>{{ $i }}</td>
-                                        <td>{{ $invoice->invoice_number }} </td>
-                                        <td>{{ $invoice->invoice_Date }}</td>
-                                        <td>{{ $invoice->Due_date }}</td>
-                                        <td>{{ $invoice->product }}</td>
-                                        <td><a
-                                                href="{{ url('InvoicesDetails') }}/{{ $invoice->id }}">{{ $invoice->section->section_name }}</a>
-                                        </td>
-                                        <td>{{ $invoice->Discount }}</td>
-                                        <td>{{ $invoice->Rate_VAT }}</td>
-                                        <td>{{ $invoice->Value_VAT }}</td>
-                                        <td>{{ $invoice->Total }}</td>
-                                        <td>
-                                            @if ($invoice->Value_Status == 1)
-                                                <span class="text-success">{{ $invoice->Status }}</span>
-                                            @elseif($invoice->Value_Status == 2)
-                                                <span class="text-danger">{{ $invoice->Status }}</span>
-                                            @else
-                                                <span class="text-warning">{{ $invoice->Status }}</span>
-                                            @endif
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $i = 0; ?>
+                            @foreach ($details as $invoice)
+                            <?php $i++; ?>
+                            <tr>
+                                <td>{{ $i }}</td>
+                                <td>{{ $invoice->invoice_number }} </td>
+                                <td>{{ $invoice->invoice_Date }}</td>
+                                <td>{{ $invoice->Due_date }}</td>
+                                <td>{{ $invoice->product }}</td>
+                                <td><a
+                                        href="{{ url('InvoicesDetails') }}/{{ $invoice->id }}">{{ $invoice->section->section_name }}</a>
+                                </td>
+                                <td>{{ $invoice->Discount }}</td>
+                                <td>{{ $invoice->Rate_VAT }}</td>
+                                <td>{{ $invoice->Value_VAT }}</td>
+                                <td>{{ $invoice->Total }}</td>
+                                <td>
+                                    @if ($invoice->Value_Status == 1)
+                                    <span class="text-success">{{ $invoice->Status }}</span>
+                                    @elseif($invoice->Value_Status == 2)
+                                    <span class="text-danger">{{ $invoice->Status }}</span>
+                                    @else
+                                    <span class="text-warning">{{ $invoice->Status }}</span>
+                                    @endif
 
-                                        </td>
+                                </td>
 
-                                        <td>{{ $invoice->note }}</td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                <td>{{ $invoice->note }}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
 
                     @endif
                 </div>
@@ -261,6 +261,5 @@
     });
 
 </script>
-
 
 @endsection

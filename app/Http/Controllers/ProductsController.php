@@ -18,11 +18,11 @@ class ProductsController extends Controller
     public function store(Request $request)
     {
         Product::create([
-            'Product_name' => $request->Product_name,
+            'product_name' => $request->product_name,
             'section_id' => $request->section_id,
             'description' => $request->description,
         ]);
-        session()->flash('Add', 'تم اضافة المنتج بنجاح ');
+        session()->flash('Add', 'تم إضافة المنتج بنجاح ');
         return redirect('/products');
     }
 
@@ -33,7 +33,7 @@ class ProductsController extends Controller
         $Products = Product::findOrFail($request->pro_id);
 
         $Products->update([
-            'Product_name' => $request->Product_name,
+            'product_name' => $request->product_name,
             'description' => $request->description,
             'section_id' => $id,
         ]);
@@ -44,8 +44,8 @@ class ProductsController extends Controller
 
     public function destroy(Request $request)
     {
-        $Products = Product::findOrFail($request->pro_id);
-        $Products->delete();
+        $products = Product::findOrFail($request->pro_id);
+        $products->delete();
         session()->flash('delete', 'تم حذف المنتج بنجاح');
         return back();
     }

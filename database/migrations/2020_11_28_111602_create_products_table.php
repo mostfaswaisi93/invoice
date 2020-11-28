@@ -15,6 +15,9 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
+            $table->string('product_name', 999);
+            $table->text('description')->nullable();
+            $table->integer('section_id')->unsigned()->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -74,7 +74,7 @@ class InvoicesController extends Controller
             $request->pic->move(public_path('Attachments/' . $invoice_number), $imageName);
         }
 
-        session()->flash('Add', 'تم اضافة الفاتورة بنجاح');
+        session()->flash('Add', 'تم إضافة الفاتورة بنجاح');
         return back();
     }
 
