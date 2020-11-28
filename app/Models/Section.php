@@ -12,6 +12,6 @@ class Section extends Model
     protected $fillable = [
         'section_name',
         'description',
-        'Created_by',
+        'created_by',
     ];
 }

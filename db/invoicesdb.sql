@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Sep 16, 2020 at 10:42 AM
+-- Generation Time: Nov 28, 2020 at 01:25 PM
 -- Server version: 10.5.4-MariaDB-log
--- PHP Version: 7.4.8
+-- PHP Version: 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `failed_jobs` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -44,43 +45,37 @@ CREATE TABLE `failed_jobs` (
 
 CREATE TABLE `invoices` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `customer_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `customer_email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `customer_mobile` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `company_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `invoice_number` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `invoice_date` date NOT NULL,
-  `sub_total` decimal(8,2) NOT NULL DEFAULT 0.00,
-  `discount_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `discount_value` decimal(8,2) NOT NULL DEFAULT 0.00,
-  `vat_value` decimal(8,2) NOT NULL DEFAULT 0.00,
-  `shipping` decimal(8,2) NOT NULL DEFAULT 0.00,
-  `total_due` decimal(8,2) NOT NULL DEFAULT 0.00,
+  `invoice_number` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `invoice_date` date DEFAULT NULL,
+  `due_date` date DEFAULT NULL,
+  `product` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `section_id` int(10) UNSIGNED NOT NULL,
+  `amount_collection` decimal(8,2) DEFAULT NULL,
+  `amount_commission` decimal(8,2) NOT NULL,
+  `discount` decimal(8,2) NOT NULL,
+  `value_vat` decimal(8,2) NOT NULL,
+  `rate_vat` varchar(999) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `total` decimal(8,2) NOT NULL,
+  `status` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `value_status` int(11) NOT NULL,
+  `note` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `payment_date` date DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `invoices`
+-- Table structure for table `invoice_attachments`
 --
 
-INSERT INTO `invoices` (`id`, `customer_name`, `customer_email`, `customer_mobile`, `company_name`, `invoice_number`, `invoice_date`, `sub_total`, `discount_type`, `discount_value`, `vat_value`, `shipping`, `total_due`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'وجيه ممدوح القحطاني', 'wflefel@hadi.net', '940595439', 'عدب الفدا', '6363164', '2020-09-11', '5840.00', 'fixed', '0.00', '292.00', '100.00', '6232.00', '2020-09-16 07:30:49', '2020-09-16 07:30:49', NULL),
-(2, 'وجدي الداوود', 'layth61@rabee.biz', '52330680724', 'غانم الماجد', '2120265', '2020-09-07', '5840.00', 'fixed', '0.00', '292.00', '100.00', '6232.00', '2020-09-16 07:30:49', '2020-09-16 07:30:49', NULL),
-(3, 'انور توفيق الجهني', 'ibrahim.abbad@hadi.info', '197478760872', 'علا المشيقح', '7207340', '2020-09-07', '5840.00', 'fixed', '0.00', '292.00', '100.00', '6232.00', '2020-09-16 07:30:49', '2020-09-16 07:30:49', NULL),
-(4, 'مصطفى الحسين', 'ykanaan@yahoo.com', '275505852', 'اديب الماجد', '7226594', '2020-09-07', '5840.00', 'fixed', '0.00', '292.00', '100.00', '6232.00', '2020-09-16 07:30:49', '2020-09-16 07:30:49', NULL),
-(5, 'عروة زيدان كامل الجريد', 'hamad.mohammad@flefel.biz', '99765601304', 'مظهر باسم عبدالجليل الأسمري', '3937771', '2020-09-09', '5840.00', 'fixed', '0.00', '292.00', '100.00', '6232.00', '2020-09-16 07:30:49', '2020-09-16 07:30:49', NULL),
-(6, 'بندر حميد العتيبي', 'nflefel@obaisi.info', '399370704400', 'نوران مكي', '4660581', '2020-09-02', '5840.00', 'fixed', '0.00', '292.00', '100.00', '6232.00', '2020-09-16 07:30:49', '2020-09-16 07:30:49', NULL),
-(7, 'مجاهد الخالدي', 'yabbad@qawasmee.org', '62012254968', 'رحمة السمير', '4074211', '2020-08-27', '5840.00', 'fixed', '0.00', '292.00', '100.00', '6232.00', '2020-09-16 07:30:50', '2020-09-16 07:30:50', NULL),
-(8, 'رجائي السماعيل', 'samer49@qawasmee.biz', '6899458328', 'المهندسة رؤيه الفريدي', '4967751', '2020-09-03', '5840.00', 'fixed', '0.00', '292.00', '100.00', '6232.00', '2020-09-16 07:30:50', '2020-09-16 07:30:50', NULL),
-(9, 'عايد العمرو', 'hadi.ahmad@obaisi.biz', '49288727388', 'إسلام نبيل وسام الداوود', '1830435', '2020-09-07', '5840.00', 'fixed', '0.00', '292.00', '100.00', '6232.00', '2020-09-16 07:30:50', '2020-09-16 07:30:50', NULL),
-(10, 'الدكتورة نانسي العسكر', 'iqasem@hasan.info', '287057480', 'وصفي زيدون ليث الفيفي', '3556429', '2020-08-27', '5840.00', 'fixed', '0.00', '292.00', '100.00', '6232.00', '2020-09-16 07:30:50', '2020-09-16 07:30:50', NULL),
-(11, 'عدلي عايد الشهيل', 'ujabri@hasan.net', '946696217', 'عبد السلام يشار الصقيه', '6924062', '2020-08-29', '5840.00', 'fixed', '0.00', '292.00', '100.00', '6232.00', '2020-09-16 07:30:50', '2020-09-16 07:30:50', NULL),
-(12, 'هانى السهلي', 'karam.rami@hamad.net', '22147539925', 'باسم السيف', '6902497', '2020-09-03', '5840.00', 'fixed', '0.00', '292.00', '100.00', '6232.00', '2020-09-16 07:30:50', '2020-09-16 07:30:50', NULL),
-(13, 'حاتم العنزي', 'layth17@zaloum.net', '075136508830', 'إسراء أيهم السالم', '8139719', '2020-09-08', '5840.00', 'fixed', '0.00', '292.00', '100.00', '6232.00', '2020-09-16 07:30:50', '2020-09-16 07:30:50', NULL),
-(14, 'عوض مدني', 'bilal44@gmail.com', '397702207576', 'فاتن مكي', '2071721', '2020-09-01', '5840.00', 'fixed', '0.00', '292.00', '100.00', '6232.00', '2020-09-16 07:30:50', '2020-09-16 07:30:50', NULL),
-(15, 'زاهر مفدي مؤثر الحصين', 'aabbadi@hamad.info', '84472575383', 'الدكتورة اعتدال الفرحان', '6782501', '2020-09-11', '5840.00', 'fixed', '0.00', '292.00', '100.00', '6232.00', '2020-09-16 07:30:51', '2020-09-16 07:30:51', NULL);
+CREATE TABLE `invoice_attachments` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -90,67 +85,9 @@ INSERT INTO `invoices` (`id`, `customer_name`, `customer_email`, `customer_mobil
 
 CREATE TABLE `invoice_details` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `invoice_id` bigint(20) UNSIGNED NOT NULL,
-  `product_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `unit` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `quantity` decimal(8,2) NOT NULL DEFAULT 0.00,
-  `unit_price` decimal(8,2) NOT NULL DEFAULT 0.00,
-  `row_sub_total` decimal(8,2) NOT NULL DEFAULT 0.00,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `invoice_details`
---
-
-INSERT INTO `invoice_details` (`id`, `invoice_id`, `product_name`, `unit`, `quantity`, `unit_price`, `row_sub_total`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 1, 'طاولة كمبيوتر كبيرة', 'piece', '2.00', '560.00', '1120.00', '2020-09-16 07:30:49', '2020-09-16 07:30:49', NULL),
-(2, 1, 'طاولة كمبيوتر صغيرة', 'piece', '1.00', '220.00', '220.00', '2020-09-16 07:30:49', '2020-09-16 07:30:49', NULL),
-(3, 1, 'كمبيوتر محمول', 'piece', '1.00', '4500.00', '4500.00', '2020-09-16 07:30:49', '2020-09-16 07:30:49', NULL),
-(4, 2, 'طاولة كمبيوتر كبيرة', 'piece', '2.00', '560.00', '1120.00', '2020-09-16 07:30:49', '2020-09-16 07:30:49', NULL),
-(5, 2, 'طاولة كمبيوتر صغيرة', 'piece', '1.00', '220.00', '220.00', '2020-09-16 07:30:49', '2020-09-16 07:30:49', NULL),
-(6, 2, 'كمبيوتر محمول', 'piece', '1.00', '4500.00', '4500.00', '2020-09-16 07:30:49', '2020-09-16 07:30:49', NULL),
-(7, 3, 'طاولة كمبيوتر كبيرة', 'piece', '2.00', '560.00', '1120.00', '2020-09-16 07:30:49', '2020-09-16 07:30:49', NULL),
-(8, 3, 'طاولة كمبيوتر صغيرة', 'piece', '1.00', '220.00', '220.00', '2020-09-16 07:30:49', '2020-09-16 07:30:49', NULL),
-(9, 3, 'كمبيوتر محمول', 'piece', '1.00', '4500.00', '4500.00', '2020-09-16 07:30:49', '2020-09-16 07:30:49', NULL),
-(10, 4, 'طاولة كمبيوتر كبيرة', 'piece', '2.00', '560.00', '1120.00', '2020-09-16 07:30:49', '2020-09-16 07:30:49', NULL),
-(11, 4, 'طاولة كمبيوتر صغيرة', 'piece', '1.00', '220.00', '220.00', '2020-09-16 07:30:49', '2020-09-16 07:30:49', NULL),
-(12, 4, 'كمبيوتر محمول', 'piece', '1.00', '4500.00', '4500.00', '2020-09-16 07:30:49', '2020-09-16 07:30:49', NULL),
-(13, 5, 'طاولة كمبيوتر كبيرة', 'piece', '2.00', '560.00', '1120.00', '2020-09-16 07:30:49', '2020-09-16 07:30:49', NULL),
-(14, 5, 'طاولة كمبيوتر صغيرة', 'piece', '1.00', '220.00', '220.00', '2020-09-16 07:30:49', '2020-09-16 07:30:49', NULL),
-(15, 5, 'كمبيوتر محمول', 'piece', '1.00', '4500.00', '4500.00', '2020-09-16 07:30:49', '2020-09-16 07:30:49', NULL),
-(16, 6, 'طاولة كمبيوتر كبيرة', 'piece', '2.00', '560.00', '1120.00', '2020-09-16 07:30:49', '2020-09-16 07:30:49', NULL),
-(17, 6, 'طاولة كمبيوتر صغيرة', 'piece', '1.00', '220.00', '220.00', '2020-09-16 07:30:50', '2020-09-16 07:30:50', NULL),
-(18, 6, 'كمبيوتر محمول', 'piece', '1.00', '4500.00', '4500.00', '2020-09-16 07:30:50', '2020-09-16 07:30:50', NULL),
-(19, 7, 'طاولة كمبيوتر كبيرة', 'piece', '2.00', '560.00', '1120.00', '2020-09-16 07:30:50', '2020-09-16 07:30:50', NULL),
-(20, 7, 'طاولة كمبيوتر صغيرة', 'piece', '1.00', '220.00', '220.00', '2020-09-16 07:30:50', '2020-09-16 07:30:50', NULL),
-(21, 7, 'كمبيوتر محمول', 'piece', '1.00', '4500.00', '4500.00', '2020-09-16 07:30:50', '2020-09-16 07:30:50', NULL),
-(22, 8, 'طاولة كمبيوتر كبيرة', 'piece', '2.00', '560.00', '1120.00', '2020-09-16 07:30:50', '2020-09-16 07:30:50', NULL),
-(23, 8, 'طاولة كمبيوتر صغيرة', 'piece', '1.00', '220.00', '220.00', '2020-09-16 07:30:50', '2020-09-16 07:30:50', NULL),
-(24, 8, 'كمبيوتر محمول', 'piece', '1.00', '4500.00', '4500.00', '2020-09-16 07:30:50', '2020-09-16 07:30:50', NULL),
-(25, 9, 'طاولة كمبيوتر كبيرة', 'piece', '2.00', '560.00', '1120.00', '2020-09-16 07:30:50', '2020-09-16 07:30:50', NULL),
-(26, 9, 'طاولة كمبيوتر صغيرة', 'piece', '1.00', '220.00', '220.00', '2020-09-16 07:30:50', '2020-09-16 07:30:50', NULL),
-(27, 9, 'كمبيوتر محمول', 'piece', '1.00', '4500.00', '4500.00', '2020-09-16 07:30:50', '2020-09-16 07:30:50', NULL),
-(28, 10, 'طاولة كمبيوتر كبيرة', 'piece', '2.00', '560.00', '1120.00', '2020-09-16 07:30:50', '2020-09-16 07:30:50', NULL),
-(29, 10, 'طاولة كمبيوتر صغيرة', 'piece', '1.00', '220.00', '220.00', '2020-09-16 07:30:50', '2020-09-16 07:30:50', NULL),
-(30, 10, 'كمبيوتر محمول', 'piece', '1.00', '4500.00', '4500.00', '2020-09-16 07:30:50', '2020-09-16 07:30:50', NULL),
-(31, 11, 'طاولة كمبيوتر كبيرة', 'piece', '2.00', '560.00', '1120.00', '2020-09-16 07:30:50', '2020-09-16 07:30:50', NULL),
-(32, 11, 'طاولة كمبيوتر صغيرة', 'piece', '1.00', '220.00', '220.00', '2020-09-16 07:30:50', '2020-09-16 07:30:50', NULL),
-(33, 11, 'كمبيوتر محمول', 'piece', '1.00', '4500.00', '4500.00', '2020-09-16 07:30:50', '2020-09-16 07:30:50', NULL),
-(34, 12, 'طاولة كمبيوتر كبيرة', 'piece', '2.00', '560.00', '1120.00', '2020-09-16 07:30:50', '2020-09-16 07:30:50', NULL),
-(35, 12, 'طاولة كمبيوتر صغيرة', 'piece', '1.00', '220.00', '220.00', '2020-09-16 07:30:50', '2020-09-16 07:30:50', NULL),
-(36, 12, 'كمبيوتر محمول', 'piece', '1.00', '4500.00', '4500.00', '2020-09-16 07:30:50', '2020-09-16 07:30:50', NULL),
-(37, 13, 'طاولة كمبيوتر كبيرة', 'piece', '2.00', '560.00', '1120.00', '2020-09-16 07:30:50', '2020-09-16 07:30:50', NULL),
-(38, 13, 'طاولة كمبيوتر صغيرة', 'piece', '1.00', '220.00', '220.00', '2020-09-16 07:30:50', '2020-09-16 07:30:50', NULL),
-(39, 13, 'كمبيوتر محمول', 'piece', '1.00', '4500.00', '4500.00', '2020-09-16 07:30:50', '2020-09-16 07:30:50', NULL),
-(40, 14, 'طاولة كمبيوتر كبيرة', 'piece', '2.00', '560.00', '1120.00', '2020-09-16 07:30:50', '2020-09-16 07:30:50', NULL),
-(41, 14, 'طاولة كمبيوتر صغيرة', 'piece', '1.00', '220.00', '220.00', '2020-09-16 07:30:51', '2020-09-16 07:30:51', NULL),
-(42, 14, 'كمبيوتر محمول', 'piece', '1.00', '4500.00', '4500.00', '2020-09-16 07:30:51', '2020-09-16 07:30:51', NULL),
-(43, 15, 'طاولة كمبيوتر كبيرة', 'piece', '2.00', '560.00', '1120.00', '2020-09-16 07:30:51', '2020-09-16 07:30:51', NULL),
-(44, 15, 'طاولة كمبيوتر صغيرة', 'piece', '1.00', '220.00', '220.00', '2020-09-16 07:30:51', '2020-09-16 07:30:51', NULL),
-(45, 15, 'كمبيوتر محمول', 'piece', '1.00', '4500.00', '4500.00', '2020-09-16 07:30:51', '2020-09-16 07:30:51', NULL);
 
 -- --------------------------------------------------------
 
@@ -172,9 +109,11 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '2014_10_12_000000_create_users_table', 1),
 (2, '2014_10_12_100000_create_password_resets_table', 1),
 (3, '2019_08_19_000000_create_failed_jobs_table', 1),
-(4, '2020_06_29_090149_create_invoices_table', 1),
-(5, '2020_06_29_090505_create_invoice_details_table', 1),
-(6, '2020_08_24_231320_create_settings_table', 1);
+(4, '2020_11_28_111538_create_invoices_table', 1),
+(5, '2020_11_28_111602_create_products_table', 1),
+(6, '2020_11_28_111615_create_sections_table', 1),
+(7, '2020_11_28_111653_create_invoice_details_table', 1),
+(8, '2020_11_28_111718_create_invoice_attachments_table', 1);
 
 -- --------------------------------------------------------
 
@@ -191,20 +130,28 @@ CREATE TABLE `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `settings`
+-- Table structure for table `products`
 --
 
-CREATE TABLE `settings` (
+CREATE TABLE `products` (
   `id` bigint(20) UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `value` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `options` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `sorting_number` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sections`
+--
+
+CREATE TABLE `sections` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `section_name` varchar(999) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_by` varchar(999) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
@@ -216,22 +163,13 @@ CREATE TABLE `settings` (
 CREATE TABLE `users` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `expire` tinyint(4) NOT NULL DEFAULT 0,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `name`, `username`, `email`, `expire`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin', 'admin@admin.com', 1, NULL, '$2y$10$R4BZTUWZ4SAYxvqDDxQSNuXsD2NEjZegx2r0rVto9886RQG80WE9O', NULL, '2020-09-15 21:00:00', '2020-09-16 07:40:52');
 
 --
 -- Indexes for dumped tables
@@ -241,7 +179,8 @@ INSERT INTO `users` (`id`, `name`, `username`, `email`, `expire`, `email_verifie
 -- Indexes for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
 -- Indexes for table `invoices`
@@ -250,11 +189,16 @@ ALTER TABLE `invoices`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `invoice_attachments`
+--
+ALTER TABLE `invoice_attachments`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `invoice_details`
 --
 ALTER TABLE `invoice_details`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `invoice_details_invoice_id_foreign` (`invoice_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `migrations`
@@ -269,9 +213,15 @@ ALTER TABLE `password_resets`
   ADD KEY `password_resets_email_index` (`email`);
 
 --
--- Indexes for table `settings`
+-- Indexes for table `products`
 --
-ALTER TABLE `settings`
+ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `sections`
+--
+ALTER TABLE `sections`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -279,7 +229,6 @@ ALTER TABLE `settings`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_username_unique` (`username`),
   ADD UNIQUE KEY `users_email_unique` (`email`);
 
 --
@@ -296,41 +245,43 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `invoices`
 --
 ALTER TABLE `invoices`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `invoice_attachments`
+--
+ALTER TABLE `invoice_attachments`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `invoice_details`
 --
 ALTER TABLE `invoice_details`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `settings`
+-- AUTO_INCREMENT for table `products`
 --
-ALTER TABLE `settings`
+ALTER TABLE `products`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `sections`
+--
+ALTER TABLE `sections`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `invoice_details`
---
-ALTER TABLE `invoice_details`
-  ADD CONSTRAINT `invoice_details_invoice_id_foreign` FOREIGN KEY (`invoice_id`) REFERENCES `invoices` (`id`) ON DELETE CASCADE;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
