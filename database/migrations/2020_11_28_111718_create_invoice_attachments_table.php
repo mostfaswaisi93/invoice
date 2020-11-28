@@ -15,6 +15,10 @@ class CreateInvoiceAttachmentsTable extends Migration
     {
         Schema::create('invoice_attachments', function (Blueprint $table) {
             $table->id();
+            $table->string('file_name', 999);
+            $table->string('invoice_number', 50);
+            $table->string('created_by', 999);
+            $table->integer('invoice_id')->nullable()->unsigned()->onDelete('cascade');
             $table->timestamps();
         });
     }

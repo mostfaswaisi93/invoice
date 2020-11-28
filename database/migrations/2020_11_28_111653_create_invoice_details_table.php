@@ -15,6 +15,15 @@ class CreateInvoiceDetailsTable extends Migration
     {
         Schema::create('invoice_details', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_invoice')->unsigned()->onDelete('cascade');
+            $table->string('invoice_number', 50);
+            $table->string('product', 50);
+            $table->string('section', 999);
+            $table->string('status', 50);
+            $table->integer('value_status');
+            $table->date('payment_date')->nullable();
+            $table->text('note')->nullable();
+            $table->string('user', 300);
             $table->timestamps();
         });
     }

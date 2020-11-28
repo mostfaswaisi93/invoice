@@ -12,7 +12,6 @@ use File;
 class InvoicesDetailsController extends Controller
 {
     public function edit($id)
-
     {
         $invoices = Invoice::where('id', $id)->first();
         $details  = InvoiceDetails::where('id_Invoice', $id)->get();

@@ -71,7 +71,7 @@ class InvoicesController extends Controller
 
             // move pic
             $imageName = $request->pic->getClientOriginalName();
-            $request->pic->move(public_path('Attachments/' . $invoice_number), $imageName);
+            $request->pic->move(public_path('attachments/' . $invoice_number), $imageName);
         }
 
         session()->flash('Add', 'تم إضافة الفاتورة بنجاح');
