@@ -3,24 +3,22 @@
 @section('css')
 <style>
     @media print {
-        #print_Button {
+        #print_button {
             display: none;
         }
     }
 </style>
 @endsection
 
-@section('title')
-معاينه طباعة الفاتورة
-@stop
+@section('title') معاينه طباعة الفاتورة @stop
 
 @section('page-header')
 <!-- breadcrumb -->
 <div class="breadcrumb-header justify-content-between">
     <div class="my-auto">
         <div class="d-flex">
-            <h4 class="content-title mb-0 my-auto">الفواتير</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/
-                معاينة طباعة الفاتورة</span>
+            <h4 class="content-title mb-0 my-auto">الفواتير</h4>
+            <span class="text-muted mt-1 tx-13 mr-2 mb-0">/ معاينة طباعة الفاتورة</span>
         </div>
     </div>
 </div>
@@ -57,10 +55,10 @@
                             <label class="tx-gray-600">معلومات الفاتورة</label>
                             <p class="invoice-info-row"><span>رقم الفاتورة</span>
                                 <span>{{ $invoices->invoice_number }}</span></p>
-                            <p class="invoice-info-row"><span>تاريخ الاصدار</span>
-                                <span>{{ $invoices->invoice_Date }}</span></p>
+                            <p class="invoice-info-row"><span>تاريخ الإصدار</span>
+                                <span>{{ $invoices->invoice_date }}</span></p>
                             <p class="invoice-info-row"><span>تاريخ الاستحقاق</span>
-                                <span>{{ $invoices->Due_date }}</span></p>
+                                <span>{{ $invoices->due_date }}</span></p>
                             <p class="invoice-info-row"><span>القسم</span>
                                 <span>{{ $invoices->section->section_name }}</span></p>
                         </div>
@@ -73,17 +71,17 @@
                                     <th class="wd-40p">المنتج</th>
                                     <th class="tx-center">مبلغ التحصيل</th>
                                     <th class="tx-right">مبلغ العمولة</th>
-                                    <th class="tx-right">الاجمالي</th>
+                                    <th class="tx-right">الإجمالي</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>1</td>
                                     <td class="tx-12">{{ $invoices->product }}</td>
-                                    <td class="tx-center">{{ number_format($invoices->Amount_collection, 2) }}</td>
-                                    <td class="tx-right">{{ number_format($invoices->Amount_Commission, 2) }}</td>
+                                    <td class="tx-center">{{ number_format($invoices->amount_collection, 2) }}</td>
+                                    <td class="tx-right">{{ number_format($invoices->amount_commission, 2) }}</td>
                                     @php
-                                    $total = $invoices->Amount_collection + $invoices->Amount_Commission ;
+                                    $total = $invoices->amount_collection + $invoices->amount_commission;
                                     @endphp
                                     <td class="tx-right">
                                         {{ number_format($total, 2) }}
@@ -95,29 +93,29 @@
                                             <label class="main-content-label tx-13">#</label>
                                         </div><!-- invoice-notes -->
                                     </td>
-                                    <td class="tx-right">الاجمالي</td>
+                                    <td class="tx-right">الإجمالي</td>
                                     <td class="tx-right" colspan="2"> {{ number_format($total, 2) }}</td>
                                 </tr>
                                 <tr>
-                                    <td class="tx-right">نسبة الضريبة ({{ $invoices->Rate_VAT }})</td>
+                                    <td class="tx-right">نسبة الضريبة ({{ $invoices->rate_vat }})</td>
                                     <td class="tx-right" colspan="2">287.50</td>
                                 </tr>
                                 <tr>
                                     <td class="tx-right">قيمة الخصم</td>
-                                    <td class="tx-right" colspan="2"> {{ number_format($invoices->Discount, 2) }}</td>
+                                    <td class="tx-right" colspan="2"> {{ number_format($invoices->discount, 2) }}</td>
                                 </tr>
                                 <tr>
-                                    <td class="tx-right tx-uppercase tx-bold tx-inverse">الاجمالي شامل الضريبة</td>
+                                    <td class="tx-right tx-uppercase tx-bold tx-inverse">الإجمالي شامل الضريبة</td>
                                     <td class="tx-right" colspan="2">
-                                        <h4 class="tx-primary tx-bold">{{ number_format($invoices->Total, 2) }}</h4>
+                                        <h4 class="tx-primary tx-bold">{{ number_format($invoices->total, 2) }}</h4>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                     <hr class="mg-b-40">
-                    <button class="btn btn-danger  float-left mt-3 mr-2" id="print_Button" onclick="printDiv()"> <i
-                            class="mdi mdi-printer ml-1"></i>طباعة</button>
+                    <button class="btn btn-danger  float-left mt-3 mr-2" id="print_button" onclick="printDiv()">
+                        <i class="mdi mdi-printer ml-1"></i>طباعة</button>
                 </div>
             </div>
         </div>

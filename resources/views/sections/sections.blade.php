@@ -8,11 +8,9 @@
 <link href="{{ URL::asset('assets/plugins/datatable/css/jquery.dataTables.min.css') }}" rel="stylesheet">
 <link href="{{ URL::asset('assets/plugins/datatable/css/responsive.dataTables.min.css') }}" rel="stylesheet">
 <link href="{{ URL::asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
-
-@section('title')
-الأقسام
-@stop
 @endsection
+
+@section('title') الأقسام @stop
 
 @section('page-header')
 <!-- breadcrumb -->
@@ -20,8 +18,7 @@
     <div class="my-auto">
         <div class="d-flex">
             <h4 class="content-title mb-0 my-auto">الإعدادات</h4>
-            <span class="text-muted mt-1 tx-13 mr-2 mb-0">/
-                الأقسام</span>
+            <span class="text-muted mt-1 tx-13 mr-2 mb-0">/ الأقسام</span>
         </div>
     </div>
 </div>
@@ -132,11 +129,11 @@
                     <form action="{{ route('sections.store') }}" method="POST">
                         @csrf
                         <div class="form-group">
-                            <label for="exampleInputEmail1">اسم القسم</label>
+                            <label for="exampleInputEmail1">اسم القسم:</label>
                             <input type="text" class="form-control" id="section_name" name="section_name">
                         </div>
                         <div class="form-group">
-                            <label for="exampleFormControlTextarea1">ملاحظات</label>
+                            <label for="exampleFormControlTextarea1">ملاحظات:</label>
                             <textarea class="form-control" id="description" name="description" rows="3"></textarea>
                         </div>
                         <div class="modal-footer">
@@ -207,7 +204,6 @@
             </form>
         </div>
     </div>
-
     <!-- row closed -->
 </div>
 <!-- Container closed -->

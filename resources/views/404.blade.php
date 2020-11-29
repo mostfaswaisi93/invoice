@@ -23,6 +23,3 @@
 </div>
 <!-- /Main-error-wrapper -->
 @endsection
-
-@section('js')
-@endsection

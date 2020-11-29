@@ -17,17 +17,15 @@
 <link href="{{ URL::asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
 @endsection
 
-@section('title')
-المنتجات
-@stop
+@section('title') المنتجات @stop
 
 @section('page-header')
 <!-- breadcrumb -->
 <div class="breadcrumb-header justify-content-between">
     <div class="my-auto">
         <div class="d-flex">
-            <h4 class="content-title mb-0 my-auto">الاعدادات</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/
-                المنتجات</span>
+            <h4 class="content-title mb-0 my-auto">الاعدادات</h4>
+            <span class="text-muted mt-1 tx-13 mr-2 mb-0">/ المنتجات</span>
         </div>
     </div>
 </div>
@@ -110,7 +108,7 @@
                                         data-name="{{ $product->product_name }}" data-pro_id="{{ $product->id }}"
                                         data-section_name="{{ $product->section->section_name }}"
                                         data-description="{{ $product->description }}" data-toggle="modal"
-                                        data-target="#edit_Product">تعديل</button>
+                                        data-target="#edit_product">تعديل</button>
                                     @endcan
                                     @can('حذف منتج')
                                     <button class="btn btn-outline-danger btn-sm " data-pro_id="{{ $product->id }}"
@@ -147,7 +145,7 @@
                         </div>
                         <label class="my-1 mr-2" for="inlineFormCustomSelectPref">القسم</label>
                         <select name="section_id" id="section_id" class="form-control" required>
-                            <option value="" selected disabled>--حدد القسم--</option>
+                            <option value="" selected disabled>-- حدد القسم --</option>
                             @foreach ($sections as $section)
                             <option value="{{ $section->id }}">{{ $section->section_name }}</option>
                             @endforeach
@@ -167,7 +165,7 @@
     </div>
 
     <!-- edit -->
-    <div class="modal fade" id="edit_Product" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="edit_product" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -273,7 +271,7 @@
 <script src="{{ URL::asset('assets/js/modal.js') }}"></script>
 
 <script>
-    $('#edit_Product').on('show.bs.modal', function(event) {
+    $('#edit_product').on('show.bs.modal', function(event) {
         var button = $(event.relatedTarget)
         var product_name = button.data('name')
         var section_name = button.data('section_name')

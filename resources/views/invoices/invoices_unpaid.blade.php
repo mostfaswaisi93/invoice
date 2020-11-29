@@ -37,18 +37,18 @@
         notif({
             msg: "تم حذف الفاتورة بنجاح",
             type: "success"
-        })
+        });
     }
 </script>
 @endif
 
-@if (session()->has('Status_Update'))
+@if (session()->has('status_update'))
 <script>
     window.onload = function() {
         notif({
             msg: "تم تحديث حالة الدفع بنجاح",
             type: "success"
-        })
+        });
     }
 </script>
 @endif
