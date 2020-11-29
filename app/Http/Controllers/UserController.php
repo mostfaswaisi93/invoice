@@ -20,8 +20,7 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::pluck('name', 'name')->all();
-
-        return view('users.Add_user', compact('roles'));
+        return view('users.add_user', compact('roles'));
     }
 
     public function store(Request $request)
@@ -35,13 +34,12 @@ class UserController extends Controller
 
         $input = $request->all();
 
-
         $input['password'] = Hash::make($input['password']);
 
         $user = User::create($input);
         $user->assignRole($request->input('roles_name'));
         return redirect()->route('users.index')
-            ->with('success', 'تم اضافة المستخدم بنجاح');
+            ->with('success', 'تم إضافة المستخدم بنجاح');
     }
 
     public function show($id)

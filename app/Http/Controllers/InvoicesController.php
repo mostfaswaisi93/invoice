@@ -6,9 +6,11 @@ use App\Models\Invoice;
 use App\Models\InvoiceAttachment;
 use App\Models\InvoiceDetails;
 use App\Models\Section;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Storage;
 
 class InvoicesController extends Controller
@@ -74,6 +76,13 @@ class InvoicesController extends Controller
             $request->pic->move(public_path('attachments/' . $invoice_number), $imageName);
         }
 
+        // $user = User::first();
+        // Notification::send($user, new AddInvoice($invoice_id));
+
+        $user = User::get();
+        $invoices = Invoice::latest()->first();
+        Notification::send($user, new \App\Notifications\AddNewInvoice($invoices));
+
         session()->flash('Add', 'تم إضافة الفاتورة بنجاح');
         return back();
     }
@@ -119,15 +128,22 @@ class InvoicesController extends Controller
         $invoices = Invoice::where('id', $id)->first();
         $Details = InvoiceAttachment::where('invoice_id', $id)->first();
 
-        if (!empty($Details->invoice_number)) {
-            Storage::disk('public_uploads')->deleteDirectory($Details->invoice_number);
+        $id_page = $request->id_page;
+
+        if (!$id_page == 2) {
+            if (!empty($Details->invoice_number)) {
+                Storage::disk('public_uploads')->deleteDirectory($Details->invoice_number);
+            }
+            $invoices->forceDelete();
+            session()->flash('delete_invoice');
+            return redirect('/invoices');
+        } else {
+            $invoices->delete();
+            session()->flash('archive_invoice');
+            return redirect('/Archive');
         }
-
-        $invoices->forceDelete();
-
-        session()->flash('delete_invoice');
-        return redirect('/invoices');
     }
+
     public function getproducts($id)
     {
         $products = DB::table("products")->where("section_id", $id)->pluck("Product_name", "id");
@@ -177,5 +193,43 @@ class InvoicesController extends Controller
         }
         session()->flash('Status_Update');
         return redirect('/invoices');
+    }
+
+    public function Invoice_Paid()
+    {
+        $invoices = Invoices::where('Value_Status', 1)->get();
+        return view('invoices.invoices_paid', compact('invoices'));
+    }
+
+    public function Invoice_unPaid()
+    {
+        $invoices = Invoices::where('Value_Status', 2)->get();
+        return view('invoices.invoices_unpaid', compact('invoices'));
+    }
+
+    public function Invoice_Partial()
+    {
+        $invoices = Invoices::where('Value_Status', 3)->get();
+        return view('invoices.invoices_Partial', compact('invoices'));
+    }
+
+    public function Print_invoice($id)
+    {
+        $invoices = invoices::where('id', $id)->first();
+        return view('invoices.Print_invoice', compact('invoices'));
+    }
+
+    public function export()
+    {
+        return Excel::download(new InvoicesExport, 'invoices.xlsx');
+    }
+
+    public function MarkAsRead_all(Request $request)
+    {
+        $userUnreadNotification = auth()->user()->unreadNotifications;
+        if ($userUnreadNotification) {
+            $userUnreadNotification->markAsRead();
+            return back();
+        }
     }
 }
