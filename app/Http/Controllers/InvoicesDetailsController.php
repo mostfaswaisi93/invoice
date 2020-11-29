@@ -14,7 +14,7 @@ class InvoicesDetailsController extends Controller
     public function edit($id)
     {
         $invoices = Invoice::where('id', $id)->first();
-        $details  = InvoiceDetails::where('id_Invoice', $id)->get();
+        $details  = InvoiceDetails::where('id_invoice', $id)->get();
         $attachments  = InvoiceAttachment::where('invoice_id', $id)->get();
 
         return view('invoices.details_invoice', compact('invoices', 'details', 'attachments'));
@@ -29,13 +29,13 @@ class InvoicesDetailsController extends Controller
         return back();
     }
 
-    public function get_file($invoice_number, $file_name)
+    public function getFile($invoice_number, $file_name)
     {
         $contents = Storage::disk('public_uploads')->getDriver()->getAdapter()->applyPathPrefix($invoice_number . '/' . $file_name);
         return response()->download($contents);
     }
 
-    public function open_file($invoice_number, $file_name)
+    public function openFile($invoice_number, $file_name)
     {
         $files = Storage::disk('public_uploads')->getDriver()->getAdapter()->applyPathPrefix($invoice_number . '/' . $file_name);
         return response()->file($files);

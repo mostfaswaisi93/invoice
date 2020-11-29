@@ -26,6 +26,6 @@ class InvoiceAchiveController extends Controller
         $invoices = Invoice::withTrashed()->where('id', $request->invoice_id)->first();
         $invoices->forceDelete();
         session()->flash('delete_invoice');
-        return redirect('/Archive');
+        return redirect('/archive');
     }
 }

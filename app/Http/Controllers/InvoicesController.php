@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\InvoicesExport;
 use App\Models\Invoice;
 use App\Models\InvoiceAttachment;
 use App\Models\InvoiceDetails;
 use App\Models\Section;
 use App\Models\User;
+use App\Notifications\AddNewInvoice;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Excel;
 
 class InvoicesController extends Controller
 {
@@ -81,7 +84,7 @@ class InvoicesController extends Controller
 
         $user = User::get();
         $invoices = Invoice::latest()->first();
-        Notification::send($user, new \App\Notifications\AddNewInvoice($invoices));
+        Notification::send($user, new AddNewInvoice($invoices));
 
         session()->flash('Add', 'تم إضافة الفاتورة بنجاح');
         return back();
@@ -126,13 +129,13 @@ class InvoicesController extends Controller
     {
         $id = $request->invoice_id;
         $invoices = Invoice::where('id', $id)->first();
-        $Details = InvoiceAttachment::where('invoice_id', $id)->first();
+        $details = InvoiceAttachment::where('invoice_id', $id)->first();
 
         $id_page = $request->id_page;
 
         if (!$id_page == 2) {
-            if (!empty($Details->invoice_number)) {
-                Storage::disk('public_uploads')->deleteDirectory($Details->invoice_number);
+            if (!empty($details->invoice_number)) {
+                Storage::disk('public_uploads')->deleteDirectory($details->invoice_number);
             }
             $invoices->forceDelete();
             session()->flash('delete_invoice');
@@ -140,17 +143,17 @@ class InvoicesController extends Controller
         } else {
             $invoices->delete();
             session()->flash('archive_invoice');
-            return redirect('/Archive');
+            return redirect('/archive');
         }
     }
 
-    public function getproducts($id)
+    public function getProducts($id)
     {
-        $products = DB::table("products")->where("section_id", $id)->pluck("Product_name", "id");
+        $products = DB::table("products")->where("section_id", $id)->pluck("product_name", "id");
         return json_encode($products);
     }
 
-    public function Status_Update($id, Request $request)
+    public function statusUpdate($id, Request $request)
     {
         $invoices = Invoice::findOrFail($id);
 
@@ -191,32 +194,32 @@ class InvoicesController extends Controller
                 'user' => (Auth::user()->name),
             ]);
         }
-        session()->flash('Status_Update');
+        session()->flash('status_update');
         return redirect('/invoices');
     }
 
-    public function Invoice_Paid()
+    public function invoicePaid()
     {
-        $invoices = Invoices::where('Value_Status', 1)->get();
+        $invoices = Invoices::where('value_status', 1)->get();
         return view('invoices.invoices_paid', compact('invoices'));
     }
 
-    public function Invoice_unPaid()
+    public function invoiceUnpaid()
     {
-        $invoices = Invoices::where('Value_Status', 2)->get();
+        $invoices = Invoices::where('value_status', 2)->get();
         return view('invoices.invoices_unpaid', compact('invoices'));
     }
 
-    public function Invoice_Partial()
+    public function invoicePartial()
     {
-        $invoices = Invoices::where('Value_Status', 3)->get();
-        return view('invoices.invoices_Partial', compact('invoices'));
+        $invoices = Invoices::where('value_status', 3)->get();
+        return view('invoices.invoices_partial', compact('invoices'));
     }
 
-    public function Print_invoice($id)
+    public function printInvoice($id)
     {
         $invoices = invoices::where('id', $id)->first();
-        return view('invoices.Print_invoice', compact('invoices'));
+        return view('invoices.print_invoice', compact('invoices'));
     }
 
     public function export()
@@ -224,7 +227,7 @@ class InvoicesController extends Controller
         return Excel::download(new InvoicesExport, 'invoices.xlsx');
     }
 
-    public function MarkAsRead_all(Request $request)
+    public function markAsReadAll()
     {
         $userUnreadNotification = auth()->user()->unreadNotifications;
         if ($userUnreadNotification) {

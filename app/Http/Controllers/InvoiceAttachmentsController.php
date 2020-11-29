@@ -23,7 +23,7 @@ class InvoiceAttachmentsController extends Controller
         $attachments->file_name = $file_name;
         $attachments->invoice_number = $request->invoice_number;
         $attachments->invoice_id = $request->invoice_id;
-        $attachments->Created_by = Auth::user()->name;
+        $attachments->created_by = Auth::user()->name;
         $attachments->save();
 
         // move pic

@@ -31,13 +31,13 @@ Route::resource('invoice_attachments', InvoiceAttachmentsController::class);
 
 // Route::resource('InvoicesDetails', InvoicesDetailsController::class);
 
-Route::get('/section/{id}', [InvoicesController::class, 'getproducts']);
+Route::get('/section/{id}', [InvoicesController::class, 'getProducts']);
 
 Route::get('/invoices_details/{id}', [InvoicesDetailsController::class, 'edit']);
 
-Route::get('download/{invoice_number}/{file_name}', [InvoicesDetailsController::class, 'get_file']);
+Route::get('download/{invoice_number}/{file_name}', [InvoicesDetailsController::class, 'getFile']);
 
-Route::get('view_file/{invoice_number}/{file_name}', [InvoicesDetailsController::class, 'open_file']);
+Route::get('view_file/{invoice_number}/{file_name}', [InvoicesDetailsController::class, 'openFile']);
 
 Route::post('delete_file', [InvoicesDetailsController::class, 'destroy'])->name('delete_file');
 
@@ -45,14 +45,14 @@ Route::get('/edit_invoice/{id}', [InvoicesController::class, 'edit']);
 
 Route::get('/status_show/{id}', [InvoicesController::class, 'show'])->name('status_show');
 
-Route::post('/status_update/{id}', [InvoicesController::class, 'status_update'])->name('status_update');
+Route::post('/status_update/{id}', [InvoicesController::class, 'statusUpdate'])->name('status_update');
 
 Route::resource('archive', InvoiceAchiveController::class);
 
-Route::get('/invoice_paid', [InvoicesController::class, 'invoice_paid']);
-Route::get('/invoice_unpaid', [InvoicesController::class, 'invoice_unpaid']);
-Route::get('/invoice_partial', [InvoicesController::class, 'invoice_partial']);
-Route::get('print_invoice/{id}', [InvoicesController::class, 'print_invoice']);
+Route::get('/invoice_paid', [InvoicesController::class, 'invoicePaid']);
+Route::get('/invoice_unpaid', [InvoicesController::class, 'invoiceUnpaid']);
+Route::get('/invoice_partial', [InvoicesController::class, 'invoicePartial']);
+Route::get('print_invoice/{id}', [InvoicesController::class, 'printInvoice']);
 Route::get('export_invoices', [InvoicesController::class, 'export']);
 
 Route::group(['middleware' => ['auth']], function () {
@@ -61,11 +61,11 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 Route::get('/invoices_report', [InvoicesReportController::class, 'index']);
-Route::post('/invoices_report', [InvoicesReportController::class, 'search_invoices']);
+Route::post('/invoices_report', [InvoicesReportController::class, 'searchInvoices']);
 
 Route::get('/customers_report', [CustomersReportController::class, 'index'])->name("customers_report");
-Route::post('/search_customers', [CustomersReportController::class, 'search_customers']);
+Route::post('/search_customers', [CustomersReportController::class, 'searchCustomers']);
 
-Route::get('/markAsRead_all', [CustomersReportController::class, 'markAsRead_all'])->name("markAsRead_all");
+Route::get('/markAsReadAll', [InvoicesController::class, 'markAsReadAll'])->name("markAsReadAll");
 
 Route::get('/{page}', [AdminController::class, 'index']);

@@ -16,9 +16,9 @@ class HomeController extends Controller
     {
         // إحصائية نسبة تنفيذ الحالات
         $count_all = Invoice::count();
-        $count_invoices1 = Invoice::where('Value_Status', 1)->count();
-        $count_invoices2 = Invoice::where('Value_Status', 2)->count();
-        $count_invoices3 = Invoice::where('Value_Status', 3)->count();
+        $count_invoices1 = Invoice::where('value_status', 1)->count();
+        $count_invoices2 = Invoice::where('value_status', 2)->count();
+        $count_invoices3 = Invoice::where('value_status', 3)->count();
 
         if ($count_invoices2 == 0) {
             $nspainvoices2 = 0;
@@ -42,10 +42,10 @@ class HomeController extends Controller
             ->name('barChartTest')
             ->type('bar')
             ->size(['width' => 350, 'height' => 200])
-            ->labels(['الفواتير الغير المدفوعة', 'الفواتير المدفوعة', 'الفواتير المدفوعة جزئيًا'])
+            ->labels(['الفواتير الغير مدفوعة', 'الفواتير المدفوعة', 'الفواتير المدفوعة جزئيًا'])
             ->datasets([
                 [
-                    "label" => "الفواتير الغير المدفوعة",
+                    "label" => "الفواتير الغير مدفوعة",
                     'backgroundColor' => ['#ec5858'],
                     'data' => [$nspainvoices2]
                 ],
@@ -66,7 +66,7 @@ class HomeController extends Controller
             ->name('pieChartTest')
             ->type('pie')
             ->size(['width' => 340, 'height' => 200])
-            ->labels(['الفواتير الغير المدفوعة', 'الفواتير المدفوعة', 'الفواتير المدفوعة جزئيا'])
+            ->labels(['الفواتير الغير مدفوعة', 'الفواتير المدفوعة', 'الفواتير المدفوعة جزئيًا'])
             ->datasets([
                 [
                     'backgroundColor' => ['#ec5858', '#81b214', '#ff9642'],
