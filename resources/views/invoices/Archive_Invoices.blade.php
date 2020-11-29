@@ -22,33 +22,30 @@
                 الفواتير</span>
         </div>
     </div>
-
 </div>
 <!-- breadcrumb -->
 @endsection
-@section('content')
 
+@section('content')
 @if (session()->has('archive_invoice'))
 <script>
     window.onload = function() {
-                notif({
-                    msg: "تم أرشفة الفاتورة بنجاح",
-                    type: "success"
-                })
-            }
-
+        notif({
+            msg: "تم أرشفة الفاتورة بنجاح",
+            type: "success"
+        })
+    }
 </script>
 @endif
 
 @if (session()->has('delete_invoice'))
 <script>
     window.onload = function() {
-                notif({
-                    msg: "تم حذف الفاتورة بنجاح",
-                    type: "success"
-                })
-            }
-
+        notif({
+            msg: "تم حذف الفاتورة بنجاح",
+            type: "success"
+        })
+    }
 </script>
 @endif
 
@@ -59,7 +56,6 @@
         <div class="card mg-b-20">
             <div class="card-header pb-0">
                 <div class="d-flex justify-content-between">
-
                 </div>
             </div>
             <div class="card-body">
@@ -76,7 +72,7 @@
                                 <th class="border-bottom-0">الخصم</th>
                                 <th class="border-bottom-0">نسبة الضريبة</th>
                                 <th class="border-bottom-0">قيمة الضريبة</th>
-                                <th class="border-bottom-0">الاجمالي</th>
+                                <th class="border-bottom-0">الإجمالي</th>
                                 <th class="border-bottom-0">الحالة</th>
                                 <th class="border-bottom-0">ملاحظات</th>
                                 <th class="border-bottom-0">العمليات</th>
@@ -93,27 +89,25 @@
                             <tr>
                                 <td>{{ $i }}</td>
                                 <td>{{ $invoice->invoice_number }} </td>
-                                <td>{{ $invoice->invoice_Date }}</td>
-                                <td>{{ $invoice->Due_date }}</td>
+                                <td>{{ $invoice->invoice_date }}</td>
+                                <td>{{ $invoice->due_date }}</td>
                                 <td>{{ $invoice->product }}</td>
                                 <td><a
                                         href="{{ url('InvoicesDetails') }}/{{ $invoice->id }}">{{ $invoice->section->section_name }}</a>
                                 </td>
-                                <td>{{ $invoice->Discount }}</td>
-                                <td>{{ $invoice->Rate_VAT }}</td>
-                                <td>{{ $invoice->Value_VAT }}</td>
-                                <td>{{ $invoice->Total }}</td>
+                                <td>{{ $invoice->discount }}</td>
+                                <td>{{ $invoice->rate_vat }}</td>
+                                <td>{{ $invoice->value_vat }}</td>
+                                <td>{{ $invoice->total }}</td>
                                 <td>
-                                    @if ($invoice->Value_Status == 1)
-                                    <span class="text-success">{{ $invoice->Status }}</span>
-                                    @elseif($invoice->Value_Status == 2)
-                                    <span class="text-danger">{{ $invoice->Status }}</span>
+                                    @if ($invoice->value_status == 1)
+                                    <span class="text-success">{{ $invoice->status }}</span>
+                                    @elseif($invoice->value_status == 2)
+                                    <span class="text-danger">{{ $invoice->status }}</span>
                                     @else
-                                    <span class="text-warning">{{ $invoice->Status }}</span>
+                                    <span class="text-warning">{{ $invoice->status }}</span>
                                     @endif
-
                                 </td>
-
                                 <td>{{ $invoice->note }}</td>
                                 <td>
                                     <div class="dropdown">
@@ -135,7 +129,6 @@
                                 </td>
                             </tr>
                             @endforeach
-
                         </tbody>
                     </table>
                 </div>
@@ -156,17 +149,16 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <form action="{{ route('Archive.destroy', 'test') }}" method="post">
-                    {{ method_field('delete') }}
-                    {{ csrf_field() }}
+                    @method('delete')
+                    @csrf
             </div>
             <div class="modal-body">
-                هل انت متاكد من عملية الحذف ؟
+                هل أنت متأكد من عملية الحذف؟
                 <input type="hidden" name="invoice_id" id="invoice_id" value="">
-
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
-                <button type="submit" class="btn btn-danger">تاكيد</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
+                <button type="submit" class="btn btn-danger">تأكيد</button>
             </div>
             </form>
         </div>
@@ -184,17 +176,16 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
                 <form action="{{ route('Archive.update', 'test') }}" method="post">
-                    {{ method_field('patch') }}
-                    {{ csrf_field() }}
+                    @method('patch')
+                    @csrf
             </div>
             <div class="modal-body">
-                هل انت متاكد من عملية الغاء الارشفة ؟
+                هل أنت متأكد من عملية إلغاء الأرشفة؟
                 <input type="hidden" name="invoice_id" id="invoice_id" value="">
-
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
-                <button type="submit" class="btn btn-success">تاكيد</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">إلغاء</button>
+                <button type="submit" class="btn btn-success">تأكيد</button>
             </div>
             </form>
         </div>
@@ -239,7 +230,6 @@
         var modal = $(this)
         modal.find('.modal-body #invoice_id').val(invoice_id);
     })
-
 </script>
 
 <script>
@@ -249,7 +239,6 @@
         var modal = $(this)
         modal.find('.modal-body #invoice_id').val(invoice_id);
     })
-
 </script>
 
 @endsection

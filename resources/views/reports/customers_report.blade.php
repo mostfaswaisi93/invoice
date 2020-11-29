@@ -1,4 +1,5 @@
 @extends('layouts.master')
+
 @section('css')
 <!-- Internal Data table css -->
 <link href="{{ URL::asset('assets/plugins/datatable/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet" />
@@ -13,11 +14,12 @@
 
 <!-- Internal Select2 css -->
 <link href="{{ URL::asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
+@endsection
 
 @section('title')
 تقرير العملاء - مورا سوفت للادارة الفواتير
 @stop
-@endsection
+
 @section('page-header')
 <!-- breadcrumb -->
 <div class="breadcrumb-header justify-content-between">
@@ -30,8 +32,8 @@
 </div>
 <!-- breadcrumb -->
 @endsection
-@section('content')
 
+@section('content')
 @if (count($errors) > 0)
 <div class="alert alert-danger">
     <button aria-label="Close" class="close" data-dismiss="alert" type="button">
@@ -48,19 +50,12 @@
 
 <!-- row -->
 <div class="row">
-
     <div class="col-xl-12">
         <div class="card mg-b-20">
-
-
             <div class="card-header pb-0">
-
                 <form action="/Search_customers" method="POST" role="search" autocomplete="off">
-                    {{ csrf_field() }}
-
-
+                    @csrf
                     <div class="row">
-
                         <div class="col">
                             <label for="inputName" class="control-label">القسم</label>
                             <select name="Section" class="form-control select2" onclick="console.log($(this).val())"
@@ -72,14 +67,11 @@
                                 @endforeach
                             </select>
                         </div>
-
                         <div class="col-lg-3 mg-t-20 mg-lg-t-0">
                             <label for="inputName" class="control-label">المنتج</label>
                             <select id="product" name="product" class="form-control select2">
                             </select>
                         </div>
-
-
                         <div class="col-lg-3" id="start_at">
                             <label for="exampleFormControlSelect1">من تاريخ</label>
                             <div class="input-group">
@@ -91,7 +83,6 @@
                                     name="start_at" placeholder="YYYY-MM-DD" type="text">
                             </div><!-- input-group -->
                         </div>
-
                         <div class="col-lg-3" id="end_at">
                             <label for="exampleFormControlSelect1">الي تاريخ</label>
                             <div class="input-group">
@@ -104,14 +95,12 @@
                             </div><!-- input-group -->
                         </div>
                     </div><br>
-
                     <div class="row">
                         <div class="col-sm-1 col-md-1">
                             <button class="btn btn-primary btn-block">بحث</button>
                         </div>
                     </div>
                 </form>
-
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -131,7 +120,6 @@
                                 <th class="border-bottom-0">الاجمالي</th>
                                 <th class="border-bottom-0">الحالة</th>
                                 <th class="border-bottom-0">ملاحظات</th>
-
                             </tr>
                         </thead>
                         <tbody>
@@ -159,15 +147,12 @@
                                     @else
                                     <span class="text-warning">{{ $invoice->Status }}</span>
                                     @endif
-
                                 </td>
-
                                 <td>{{ $invoice->note }}</td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
-
                     @endif
                 </div>
             </div>
@@ -180,6 +165,7 @@
 </div>
 <!-- main-content closed -->
 @endsection
+
 @section('js')
 <!-- Internal Data tables -->
 <script src="{{ URL::asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
@@ -219,11 +205,11 @@
 <script src="{{ URL::asset('assets/plugins/pickerjs/picker.min.js') }}"></script>
 <!-- Internal form-elements js -->
 <script src="{{ URL::asset('assets/js/form-elements.js') }}"></script>
+
 <script>
     var date = $('.fc-datepicker').datepicker({
         dateFormat: 'yy-mm-dd'
     }).val();
-
 </script>
 
 <script>
@@ -243,15 +229,11 @@
                         });
                     },
                 });
-
             } else {
                 console.log('AJAX load did not work');
             }
         });
-
     });
-
 </script>
-
 
 @endsection

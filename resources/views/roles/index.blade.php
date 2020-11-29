@@ -1,13 +1,14 @@
 @extends('layouts.master')
+
 @section('css')
 <!--Internal   Notify -->
 <link href="{{ URL::asset('assets/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
+@endsection
+
 @section('title')
 صلاحيات المستخدمين - مورا سوفت للادارة القانونية
 @stop
 
-
-@endsection
 @section('page-header')
 <!-- breadcrumb -->
 <div class="breadcrumb-header justify-content-between">
@@ -20,42 +21,38 @@
 </div>
 <!-- breadcrumb -->
 @endsection
+
 @section('content')
-
-
 @if (session()->has('Add'))
 <script>
     window.onload = function() {
-            notif({
-                msg: " تم اضافة الصلاحية بنجاح",
-                type: "success"
-            });
-        }
-
+        notif({
+            msg: " تم اضافة الصلاحية بنجاح",
+            type: "success"
+        });
+    }
 </script>
 @endif
 
 @if (session()->has('edit'))
 <script>
     window.onload = function() {
-            notif({
-                msg: " تم تحديث بيانات الصلاحية بنجاح",
-                type: "success"
-            });
-        }
-
+        notif({
+            msg: " تم تحديث بيانات الصلاحية بنجاح",
+            type: "success"
+        });
+    }
 </script>
 @endif
 
 @if (session()->has('delete'))
 <script>
     window.onload = function() {
-            notif({
-                msg: " تم حذف الصلاحية بنجاح",
-                type: "error"
-            });
-        }
-
+        notif({
+            msg: " تم حذف الصلاحية بنجاح",
+            type: "error"
+        });
+    }
 </script>
 @endif
 
@@ -74,7 +71,6 @@
                     </div>
                     <br>
                 </div>
-
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -96,12 +92,10 @@
                                     <a class="btn btn-success btn-sm"
                                         href="{{ route('roles.show', $role->id) }}">عرض</a>
                                     @endcan
-
                                     @can('تعديل صلاحية')
                                     <a class="btn btn-primary btn-sm"
                                         href="{{ route('roles.edit', $role->id) }}">تعديل</a>
                                     @endcan
-
                                     @if ($role->name !== 'owner')
                                     @can('حذف صلاحية')
                                     {!! Form::open(['method' => 'DELETE', 'route' => ['roles.destroy',
@@ -110,8 +104,6 @@
                                     {!! Form::close() !!}
                                     @endcan
                                     @endif
-
-
                                 </td>
                             </tr>
                             @endforeach
@@ -129,6 +121,7 @@
 </div>
 <!-- main-content closed -->
 @endsection
+
 @section('js')
 <!--Internal  Notify js -->
 <script src="{{ URL::asset('assets/plugins/notify/js/notifIt.js') }}"></script>

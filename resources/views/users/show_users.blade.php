@@ -2,7 +2,7 @@
 @section('css')
 
 @section('title')
-    المستخدمين - مورا سوفت للادارة الفواتير
+المستخدمين - مورا سوفت للادارة الفواتير
 @stop
 
 <!-- Internal Data table css -->
@@ -16,6 +16,7 @@
 <link href="{{ URL::asset('assets/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
 
 @endsection
+
 @section('page-header')
 <!-- breadcrumb -->
 <div class="breadcrumb-header justify-content-between">
@@ -30,11 +31,10 @@
 @endsection
 
 @section('content')
-
 @if (session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
+<div class="alert alert-success">
+    {{ session('success') }}
+</div>
 @endif
 
 <!-- row opened -->
@@ -44,7 +44,7 @@
             <div class="card-header pb-0">
                 <div class="col-sm-1 col-md-2">
                     @can('اضافة مستخدم')
-                        <a class="btn btn-primary btn-sm" href="{{ route('users.create') }}">اضافة مستخدم</a>
+                    <a class="btn btn-primary btn-sm" href="{{ route('users.create') }}">اضافة مستخدم</a>
                     @endcan
                 </div>
             </div>
@@ -63,44 +63,41 @@
                         </thead>
                         <tbody>
                             @foreach ($data as $key => $user)
-                                <tr>
-                                    <td>{{ ++$i }}</td>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>
-                                        @if ($user->Status == 'مفعل')
-                                            <span class="label text-success d-flex">
-                                                <div class="dot-label bg-success ml-1"></div>{{ $user->Status }}
-                                            </span>
-                                        @else
-                                            <span class="label text-danger d-flex">
-                                                <div class="dot-label bg-danger ml-1"></div>{{ $user->Status }}
-                                            </span>
-                                        @endif
-                                    </td>
-
-                                    <td>
-                                        @if (!empty($user->getRoleNames()))
-                                            @foreach ($user->getRoleNames() as $v)
-                                                <label class="badge badge-success">{{ $v }}</label>
-                                            @endforeach
-                                        @endif
-                                    </td>
-
-                                    <td>
-                                        @can('تعديل مستخدم')
-                                            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-info"
-                                                title="تعديل"><i class="las la-pen"></i></a>
-                                        @endcan
-
-                                        @can('حذف مستخدم')
-                                            <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
-                                                data-user_id="{{ $user->id }}" data-username="{{ $user->name }}"
-                                                data-toggle="modal" href="#modaldemo8" title="حذف"><i
-                                                    class="las la-trash"></i></a>
-                                        @endcan
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td>{{ ++$i }}</td>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td>
+                                    @if ($user->Status == 'مفعل')
+                                    <span class="label text-success d-flex">
+                                        <div class="dot-label bg-success ml-1"></div>{{ $user->Status }}
+                                    </span>
+                                    @else
+                                    <span class="label text-danger d-flex">
+                                        <div class="dot-label bg-danger ml-1"></div>{{ $user->Status }}
+                                    </span>
+                                    @endif
+                                </td>
+                                <td>
+                                    @if (!empty($user->getRoleNames()))
+                                    @foreach ($user->getRoleNames() as $v)
+                                    <label class="badge badge-success">{{ $v }}</label>
+                                    @endforeach
+                                    @endif
+                                </td>
+                                <td>
+                                    @can('تعديل مستخدم')
+                                    <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-info"
+                                        title="تعديل"><i class="las la-pen"></i></a>
+                                    @endcan
+                                    @can('حذف مستخدم')
+                                    <a class="modal-effect btn btn-sm btn-danger" data-effect="effect-scale"
+                                        data-user_id="{{ $user->id }}" data-username="{{ $user->name }}"
+                                        data-toggle="modal" href="#modaldemo8" title="حذف"><i
+                                            class="las la-trash"></i></a>
+                                    @endcan
+                                </td>
+                            </tr>
                             @endforeach
                         </tbody>
                     </table>
@@ -119,8 +116,8 @@
                         data-dismiss="modal" type="button"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <form action="{{ route('users.destroy', 'test') }}" method="post">
-                    {{ method_field('delete') }}
-                    {{ csrf_field() }}
+                    @method('delete')
+                    @csrf
                     <div class="modal-body">
                         <p>هل انت متاكد من عملية الحذف ؟</p><br>
                         <input type="hidden" name="user_id" id="user_id" value="">
@@ -143,6 +140,7 @@
 </div>
 <!-- main-content closed -->
 @endsection
+
 @section('js')
 <!-- Internal Data tables -->
 <script src="{{ URL::asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
@@ -170,9 +168,7 @@
         var modal = $(this)
         modal.find('.modal-body #user_id').val(user_id);
         modal.find('.modal-body #username').val(username);
-    })
-
+    });
 </script>
-
 
 @endsection

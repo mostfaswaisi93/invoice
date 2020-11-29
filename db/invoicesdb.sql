@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 28, 2020 at 04:21 PM
+-- Generation Time: Nov 29, 2020 at 10:23 AM
 -- Server version: 10.5.4-MariaDB-log
 -- PHP Version: 7.4.10
 
@@ -73,6 +73,10 @@ CREATE TABLE `invoices` (
 
 CREATE TABLE `invoice_attachments` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `file_name` varchar(999) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `invoice_number` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_by` varchar(999) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `invoice_id` int(10) UNSIGNED DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -85,6 +89,15 @@ CREATE TABLE `invoice_attachments` (
 
 CREATE TABLE `invoice_details` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `id_invoice` int(10) UNSIGNED NOT NULL,
+  `invoice_number` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `product` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `section` varchar(999) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `status` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `value_status` int(11) NOT NULL,
+  `payment_date` date DEFAULT NULL,
+  `note` text COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user` varchar(300) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -221,14 +234,6 @@ CREATE TABLE `sections` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `sections`
---
-
-INSERT INTO `sections` (`id`, `section_name`, `description`, `created_by`, `created_at`, `updated_at`) VALUES
-(1, 'test 1', 'testtest', 'mostfaswaisi93', '2020-11-28 13:36:01', '2020-11-28 13:36:01'),
-(2, 'testtest', 'test', 'mostfaswaisi93', '2020-11-28 13:36:07', '2020-11-28 13:36:07');
-
 -- --------------------------------------------------------
 
 --
@@ -251,7 +256,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'mostfaswaisi93', 'mostfaswaisi93@gmail.com', NULL, '$2y$10$4TyED2G6qYhOq2Jat0L53u50CAGlwhWHmpLmPsqQIMrr.c.1yiUEC', NULL, '2020-11-28 12:58:51', '2020-11-28 12:58:51');
+(1, 'mostfaswaisi93', 'mostfaswaisi93@gmail.com', NULL, '$2y$10$T4llU6T0sQMgpFNFL2fXTOC.kKvs05uO0V9SX7plrMIWe1Unu.0jm', NULL, '2020-11-29 08:16:16', '2020-11-29 08:16:16');
 
 --
 -- Indexes for dumped tables
@@ -390,7 +395,7 @@ ALTER TABLE `permissions`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `roles`
@@ -402,7 +407,7 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT for table `sections`
 --
 ALTER TABLE `sections`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`

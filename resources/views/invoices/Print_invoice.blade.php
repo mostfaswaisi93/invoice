@@ -1,4 +1,5 @@
 @extends('layouts.master')
+
 @section('css')
 <style>
     @media print {
@@ -8,9 +9,11 @@
     }
 </style>
 @endsection
+
 @section('title')
 معاينه طباعة الفاتورة
 @stop
+
 @section('page-header')
 <!-- breadcrumb -->
 <div class="breadcrumb-header justify-content-between">
@@ -20,10 +23,10 @@
                 معاينة طباعة الفاتورة</span>
         </div>
     </div>
-
 </div>
 <!-- breadcrumb -->
 @endsection
+
 @section('content')
 <!-- row -->
 <div class="row row-sm">
@@ -86,12 +89,10 @@
                                         {{ number_format($total, 2) }}
                                     </td>
                                 </tr>
-
                                 <tr>
                                     <td class="valign-middle" colspan="2" rowspan="4">
                                         <div class="invoice-notes">
                                             <label class="main-content-label tx-13">#</label>
-
                                         </div><!-- invoice-notes -->
                                     </td>
                                     <td class="tx-right">الاجمالي</td>
@@ -104,7 +105,6 @@
                                 <tr>
                                     <td class="tx-right">قيمة الخصم</td>
                                     <td class="tx-right" colspan="2"> {{ number_format($invoices->Discount, 2) }}</td>
-
                                 </tr>
                                 <tr>
                                     <td class="tx-right tx-uppercase tx-bold tx-inverse">الاجمالي شامل الضريبة</td>
@@ -116,9 +116,6 @@
                         </table>
                     </div>
                     <hr class="mg-b-40">
-
-
-
                     <button class="btn btn-danger  float-left mt-3 mr-2" id="print_Button" onclick="printDiv()"> <i
                             class="mdi mdi-printer ml-1"></i>طباعة</button>
                 </div>
@@ -132,21 +129,20 @@
 </div>
 <!-- main-content closed -->
 @endsection
+
 @section('js')
 <!--Internal  Chart.bundle js -->
 <script src="{{ URL::asset('assets/plugins/chart.js/Chart.bundle.min.js') }}"></script>
 
-
 <script type="text/javascript">
     function printDiv() {
-            var printContents = document.getElementById('print').innerHTML;
-            var originalContents = document.body.innerHTML;
-            document.body.innerHTML = printContents;
-            window.print();
-            document.body.innerHTML = originalContents;
-            location.reload();
-        }
-
+        var printContents = document.getElementById('print').innerHTML;
+        var originalContents = document.body.innerHTML;
+        document.body.innerHTML = printContents;
+        window.print();
+        document.body.innerHTML = originalContents;
+        location.reload();
+    }
 </script>
 
 @endsection
