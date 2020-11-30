@@ -13,9 +13,7 @@
 <link rel="stylesheet" href="{{ URL::asset('assets/plugins/telephoneinput/telephoneinput-rtl.css') }}">
 @endsection
 
-@section('title')
-إضافة فاتورة
-@stop
+@section('title') إضافة فاتورة @stop
 
 @section('page-header')
 <!-- breadcrumb -->
@@ -75,7 +73,7 @@
                             <select name="section" class="form-control SlectBox" onclick="console.log($(this).val())"
                                 onchange="console.log('change is firing')">
                                 <!--placeholder-->
-                                <option value="" selected disabled>حدد القسم</option>
+                                <option value="" selected disabled>-- حدد القسم --</option>
                                 @foreach ($sections as $section)
                                 <option value="{{ $section->id }}"> {{ $section->section_name }}</option>
                                 @endforeach
@@ -98,14 +96,14 @@
                         <div class="col">
                             <label for="inputName" class="control-label">مبلغ العمولة</label>
                             <input type="text" class="form-control form-control-lg" id="amount_commission"
-                                name="amount_commission" title="يرجي إدخال مبلغ العمولة "
+                                name="amount_commission" title="يرجي إدخال مبلغ العمولة"
                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
                                 required>
                         </div>
                         <div class="col">
                             <label for="inputName" class="control-label">الخصم</label>
                             <input type="text" class="form-control form-control-lg" id="discount" name="discount"
-                                title="يرجي إدخال مبلغ الخصم "
+                                title="يرجي إدخال مبلغ الخصم"
                                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
                                 value=0 required>
                         </div>
@@ -228,7 +226,7 @@
         var amount_commission2 = amount_commission - discount;
 
         if (typeof amount_commission === 'undefined' || !amount_commission) {
-            alert('يرجي ادخال مبلغ العمولة ');
+            alert('يرجي إدخال مبلغ العمولة');
         } else {
             var intResults = amount_commission2 * rate_vat / 100;
             var intResults2 = parseFloat(intResults + amount_commission2);
@@ -240,5 +238,4 @@
         }
     }
 </script>
-
 @endsection

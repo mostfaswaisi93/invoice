@@ -66,8 +66,11 @@
                                 <div class="tabs-menu1">
                                     <!-- Tabs -->
                                     <ul class="nav panel-tabs main-nav-line">
-                                        <li><a href="#tab4" class="nav-link active" data-toggle="tab">معلومات
-                                                الفاتورة</a></li>
+                                        <li>
+                                            <a href="#tab4" class="nav-link active" data-toggle="tab">
+                                                معلومات الفاتورة
+                                            </a>
+                                        </li>
                                         <li><a href="#tab5" class="nav-link" data-toggle="tab">حالات الدفع</a></li>
                                         <li><a href="#tab6" class="nav-link" data-toggle="tab">المرفقات</a></li>
                                     </ul>
@@ -82,7 +85,7 @@
                                                     <tr>
                                                         <th scope="row">رقم الفاتورة</th>
                                                         <td>{{ $invoices->invoice_number }}</td>
-                                                        <th scope="row">تاريخ الاصدار</th>
+                                                        <th scope="row">تاريخ الإصدار</th>
                                                         <td>{{ $invoices->invoice_date }}</td>
                                                         <th scope="row">تاريخ الاستحقاق</th>
                                                         <td>{{ $invoices->due_date }}</td>
@@ -97,15 +100,15 @@
                                                         <th scope="row">مبلغ العمولة</th>
                                                         <td>{{ $invoices->amount_commission }}</td>
                                                         <th scope="row">الخصم</th>
-                                                        <td>{{ $invoices->siscount }}</td>
+                                                        <td>{{ $invoices->discount }}</td>
                                                     </tr>
                                                     <tr>
                                                         <th scope="row">نسبة الضريبة</th>
-                                                        <td>{{ $invoices->Rate_VAT }}</td>
+                                                        <td>{{ $invoices->rate_vat }}</td>
                                                         <th scope="row">قيمة الضريبة</th>
-                                                        <td>{{ $invoices->Value_VAT }}</td>
+                                                        <td>{{ $invoices->value_vat }}</td>
                                                         <th scope="row">الإجمالي مع الضريبة</th>
-                                                        <td>{{ $invoices->Total }}</td>
+                                                        <td>{{ $invoices->total }}</td>
                                                         <th scope="row">الحالة الحالية</th>
                                                         @if ($invoices->value_status == 1)
                                                         <td><span
@@ -154,7 +157,7 @@
                                                         <td>{{ $i }}</td>
                                                         <td>{{ $x->invoice_number }}</td>
                                                         <td>{{ $x->product }}</td>
-                                                        <td>{{ $invoices->Section->section_name }}</td>
+                                                        <td>{{ $invoices->section->section_name }}</td>
                                                         @if ($x->value_status == 1)
                                                         <td><span
                                                                 class="badge badge-pill badge-success">{{ $x->status }}</span>
@@ -181,11 +184,11 @@
                                     <div class="tab-pane" id="tab6">
                                         <!--المرفقات-->
                                         <div class="card card-statistics">
-                                            @can('اضافة مرفق')
+                                            @can('إضافة مرفق')
                                             <div class="card-body">
                                                 <p class="text-danger">* صيغة المرفق pdf, jpeg ,.jpg , png </p>
                                                 <h5 class="card-title">إضافة مرفقات</h5>
-                                                <form method="post" action="{{ url('/InvoiceAttachments') }}"
+                                                <form method="post" action="{{ url('/invoice_attachments') }}"
                                                     enctype="multipart/form-data">
                                                     @csrf
                                                     <div class="custom-file">
@@ -195,8 +198,8 @@
                                                             value="{{ $invoices->invoice_number }}">
                                                         <input type="hidden" id="invoice_id" name="invoice_id"
                                                             value="{{ $invoices->id }}">
-                                                        <label class="custom-file-label" for="customFile">حدد
-                                                            المرفق</label>
+                                                        <label class="custom-file-label" for="customFile">
+                                                            حدد المرفق</label>
                                                     </div><br><br>
                                                     <button type="submit" class="btn btn-primary btn-sm "
                                                         name="uploadedFile">تأكيد</button>
@@ -227,7 +230,7 @@
                                                             <td>{{ $attachment->created_at }}</td>
                                                             <td colspan="2">
                                                                 <a class="btn btn-outline-success btn-sm"
-                                                                    href="{{ url('View_file') }}/{{ $invoices->invoice_number }}/{{ $attachment->file_name }}"
+                                                                    href="{{ url('view_file') }}/{{ $invoices->invoice_number }}/{{ $attachment->file_name }}"
                                                                     role="button"><i class="fas fa-eye"></i>&nbsp;
                                                                     عرض</a>
                                                                 <a class="btn btn-outline-info btn-sm"
@@ -285,8 +288,8 @@
                     <input type="hidden" name="invoice_number" id="invoice_number" value="">
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">الغاء</button>
-                    <button type="submit" class="btn btn-danger">تاكيد</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">إلغاء</button>
+                    <button type="submit" class="btn btn-danger">تأكيد</button>
                 </div>
             </form>
         </div>
@@ -327,15 +330,14 @@
             modal.find('.modal-body #id_file').val(id_file);
             modal.find('.modal-body #file_name').val(file_name);
             modal.find('.modal-body #invoice_number').val(invoice_number);
-        })
+        });
 </script>
 
 <script>
     // Add the following code if you want the name of the file appear on select
-        $(".custom-file-input").on("change", function() {
-            var fileName = $(this).val().split("\\").pop();
-            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-        });
+    $(".custom-file-input").on("change", function() {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
 </script>
-
 @endsection

@@ -53,7 +53,7 @@
                     <div class="d-flex">
                         <div class="">
                             <h4 class="tx-20 font-weight-bold mb-1 text-white">
-                                {{ number_format(\App\Modal\Invoice::sum('Total'), 2) }}
+                                {{ number_format(\App\Modal\Invoice::sum('total'), 2) }}
                             </h4>
                             <p class="mb-0 tx-12 text-white op-7">{{ \App\Modal\Invoice::count() }}</p>
                         </div>
@@ -77,7 +77,7 @@
                     <div class="d-flex">
                         <div class="">
                             <h3 class="tx-20 font-weight-bold mb-1 text-white">
-                                {{ number_format(\App\Modal\Invoice::where('value_status', 2)->sum('Total'), 2) }}
+                                {{ number_format(\App\Modal\Invoice::where('value_status', 2)->sum('total'), 2) }}
                             </h3>
                             <p class="mb-0 tx-12 text-white op-7">
                                 {{ \App\Modal\Invoice::where('value_status', 2)->count() }}
@@ -114,7 +114,7 @@
                     <div class="d-flex">
                         <div class="">
                             <h4 class="tx-20 font-weight-bold mb-1 text-white">
-                                {{ number_format(\App\Modal\Invoice::where('value_status', 1)->sum('Total'), 2) }}
+                                {{ number_format(\App\Modal\Invoice::where('value_status', 1)->sum('total'), 2) }}
                             </h4>
                             <p class="mb-0 tx-12 text-white op-7">
                                 {{ \App\Modal\Invoice::where('value_status', 1)->count() }}
@@ -151,7 +151,7 @@
                     <div class="d-flex">
                         <div class="">
                             <h4 class="tx-20 font-weight-bold mb-1 text-white">
-                                {{ number_format(\App\Modal\Invoice::where('value_status', 3)->sum('Total'), 2) }}
+                                {{ number_format(\App\Modal\Invoice::where('value_status', 3)->sum('total'), 2) }}
                             </h4>
                             <p class="mb-0 tx-12 text-white op-7">
                                 {{ \App\Modal\Invoice::where('value_status', 3)->count() }}

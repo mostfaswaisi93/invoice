@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 29, 2020 at 04:07 PM
+-- Generation Time: Nov 30, 2020 at 11:14 AM
 -- Server version: 10.5.4-MariaDB-log
 -- PHP Version: 7.4.10
 
@@ -154,6 +154,13 @@ CREATE TABLE `model_has_roles` (
   `model_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `model_has_roles`
+--
+
+INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
+(1, 'App\\Models\\User', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -197,6 +204,50 @@ CREATE TABLE `permissions` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `permissions`
+--
+
+INSERT INTO `permissions` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
+(1, 'الفواتير', 'web', '2020-11-30 09:14:17', '2020-11-30 09:14:17'),
+(2, 'قائمة الفواتير', 'web', '2020-11-30 09:14:17', '2020-11-30 09:14:17'),
+(3, 'الفواتير المدفوعة', 'web', '2020-11-30 09:14:17', '2020-11-30 09:14:17'),
+(4, 'الفواتير المدفوعة جزئيًا', 'web', '2020-11-30 09:14:17', '2020-11-30 09:14:17'),
+(5, 'الفواتير الغير مدفوعة', 'web', '2020-11-30 09:14:17', '2020-11-30 09:14:17'),
+(6, 'أرشيف الفواتير', 'web', '2020-11-30 09:14:17', '2020-11-30 09:14:17'),
+(7, 'التقارير', 'web', '2020-11-30 09:14:17', '2020-11-30 09:14:17'),
+(8, 'تقرير الفواتير', 'web', '2020-11-30 09:14:17', '2020-11-30 09:14:17'),
+(9, 'تقرير العملاء', 'web', '2020-11-30 09:14:17', '2020-11-30 09:14:17'),
+(10, 'المستخدمين', 'web', '2020-11-30 09:14:17', '2020-11-30 09:14:17'),
+(11, 'قائمة المستخدمين', 'web', '2020-11-30 09:14:17', '2020-11-30 09:14:17'),
+(12, 'صلاحيات المستخدمين', 'web', '2020-11-30 09:14:17', '2020-11-30 09:14:17'),
+(13, 'الإعدادات', 'web', '2020-11-30 09:14:17', '2020-11-30 09:14:17'),
+(14, 'المنتجات', 'web', '2020-11-30 09:14:17', '2020-11-30 09:14:17'),
+(15, 'الأقسام', 'web', '2020-11-30 09:14:17', '2020-11-30 09:14:17'),
+(16, 'إضافة فاتورة', 'web', '2020-11-30 09:14:17', '2020-11-30 09:14:17'),
+(17, 'حذف الفاتورة', 'web', '2020-11-30 09:14:17', '2020-11-30 09:14:17'),
+(18, 'تصدير EXCEL', 'web', '2020-11-30 09:14:18', '2020-11-30 09:14:18'),
+(19, 'تغيير حالة الدفع', 'web', '2020-11-30 09:14:18', '2020-11-30 09:14:18'),
+(20, 'تعديل الفاتورة', 'web', '2020-11-30 09:14:18', '2020-11-30 09:14:18'),
+(21, 'أرشفة الفاتورة', 'web', '2020-11-30 09:14:18', '2020-11-30 09:14:18'),
+(22, 'طباعةالفاتورة', 'web', '2020-11-30 09:14:18', '2020-11-30 09:14:18'),
+(23, 'إضافة مرفق', 'web', '2020-11-30 09:14:18', '2020-11-30 09:14:18'),
+(24, 'حذف المرفق', 'web', '2020-11-30 09:14:18', '2020-11-30 09:14:18'),
+(25, 'إضافة مستخدم', 'web', '2020-11-30 09:14:18', '2020-11-30 09:14:18'),
+(26, 'تعديل مستخدم', 'web', '2020-11-30 09:14:18', '2020-11-30 09:14:18'),
+(27, 'حذف مستخدم', 'web', '2020-11-30 09:14:18', '2020-11-30 09:14:18'),
+(28, 'عرض صلاحية', 'web', '2020-11-30 09:14:18', '2020-11-30 09:14:18'),
+(29, 'إضافة صلاحية', 'web', '2020-11-30 09:14:18', '2020-11-30 09:14:18'),
+(30, 'تعديل صلاحية', 'web', '2020-11-30 09:14:18', '2020-11-30 09:14:18'),
+(31, 'حذف صلاحية', 'web', '2020-11-30 09:14:18', '2020-11-30 09:14:18'),
+(32, 'إضافة منتج', 'web', '2020-11-30 09:14:18', '2020-11-30 09:14:18'),
+(33, 'تعديل منتج', 'web', '2020-11-30 09:14:18', '2020-11-30 09:14:18'),
+(34, 'حذف منتج', 'web', '2020-11-30 09:14:18', '2020-11-30 09:14:18'),
+(35, 'إضافة قسم', 'web', '2020-11-30 09:14:18', '2020-11-30 09:14:18'),
+(36, 'تعديل قسم', 'web', '2020-11-30 09:14:18', '2020-11-30 09:14:18'),
+(37, 'حذف قسم', 'web', '2020-11-30 09:14:18', '2020-11-30 09:14:18'),
+(38, 'الإشعارات', 'web', '2020-11-30 09:14:18', '2020-11-30 09:14:18');
+
 -- --------------------------------------------------------
 
 --
@@ -226,6 +277,13 @@ CREATE TABLE `roles` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`id`, `name`, `guard_name`, `created_at`, `updated_at`) VALUES
+(1, 'owner', 'web', '2020-11-30 09:14:19', '2020-11-30 09:14:19');
+
 -- --------------------------------------------------------
 
 --
@@ -236,6 +294,50 @@ CREATE TABLE `role_has_permissions` (
   `permission_id` bigint(20) UNSIGNED NOT NULL,
   `role_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `role_has_permissions`
+--
+
+INSERT INTO `role_has_permissions` (`permission_id`, `role_id`) VALUES
+(1, 1),
+(2, 1),
+(3, 1),
+(4, 1),
+(5, 1),
+(6, 1),
+(7, 1),
+(8, 1),
+(9, 1),
+(10, 1),
+(11, 1),
+(12, 1),
+(13, 1),
+(14, 1),
+(15, 1),
+(16, 1),
+(17, 1),
+(18, 1),
+(19, 1),
+(20, 1),
+(21, 1),
+(22, 1),
+(23, 1),
+(24, 1),
+(25, 1),
+(26, 1),
+(27, 1),
+(28, 1),
+(29, 1),
+(30, 1),
+(31, 1),
+(32, 1),
+(33, 1),
+(34, 1),
+(35, 1),
+(36, 1),
+(37, 1),
+(38, 1);
 
 -- --------------------------------------------------------
 
@@ -270,6 +372,13 @@ CREATE TABLE `users` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `roles_name`, `status`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'mostfaswaisi93', 'mostfaswaisi93@gmail.com', NULL, '$2y$10$qkKtb0e96.3dJVu8/.nyTOOF.qfQZBh6akeF/wB4FcMCGvtQyv6T6', '[\"owner\"]', 'مفعل', NULL, '2020-11-30 09:14:19', '2020-11-30 09:14:19');
 
 --
 -- Indexes for dumped tables
@@ -409,7 +518,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `permissions`
 --
 ALTER TABLE `permissions`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -421,7 +530,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `sections`
@@ -433,7 +542,7 @@ ALTER TABLE `sections`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables

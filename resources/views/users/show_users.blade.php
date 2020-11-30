@@ -1,12 +1,7 @@
 @extends('layouts.master')
+
 @section('css')
-
-@section('title')
-المستخدمين - مورا سوفت للادارة الفواتير
-@stop
-
 <!-- Internal Data table css -->
-
 <link href="{{ URL::asset('assets/plugins/datatable/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet" />
 <link href="{{ URL::asset('assets/plugins/datatable/css/buttons.bootstrap4.min.css') }}" rel="stylesheet">
 <link href="{{ URL::asset('assets/plugins/datatable/css/responsive.bootstrap4.min.css') }}" rel="stylesheet" />
@@ -14,16 +9,17 @@
 <link href="{{ URL::asset('assets/plugins/datatable/css/responsive.dataTables.min.css') }}" rel="stylesheet">
 <!--Internal   Notify -->
 <link href="{{ URL::asset('assets/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
-
 @endsection
+
+@section('title') قائمة المستخدمين @stop
 
 @section('page-header')
 <!-- breadcrumb -->
 <div class="breadcrumb-header justify-content-between">
     <div class="my-auto">
         <div class="d-flex">
-            <h4 class="content-title mb-0 my-auto">المستخدمين</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ قائمة
-                المستخدمين</span>
+            <h4 class="content-title mb-0 my-auto">المستخدمين</h4>
+            <span class="text-muted mt-1 tx-13 mr-2 mb-0">/ قائمة المستخدمين</span>
         </div>
     </div>
 </div>
@@ -43,8 +39,8 @@
         <div class="card">
             <div class="card-header pb-0">
                 <div class="col-sm-1 col-md-2">
-                    @can('اضافة مستخدم')
-                    <a class="btn btn-primary btn-sm" href="{{ route('users.create') }}">اضافة مستخدم</a>
+                    @can('إضافة مستخدم')
+                    <a class="btn btn-primary btn-sm" href="{{ route('users.create') }}">إضافة مستخدم</a>
                     @endcan
                 </div>
             </div>
@@ -55,7 +51,7 @@
                             <tr>
                                 <th class="wd-10p border-bottom-0">#</th>
                                 <th class="wd-15p border-bottom-0">اسم المستخدم</th>
-                                <th class="wd-20p border-bottom-0">البريد الالكتروني</th>
+                                <th class="wd-20p border-bottom-0">البريد الإلكتروني</th>
                                 <th class="wd-15p border-bottom-0">حالة المستخدم</th>
                                 <th class="wd-15p border-bottom-0">نوع المستخدم</th>
                                 <th class="wd-10p border-bottom-0">العمليات</th>
@@ -68,13 +64,13 @@
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>
-                                    @if ($user->Status == 'مفعل')
+                                    @if ($user->status == 'مفعل')
                                     <span class="label text-success d-flex">
-                                        <div class="dot-label bg-success ml-1"></div>{{ $user->Status }}
+                                        <div class="dot-label bg-success ml-1"></div>{{ $user->status }}
                                     </span>
                                     @else
                                     <span class="label text-danger d-flex">
-                                        <div class="dot-label bg-danger ml-1"></div>{{ $user->Status }}
+                                        <div class="dot-label bg-danger ml-1"></div>{{ $user->status }}
                                     </span>
                                     @endif
                                 </td>
@@ -119,13 +115,13 @@
                     @method('delete')
                     @csrf
                     <div class="modal-body">
-                        <p>هل انت متاكد من عملية الحذف ؟</p><br>
+                        <p>هل أنت متأكد من عملية الحذف؟</p><br>
                         <input type="hidden" name="user_id" id="user_id" value="">
                         <input class="form-control" name="username" id="username" type="text" readonly>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">الغاء</button>
-                        <button type="submit" class="btn btn-danger">تاكيد</button>
+                        <button type="submit" class="btn btn-danger">تأكيد</button>
                     </div>
             </div>
             </form>
@@ -170,5 +166,4 @@
         modal.find('.modal-body #username').val(username);
     });
 </script>
-
 @endsection

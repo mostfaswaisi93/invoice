@@ -246,5 +246,4 @@
         modal.find('.modal-body #invoice_id').val(invoice_id);
     });
 </script>
-
 @endsection
