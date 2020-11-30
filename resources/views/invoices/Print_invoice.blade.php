@@ -142,5 +142,4 @@
         location.reload();
     }
 </script>
-
 @endsection

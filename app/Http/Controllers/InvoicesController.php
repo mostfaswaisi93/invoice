@@ -200,25 +200,25 @@ class InvoicesController extends Controller
 
     public function invoicePaid()
     {
-        $invoices = Invoices::where('value_status', 1)->get();
+        $invoices = Invoice::where('value_status', 1)->get();
         return view('invoices.invoices_paid', compact('invoices'));
     }
 
     public function invoiceUnpaid()
     {
-        $invoices = Invoices::where('value_status', 2)->get();
+        $invoices = Invoice::where('value_status', 2)->get();
         return view('invoices.invoices_unpaid', compact('invoices'));
     }
 
     public function invoicePartial()
     {
-        $invoices = Invoices::where('value_status', 3)->get();
+        $invoices = Invoice::where('value_status', 3)->get();
         return view('invoices.invoices_partial', compact('invoices'));
     }
 
     public function printInvoice($id)
     {
-        $invoices = invoices::where('id', $id)->first();
+        $invoices = Invoice::where('id', $id)->first();
         return view('invoices.print_invoice', compact('invoices'));
     }
 

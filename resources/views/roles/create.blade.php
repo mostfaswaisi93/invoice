@@ -7,17 +7,15 @@
 <link href="{{URL::asset('assets/plugins/treeview/treeview-rtl.css')}}" rel="stylesheet" type="text/css" />
 @endsection
 
-@section('title')
-اضافة الصلاحيات - مورا سوفت للادارة القانونية
-@stop
+@section('title') إضافة الصلاحيات @stop
 
 @section('page-header')
 <!-- breadcrumb -->
 <div class="breadcrumb-header justify-content-between">
     <div class="my-auto">
         <div class="d-flex">
-            <h4 class="content-title mb-0 my-auto">الصلاحيات</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ اضافة
-                نوع مستخدم</span>
+            <h4 class="content-title mb-0 my-auto">الصلاحيات</h4>
+            <span class="text-muted mt-1 tx-13 mr-2 mb-0">/ إضافة الصلاحيات</span>
         </div>
     </div>
 </div>
@@ -30,7 +28,7 @@
     <button aria-label="Close" class="close" data-dismiss="alert" type="button">
         <span aria-hidden="true">&times;</span>
     </button>
-    <strong>خطا</strong>
+    <strong>خطأ</strong>
     <ul>
         @foreach ($errors->all() as $error)
         <li>{{ $error }}</li>
@@ -72,7 +70,7 @@
                     </div>
                     <!-- /col -->
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                        <button type="submit" class="btn btn-main-primary">تاكيد</button>
+                        <button type="submit" class="btn btn-main-primary">تأكيد</button>
                     </div>
                 </div>
             </div>

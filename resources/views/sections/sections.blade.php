@@ -146,6 +146,7 @@
         </div>
         <!-- End Basic modal -->
     </div>
+
     <!-- edit -->
     <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -185,8 +186,10 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content modal-content-demo">
                 <div class="modal-header">
-                    <h6 class="modal-title">حذف القسم</h6><button aria-label="Close" class="close" data-dismiss="modal"
-                        type="button"><span aria-hidden="true">&times;</span></button>
+                    <h6 class="modal-title">حذف القسم</h6>
+                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <form action="sections/destroy" method="post">
                     @method('delete')
@@ -256,5 +259,4 @@
         modal.find('.modal-body #section_name').val(section_name);
     });
 </script>
-
 @endsection

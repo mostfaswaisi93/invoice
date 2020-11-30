@@ -3,22 +3,28 @@
 	<div class="container-fluid">
 		<div class="main-header-left ">
 			<div class="responsive-logo">
-				<a href="{{ url('/' . $page='index') }}"><img src="{{URL::asset('assets/img/brand/logo.png')}}"
-						class="logo-1" alt="logo"></a>
-				<a href="{{ url('/' . $page='index') }}"><img src="{{URL::asset('assets/img/brand/logo-white.png')}}"
-						class="dark-logo-1" alt="logo"></a>
-				<a href="{{ url('/' . $page='index') }}"><img src="{{URL::asset('assets/img/brand/favicon.png')}}"
-						class="logo-2" alt="logo"></a>
-				<a href="{{ url('/' . $page='index') }}"><img src="{{URL::asset('assets/img/brand/favicon.png')}}"
-						class="dark-logo-2" alt="logo"></a>
+				<a href="{{ url('/' . $page='index') }}">
+					<img src="{{URL::asset('assets/img/brand/logo.png')}}" class="logo-1" alt="logo">
+				</a>
+				<a href="{{ url('/' . $page='index') }}">
+					<img src="{{URL::asset('assets/img/brand/logo-white.png')}}" class="dark-logo-1" alt="logo">
+				</a>
+				<a href="{{ url('/' . $page='index') }}">
+					<img src="{{URL::asset('assets/img/brand/favicon.png')}}" class="logo-2" alt="logo">
+				</a>
+				<a href="{{ url('/' . $page='index') }}">
+					<img src="{{URL::asset('assets/img/brand/favicon.png')}}" class="dark-logo-2" alt="logo">
+				</a>
 			</div>
 			<div class="app-sidebar__toggle" data-toggle="sidebar">
 				<a class="open-toggle" href="#"><i class="header-icon fe fe-align-left"></i></a>
 				<a class="close-toggle" href="#"><i class="header-icons fe fe-x"></i></a>
 			</div>
 			<div class="main-header-center mr-3 d-sm-none d-md-none d-lg-block">
-				<input class="form-control" placeholder="Search for anything..." type="search"> <button class="btn"><i
-						class="fas fa-search d-none d-md-block"></i></button>
+				<input class="form-control" placeholder="Search for anything..." type="search">
+				<button class="btn">
+					<i class="fas fa-search d-none d-md-block"></i>
+				</button>
 			</div>
 		</div>
 		<div class="main-header-right">
@@ -196,9 +202,9 @@
 					<div class="dropdown-menu">
 						<div class="menu-header-content bg-primary text-right">
 							<div class="d-flex">
-								<h6 class="dropdown-title mb-1 tx-15 text-white font-weight-semibold">الاشعارات</h6>
+								<h6 class="dropdown-title mb-1 tx-15 text-white font-weight-semibold">الإشعارات</h6>
 								<span class="badge badge-pill badge-warning mr-auto my-auto float-left"><a
-										href="\MarkAsRead_all">تعين قراءة الكل</a></span>
+										href="\markAsReadAll">تعيين قراءة الكل</a></span>
 							</div>
 							<p class="dropdown-title-text subtext mb-0 text-white op-6 pb-0 tx-12 ">
 								<h6 style="color: yellow">{{ auth()->user()->unreadNotifications->count() }}</h6>
@@ -207,7 +213,7 @@
 						@foreach(auth()->user()->unreadNotifications as $notification)
 						<div class="main-notification-list Notification-scroll">
 							<a class="d-flex p-3 border-bottom"
-								href="{{ url('InvoicesDetails') }}/{{ $notification->data['id'] }}">
+								href="{{ url('invoices_details') }}/{{ $notification->data['id'] }}">
 								<div class="notifyimg bg-pink">
 									<i class="la la-file-alt text-white"></i>
 								</div>
@@ -219,24 +225,25 @@
 							</a>
 						</div>
 						@endforeach
-
 					</div>
 				</div>
 
 				@endcan
 				<div class="nav-item full-screen fullscreen-button">
-					<a class="new nav-link full-screen-link" href="#"><svg xmlns="http://www.w3.org/2000/svg"
-							class="header-icon-svgs" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-							stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+					<a class="new nav-link full-screen-link" href="#">
+						<svg xmlns="http://www.w3.org/2000/svg" class="header-icon-svgs" viewBox="0 0 24 24" fill="none"
+							stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
 							class="feather feather-maximize">
 							<path
 								d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3">
 							</path>
-						</svg></a>
+						</svg>
+					</a>
 				</div>
 				<div class="dropdown main-profile-menu nav nav-item nav-link">
-					<a class="profile-user d-flex" href=""><img alt=""
-							src="{{URL::asset('assets/img/faces/6.jpg')}}"></a>
+					<a class="profile-user d-flex" href="">
+						<img alt="" src="{{URL::asset('assets/img/faces/6.jpg')}}">
+					</a>
 					<div class="dropdown-menu">
 						<div class="main-header-profile bg-primary p-3">
 							<div class="d-flex wd-100p">
@@ -253,12 +260,12 @@
 						<a class="dropdown-item" href=""><i class="bx bx-envelope"></i>Messages</a>
 						<a class="dropdown-item" href=""><i class="bx bx-slider-alt"></i> Account Settings</a>
 						<a class="dropdown-item" href="{{ route('logout') }}"
-							onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i
-								class="bx bx-log-out"></i>تسجيل خروج</a>
+							onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+							<i class="bx bx-log-out"></i>تسجيل خروج
+						</a>
 						<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
 							@csrf
 						</form>
-
 					</div>
 				</div>
 				<div class="dropdown main-header-message right-toggle">

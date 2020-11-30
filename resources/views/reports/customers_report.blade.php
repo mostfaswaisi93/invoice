@@ -8,25 +8,21 @@
 <link href="{{ URL::asset('assets/plugins/datatable/css/jquery.dataTables.min.css') }}" rel="stylesheet">
 <link href="{{ URL::asset('assets/plugins/datatable/css/responsive.dataTables.min.css') }}" rel="stylesheet">
 <link href="{{ URL::asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
-
 <!-- Internal Spectrum-colorpicker css -->
 <link href="{{ URL::asset('assets/plugins/spectrum-colorpicker/spectrum.css') }}" rel="stylesheet">
-
 <!-- Internal Select2 css -->
 <link href="{{ URL::asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
 @endsection
 
-@section('title')
-تقرير العملاء - مورا سوفت للادارة الفواتير
-@stop
+@section('title') تقارير العملاء @stop
 
 @section('page-header')
 <!-- breadcrumb -->
 <div class="breadcrumb-header justify-content-between">
     <div class="my-auto">
         <div class="d-flex">
-            <h4 class="content-title mb-0 my-auto">التقارير</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ تقرير
-                العملاء</span>
+            <h4 class="content-title mb-0 my-auto">التقارير</h4>
+            <span class="text-muted mt-1 tx-13 mr-2 mb-0">/ تقارير العملاء</span>
         </div>
     </div>
 </div>
@@ -39,7 +35,7 @@
     <button aria-label="Close" class="close" data-dismiss="alert" type="button">
         <span aria-hidden="true">&times;</span>
     </button>
-    <strong>خطا</strong>
+    <strong>خطأ</strong>
     <ul>
         @foreach ($errors->all() as $error)
         <li>{{ $error }}</li>
@@ -84,7 +80,7 @@
                             </div><!-- input-group -->
                         </div>
                         <div class="col-lg-3" id="end_at">
-                            <label for="exampleFormControlSelect1">الي تاريخ</label>
+                            <label for="exampleFormControlSelect1">إلى تاريخ</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">
@@ -117,7 +113,7 @@
                                 <th class="border-bottom-0">الخصم</th>
                                 <th class="border-bottom-0">نسبة الضريبة</th>
                                 <th class="border-bottom-0">قيمة الضريبة</th>
-                                <th class="border-bottom-0">الاجمالي</th>
+                                <th class="border-bottom-0">الإجمالي</th>
                                 <th class="border-bottom-0">الحالة</th>
                                 <th class="border-bottom-0">ملاحظات</th>
                             </tr>
@@ -129,23 +125,25 @@
                             <tr>
                                 <td>{{ $i }}</td>
                                 <td>{{ $invoice->invoice_number }} </td>
-                                <td>{{ $invoice->invoice_Date }}</td>
-                                <td>{{ $invoice->Due_date }}</td>
+                                <td>{{ $invoice->invoice_date }}</td>
+                                <td>{{ $invoice->due_date }}</td>
                                 <td>{{ $invoice->product }}</td>
-                                <td><a
-                                        href="{{ url('invoices_details') }}/{{ $invoice->id }}">{{ $invoice->section->section_name }}</a>
+                                <td>
+                                    <a href="{{ url('invoices_details') }}/{{ $invoice->id }}">
+                                        {{ $invoice->section->section_name }}
+                                    </a>
                                 </td>
                                 <td>{{ $invoice->Discount }}</td>
                                 <td>{{ $invoice->Rate_VAT }}</td>
                                 <td>{{ $invoice->Value_VAT }}</td>
                                 <td>{{ $invoice->Total }}</td>
                                 <td>
-                                    @if ($invoice->Value_Status == 1)
-                                    <span class="text-success">{{ $invoice->Status }}</span>
-                                    @elseif($invoice->Value_Status == 2)
-                                    <span class="text-danger">{{ $invoice->Status }}</span>
+                                    @if ($invoice->value_status == 1)
+                                    <span class="text-success">{{ $invoice->status }}</span>
+                                    @elseif($invoice->value_status == 2)
+                                    <span class="text-danger">{{ $invoice->status }}</span>
                                     @else
-                                    <span class="text-warning">{{ $invoice->Status }}</span>
+                                    <span class="text-warning">{{ $invoice->status }}</span>
                                     @endif
                                 </td>
                                 <td>{{ $invoice->note }}</td>
@@ -186,7 +184,6 @@
 <script src="{{ URL::asset('assets/plugins/datatable/js/responsive.bootstrap4.min.js') }}"></script>
 <!--Internal  Datatable js -->
 <script src="{{ URL::asset('assets/js/table-data.js') }}"></script>
-
 <!--Internal  Datepicker js -->
 <script src="{{ URL::asset('assets/plugins/jquery-ui/ui/widgets/datepicker.js') }}"></script>
 <!--Internal  jquery.maskedinput js -->
@@ -214,7 +211,7 @@
 
 <script>
     $(document).ready(function() {
-        $('select[name="Section"]').on('change', function() {
+        $('select[name="section"]').on('change', function() {
             var SectionId = $(this).val();
             if (SectionId) {
                 $.ajax({
@@ -235,5 +232,4 @@
         });
     });
 </script>
-
 @endsection

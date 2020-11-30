@@ -1,7 +1,5 @@
 @extends('layouts.master')
 
-@section('title') قائمة الفواتير @stop
-
 @section('css')
 <!-- Internal Data table css -->
 <link href="{{ URL::asset('assets/plugins/datatable/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet" />
@@ -13,6 +11,8 @@
 <!-- Internal Notify -->
 <link href="{{ URL::asset('assets/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
 @endsection
+
+@section('title') قائمة الفواتير @stop
 
 @section('page-header')
 <!-- breadcrumb -->
@@ -34,7 +34,7 @@
         notif({
             msg: "تم حذف الفاتورة بنجاح",
             type: "success"
-        })
+        });
     }
 </script>
 @endif
@@ -45,7 +45,7 @@
         notif({
             msg: "تم تحديث حالة الدفع بنجاح",
             type: "success"
-        })
+        });
     }
 </script>
 @endif
@@ -56,7 +56,7 @@
         notif({
             msg: "تم استعادة الفاتورة بنجاح",
             type: "success"
-        })
+        });
     }
 </script>
 @endif
@@ -288,5 +288,4 @@
         modal.find('.modal-body #invoice_id').val(invoice_id);
     });
 </script>
-
 @endsection

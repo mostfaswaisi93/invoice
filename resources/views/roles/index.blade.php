@@ -5,17 +5,15 @@
 <link href="{{ URL::asset('assets/plugins/notify/css/notifIt.css') }}" rel="stylesheet" />
 @endsection
 
-@section('title')
-صلاحيات المستخدمين - مورا سوفت للادارة القانونية
-@stop
+@section('title') صلاحيات المستخدمين @stop
 
 @section('page-header')
 <!-- breadcrumb -->
 <div class="breadcrumb-header justify-content-between">
     <div class="my-auto">
         <div class="d-flex">
-            <h4 class="content-title mb-0 my-auto">المستخدمين</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0"> /
-                صلاحيات المستخدمين</span>
+            <h4 class="content-title mb-0 my-auto">المستخدمين</h4>
+            <span class="text-muted mt-1 tx-13 mr-2 mb-0"> / صلاحيات المستخدمين</span>
         </div>
     </div>
 </div>
@@ -27,7 +25,7 @@
 <script>
     window.onload = function() {
         notif({
-            msg: " تم اضافة الصلاحية بنجاح",
+            msg: "تم إضافة الصلاحية بنجاح",
             type: "success"
         });
     }
@@ -38,7 +36,7 @@
 <script>
     window.onload = function() {
         notif({
-            msg: " تم تحديث بيانات الصلاحية بنجاح",
+            msg: "تم تحديث بيانات الصلاحية بنجاح",
             type: "success"
         });
     }
@@ -49,7 +47,7 @@
 <script>
     window.onload = function() {
         notif({
-            msg: " تم حذف الصلاحية بنجاح",
+            msg: "تم حذف الصلاحية بنجاح",
             type: "error"
         });
     }
@@ -64,8 +62,8 @@
                 <div class="d-flex justify-content-between">
                     <div class="col-lg-12 margin-tb">
                         <div class="pull-right">
-                            @can('اضافة صلاحية')
-                            <a class="btn btn-primary btn-sm" href="{{ route('roles.create') }}">اضافة</a>
+                            @can('إضافة صلاحية')
+                            <a class="btn btn-primary btn-sm" href="{{ route('roles.create') }}">إضافة</a>
                             @endcan
                         </div>
                     </div>
