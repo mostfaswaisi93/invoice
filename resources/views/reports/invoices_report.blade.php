@@ -8,25 +8,21 @@
 <link href="{{ URL::asset('assets/plugins/datatable/css/jquery.dataTables.min.css') }}" rel="stylesheet">
 <link href="{{ URL::asset('assets/plugins/datatable/css/responsive.dataTables.min.css') }}" rel="stylesheet">
 <link href="{{ URL::asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
-
 <!-- Internal Spectrum-colorpicker css -->
 <link href="{{ URL::asset('assets/plugins/spectrum-colorpicker/spectrum.css') }}" rel="stylesheet">
-
 <!-- Internal Select2 css -->
 <link href="{{ URL::asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
 @endsection
 
-@section('title')
-تقرير الفواتير - مورا سوفت للادارة الفواتير
-@stop
+@section('title') تقرير الفواتير @stop
 
 @section('page-header')
 <!-- breadcrumb -->
 <div class="breadcrumb-header justify-content-between">
     <div class="my-auto">
         <div class="d-flex">
-            <h4 class="content-title mb-0 my-auto">التقارير</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ تقرير
-                الفواتير</span>
+            <h4 class="content-title mb-0 my-auto">التقارير</h4>
+            <span class="text-muted mt-1 tx-13 mr-2 mb-0">/ تقرير الفواتير</span>
         </div>
     </div>
 </div>
@@ -39,7 +35,7 @@
     <button aria-label="Close" class="close" data-dismiss="alert" type="button">
         <span aria-hidden="true">&times;</span>
     </button>
-    <strong>خطا</strong>
+    <strong>خطأ</strong>
     <ul>
         @foreach ($errors->all() as $error)
         <li>{{ $error }}</li>
@@ -53,27 +49,29 @@
     <div class="col-xl-12">
         <div class="card mg-b-20">
             <div class="card-header pb-0">
-                <form action="/Search_invoices" method="POST" role="search" autocomplete="off">
+                <form action="/search_invoices" method="POST" role="search" autocomplete="off">
                     @csrf
                     <div class="col-lg-3">
                         <label class="rdiobox">
-                            <input checked name="rdio" type="radio" value="1" id="type_div"> <span>بحث بنوع
-                                الفاتورة</span></label>
+                            <input checked name="rdio" type="radio" value="1" id="type_div">
+                            <span>بحث بنوع الفاتورة</span>
+                        </label>
                     </div>
                     <div class="col-lg-3 mg-t-20 mg-lg-t-0">
-                        <label class="rdiobox"><input name="rdio" value="2" type="radio"><span>بحث برقم الفاتورة
-                            </span></label>
+                        <label class="rdiobox"><input name="rdio" value="2" type="radio">
+                            <span>بحث برقم الفاتورة </span>
+                        </label>
                     </div><br><br>
                     <div class="row">
                         <div class="col-lg-3 mg-t-20 mg-lg-t-0" id="type">
-                            <p class="mg-b-10">تحديد نوع الفواتير</p><select class="form-control select2" name="type"
-                                required>
+                            <p class="mg-b-10">تحديد نوع الفواتير</p>
+                            <select class="form-control select2" name="type" required>
                                 <option value="{{ $type ?? 'حدد نوع الفواتير' }}" selected>
                                     {{ $type ?? 'حدد نوع الفواتير' }}
                                 </option>
                                 <option value="مدفوعة">الفواتير المدفوعة</option>
                                 <option value="غير مدفوعة">الفواتير الغير مدفوعة</option>
-                                <option value="مدفوعة جزئيا">الفواتير المدفوعة جزئيا</option>
+                                <option value="مدفوعة جزئيًا">الفواتير المدفوعة جزئيًا</option>
                             </select>
                         </div><!-- col-4 -->
                         <div class="col-lg-3 mg-t-20 mg-lg-t-0" id="invoice_number">
@@ -92,7 +90,7 @@
                             </div><!-- input-group -->
                         </div>
                         <div class="col-lg-3" id="end_at">
-                            <label for="exampleFormControlSelect1">الي تاريخ</label>
+                            <label for="exampleFormControlSelect1">إلى تاريخ</label>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">
@@ -125,7 +123,7 @@
                                 <th class="border-bottom-0">الخصم</th>
                                 <th class="border-bottom-0">نسبة الضريبة</th>
                                 <th class="border-bottom-0">قيمة الضريبة</th>
-                                <th class="border-bottom-0">الاجمالي</th>
+                                <th class="border-bottom-0">الإجمالي</th>
                                 <th class="border-bottom-0">الحالة</th>
                                 <th class="border-bottom-0">ملاحظات</th>
                             </tr>
@@ -137,25 +135,26 @@
                             <tr>
                                 <td>{{ $i }}</td>
                                 <td>{{ $invoice->invoice_number }} </td>
-                                <td>{{ $invoice->invoice_Date }}</td>
-                                <td>{{ $invoice->Due_date }}</td>
+                                <td>{{ $invoice->invoice_date }}</td>
+                                <td>{{ $invoice->due_date }}</td>
                                 <td>{{ $invoice->product }}</td>
-                                <td><a
-                                        href="{{ url('invoices_details') }}/{{ $invoice->id }}">{{ $invoice->section->section_name }}</a>
-                                </td>
-                                <td>{{ $invoice->Discount }}</td>
-                                <td>{{ $invoice->Rate_VAT }}</td>
-                                <td>{{ $invoice->Value_VAT }}</td>
-                                <td>{{ $invoice->Total }}</td>
                                 <td>
-                                    @if ($invoice->Value_Status == 1)
-                                    <span class="text-success">{{ $invoice->Status }}</span>
-                                    @elseif($invoice->Value_Status == 2)
-                                    <span class="text-danger">{{ $invoice->Status }}</span>
+                                    <a href="{{ url('invoices_details') }}/{{ $invoice->id }}">
+                                        {{ $invoice->section->section_name }}
+                                    </a>
+                                </td>
+                                <td>{{ $invoice->discount }}</td>
+                                <td>{{ $invoice->rate_vat }}</td>
+                                <td>{{ $invoice->value_vat }}</td>
+                                <td>{{ $invoice->total }}</td>
+                                <td>
+                                    @if ($invoice->value_status == 1)
+                                    <span class="text-success">{{ $invoice->status }}</span>
+                                    @elseif($invoice->value_status == 2)
+                                    <span class="text-danger">{{ $invoice->status }}</span>
                                     @else
-                                    <span class="text-warning">{{ $invoice->Status }}</span>
+                                    <span class="text-warning">{{ $invoice->status }}</span>
                                     @endif
-
                                 </td>
                                 <td>{{ $invoice->note }}</td>
                             </tr>
@@ -174,6 +173,7 @@
 </div>
 <!-- main-content closed -->
 @endsection
+
 @section('js')
 <!-- Internal Data tables -->
 <script src="{{ URL::asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
@@ -194,7 +194,6 @@
 <script src="{{ URL::asset('assets/plugins/datatable/js/responsive.bootstrap4.min.js') }}"></script>
 <!--Internal  Datatable js -->
 <script src="{{ URL::asset('assets/js/table-data.js') }}"></script>
-
 <!--Internal  Datepicker js -->
 <script src="{{ URL::asset('assets/plugins/jquery-ui/ui/widgets/datepicker.js') }}"></script>
 <!--Internal  jquery.maskedinput js -->
@@ -213,6 +212,7 @@
 <script src="{{ URL::asset('assets/plugins/pickerjs/picker.min.js') }}"></script>
 <!-- Internal form-elements js -->
 <script src="{{ URL::asset('assets/js/form-elements.js') }}"></script>
+
 <script>
     var date = $('.fc-datepicker').datepicker({
         dateFormat: 'yy-mm-dd'
@@ -237,5 +237,4 @@
         });
     });
 </script>
-
 @endsection

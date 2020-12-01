@@ -53,9 +53,9 @@
                     <div class="d-flex">
                         <div class="">
                             <h4 class="tx-20 font-weight-bold mb-1 text-white">
-                                {{ number_format(\App\Modal\Invoice::sum('total'), 2) }}
+                                {{ number_format(\App\Models\Invoice::sum('total'), 2) }}
                             </h4>
-                            <p class="mb-0 tx-12 text-white op-7">{{ \App\Modal\Invoice::count() }}</p>
+                            <p class="mb-0 tx-12 text-white op-7">{{ \App\Models\Invoice::count() }}</p>
                         </div>
                         <span class="float-right my-auto mr-auto">
                             <i class="fas fa-arrow-circle-up text-white"></i>
@@ -77,18 +77,18 @@
                     <div class="d-flex">
                         <div class="">
                             <h3 class="tx-20 font-weight-bold mb-1 text-white">
-                                {{ number_format(\App\Modal\Invoice::where('value_status', 2)->sum('total'), 2) }}
+                                {{ number_format(\App\Models\Invoice::where('value_status', 2)->sum('total'), 2) }}
                             </h3>
                             <p class="mb-0 tx-12 text-white op-7">
-                                {{ \App\Modal\Invoice::where('value_status', 2)->count() }}
+                                {{ \App\Models\Invoice::where('value_status', 2)->count() }}
                             </p>
                         </div>
                         <span class="float-right my-auto mr-auto">
                             <i class="fas fa-arrow-circle-down text-white"></i>
                             <span class="text-white op-7">
                                 @php
-                                $count_all= \App\Modal\Invoice::count();
-                                $count_invoices2 = \App\Modal\Invoice::where('value_status', 2)->count();
+                                $count_all= \App\Models\Invoice::count();
+                                $count_invoices2 = \App\Models\Invoice::where('value_status', 2)->count();
                                 if($count_invoices2 == 0){
                                 echo $count_invoices2 = 0;
                                 }
@@ -114,18 +114,18 @@
                     <div class="d-flex">
                         <div class="">
                             <h4 class="tx-20 font-weight-bold mb-1 text-white">
-                                {{ number_format(\App\Modal\Invoice::where('value_status', 1)->sum('total'), 2) }}
+                                {{ number_format(\App\Models\Invoice::where('value_status', 1)->sum('total'), 2) }}
                             </h4>
                             <p class="mb-0 tx-12 text-white op-7">
-                                {{ \App\Modal\Invoice::where('value_status', 1)->count() }}
+                                {{ \App\Models\Invoice::where('value_status', 1)->count() }}
                             </p>
                         </div>
                         <span class="float-right my-auto mr-auto">
                             <i class="fas fa-arrow-circle-up text-white"></i>
                             <span class="text-white op-7">
                                 @php
-                                $count_all= \App\Modal\Invoice::count();
-                                $count_invoices1 = \App\Modal\Invoice::where('value_status', 1)->count();
+                                $count_all= \App\Models\Invoice::count();
+                                $count_invoices1 = \App\Models\Invoice::where('value_status', 1)->count();
                                 if($count_invoices1 == 0){
                                 echo $count_invoices1 = 0;
                                 }
@@ -151,18 +151,18 @@
                     <div class="d-flex">
                         <div class="">
                             <h4 class="tx-20 font-weight-bold mb-1 text-white">
-                                {{ number_format(\App\Modal\Invoice::where('value_status', 3)->sum('total'), 2) }}
+                                {{ number_format(\App\Models\Invoice::where('value_status', 3)->sum('total'), 2) }}
                             </h4>
                             <p class="mb-0 tx-12 text-white op-7">
-                                {{ \App\Modal\Invoice::where('value_status', 3)->count() }}
+                                {{ \App\Models\Invoice::where('value_status', 3)->count() }}
                             </p>
                         </div>
                         <span class="float-right my-auto mr-auto">
                             <i class="fas fa-arrow-circle-down text-white"></i>
                             <span class="text-white op-7">
                                 @php
-                                $count_all= \App\Modal\Invoice::count();
-                                $count_invoices1 = \App\Modal\Invoice::where('value_status', 1)->count();
+                                $count_all= \App\Models\Invoice::count();
+                                $count_invoices1 = \App\Models\Invoice::where('value_status', 1)->count();
                                 if($count_invoices1 == 0){
                                 echo $count_invoices1 = 0;
                                 }

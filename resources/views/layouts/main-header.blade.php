@@ -190,7 +190,7 @@
 						</div>
 					</div>
 				</div>
-				@can('الاشعارات')
+				@can('الإشعارات')
 				<div class="dropdown nav-item main-header-notification">
 					<a class="new nav-link" href="#">
 						<svg xmlns="http://www.w3.org/2000/svg" class="header-icon-svgs" viewBox="0 0 24 24" fill="none"

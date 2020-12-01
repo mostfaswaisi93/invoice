@@ -49,7 +49,7 @@
     <div class="col-xl-12">
         <div class="card mg-b-20">
             <div class="card-header pb-0">
-                <form action="/Search_customers" method="POST" role="search" autocomplete="off">
+                <form action="/search_customers" method="POST" role="search" autocomplete="off">
                     @csrf
                     <div class="row">
                         <div class="col">
@@ -133,10 +133,10 @@
                                         {{ $invoice->section->section_name }}
                                     </a>
                                 </td>
-                                <td>{{ $invoice->Discount }}</td>
-                                <td>{{ $invoice->Rate_VAT }}</td>
-                                <td>{{ $invoice->Value_VAT }}</td>
-                                <td>{{ $invoice->Total }}</td>
+                                <td>{{ $invoice->discount }}</td>
+                                <td>{{ $invoice->rate_vat }}</td>
+                                <td>{{ $invoice->value_vat }}</td>
+                                <td>{{ $invoice->total }}</td>
                                 <td>
                                     @if ($invoice->value_status == 1)
                                     <span class="text-success">{{ $invoice->status }}</span>
