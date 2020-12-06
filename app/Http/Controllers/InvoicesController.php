@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\MyEventClass;
 use App\Exports\InvoicesExport;
 use App\Models\Invoice;
 use App\Models\InvoiceAttachment;
@@ -85,6 +86,8 @@ class InvoicesController extends Controller
         $user = User::get();
         $invoices = Invoice::latest()->first();
         Notification::send($user, new AddNewInvoice($invoices));
+
+        event(new MyEventClass('hello world'));
 
         session()->flash('Add', 'تم إضافة الفاتورة بنجاح');
         return back();
@@ -233,6 +236,18 @@ class InvoicesController extends Controller
         if ($userUnreadNotification) {
             $userUnreadNotification->markAsRead();
             return back();
+        }
+    }
+
+    public function unreadNotifications_count()
+    {
+        return auth()->user()->unreadNotifications->count();
+    }
+
+    public function unreadNotifications()
+    {
+        foreach (auth()->user()->unreadNotifications as $notification) {
+            return $notification->data['title'];
         }
     }
 }
