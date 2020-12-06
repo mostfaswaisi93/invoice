@@ -15,7 +15,7 @@
 <body class="main-body app sidebar-mini">
 	<!-- Loader -->
 	<div id="global-loader">
-		<img src="{{URL::asset('assets/img/loader.svg')}}" class="loader-img" alt="Loader">
+		<img src="{{ URL::asset('assets/img/loader.svg') }}" class="loader-img" alt="Loader">
 	</div>
 	<!-- /Loader -->
 	@include('layouts.main-sidebar')
@@ -33,3 +33,10 @@
 </body>
 
 </html>
+
+<script>
+	setInterval(function() {
+        $("#notifications_count").load(window.location.href + " #notifications_count");
+        $("#unreadNotifications").load(window.location.href + " #unreadNotifications");
+    }, 5000);
+</script>

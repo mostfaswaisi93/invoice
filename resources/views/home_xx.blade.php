@@ -9,11 +9,9 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/css/bootstrap-notifications.min.css">
-
 </head>
 
 <body>
-
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
@@ -22,16 +20,12 @@
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse"
                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="{{ __('Toggle navigation') }}">
+                    aria-label="{{ __('toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
-
-                    </ul>
-
+                    <ul class="navbar-nav mr-auto"> </ul>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
@@ -46,29 +40,28 @@
                             <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
                                 <li class="dropdown-menu-header">
                                     <h6 class="dropdown-header m-0 text-center">
-                                        <span class="grey darken-2 text-center"> الرسائل</span>
+                                        <span class="grey darken-2 text-center">الرسائل</span>
                                     </h6>
                                 </li>
                                 <li class="scrollable-container ps-container ps-active-y media-list w-100">
                                     <a href="">
                                         <div class="media">
                                             <div class="media-body">
-                                                <h6 class="media-heading text-right ">عنوان الاشعار </h6>
-                                                <p class="notification-text font-small-3 text-muted text-right"> نص
-                                                    الاشعار</p>
+                                                <h6 class="media-heading text-right ">عنوان الإشعار</h6>
+                                                <p class="notification-text font-small-3 text-muted text-right">
+                                                    نص الإشعار</p>
                                                 <small style="direction: ltr;">
                                                     <p class=" text-muted text-right" style="direction: ltr;">
                                                         20-05-2020 - 06:00 pm
                                                     </p>
                                                     <br>
-
                                                 </small>
                                             </div>
                                         </div>
                                     </a>
                                 </li>
-                                <li class="dropdown-menu-footer"><a class="dropdown-item text-muted text-center"
-                                        href=""> جميع الاشعارات </a>
+                                <li class="dropdown-menu-footer">
+                                    <a class="dropdown-item text-muted text-center" href=""> جميع الإشعارات</a>
                                 </li>
                             </ul>
                         </li>
@@ -90,8 +83,8 @@
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                             document.getElementById('logout-form').submit();">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
@@ -105,6 +98,7 @@
                 </div>
             </div>
         </nav>
+    </div>
 </body>
 
 </html>
